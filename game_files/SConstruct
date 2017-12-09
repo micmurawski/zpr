@@ -1,0 +1,6 @@
+env =Environment()
+sources = ['game_order.cpp', 'tt.cpp']
+targets = ['game_order.o', 'a.out']
+cxxflags = ['-std=c++17']
+env.Object(target = targets [0], source = sources[0], CXXFLAGS = cxxflags)
+env.Program(target = targets[1], source = [targets[0], sources[1]], CXXFLAGS = cxxflags)

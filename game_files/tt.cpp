@@ -1,12 +1,35 @@
-//#include "game_sendable.hpp"
-//#include <cstdio>
-//#include <iostream>
-//int main(){
-//	GameSendable g;
-//	g.body_length(12);
-//	g.SetType(3);
-//	std::memcpy(g.body(), "abcdefghijwq", g.body_length()+1);
-//	g.encode_header();
-//	std::cout <<g.data();
-//	return 0;
-//}
+#include "game_order.hpp"
+#include "building.hpp"
+#include <cstdio>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main(){
+	std::vector<unsigned int> s;
+	s.push_back(static_cast<unsigned int>(1234));
+	s.push_back(32);
+	s.push_back(2);
+	s.push_back(4423);
+	s.push_back(1221);
+	MoveOrder move (2, 34, s);
+	move.encode();
+	cout<<GameOrder::header_length <<" ";
+	cout<<move.body_length() <<"\n";
+	cout.write(move.data(), move.body_length()+GameOrder::header_length);
+	cout <<'\n';
+	cout <<"test 2";
+	MoveOrder m;
+	strncpy(m.data(), move.data(), move.body_length()+GameOrder::header_length);
+	cout<<endl;
+	cout.write(m.data(), move.body_length()+GameOrder::header_length);
+	cout <<endl;
+	m.decode();
+	cout<< endl <<m.getStartPoint() <<endl <<m.getDestination() <<endl;
+	for (auto id : *m.getShipVector()){
+		cout<<endl <<id ;
+		}
+	
+	return 0;
+}

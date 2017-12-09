@@ -1,9 +1,8 @@
 #include <vector>
 #include "player.hpp"
 #include "map_point.hpp"
+#include "typedefs.hpp"
 
-typedef player_ptr std::unique_ptr<Player>
-typedef map_point_ptr std::unique_ptr<MapPoint>
 
 class GameState{
 public:

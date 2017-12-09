@@ -8,7 +8,7 @@
 class GameSendable
 {
 public:
-// enum  = body_legth (4) + type (2)
+
   enum { header_length = 6 };
   enum {type_length = 2};
   enum {max_body_length = 1000};
@@ -72,11 +72,11 @@ public:
   void encode_header()
   {
     char header[header_length + 1] = "";
-    std::sprintf(header, "%4d%2d", body_length_, type_);
+    std::sprintf(header, "%4d%2d", static_cast<int>(body_length_), type_);
     std::memcpy(data_, header, header_length);
   }
 
-private:
+protected:
   char data_[header_length + max_body_length];
   std::size_t body_length_;
   unsigned int type_;
