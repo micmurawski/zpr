@@ -5,9 +5,9 @@
 #include <cstring>
 
 void MoveOrder::encode(){
-	body_length((2+ship_id_vector_->size())*GameOrder::id_length); //2 for destination_point_id + starting_point_id
-	SetType(1);
-	char temp[body_length()+1];
+	setBodyLength((2+ship_id_vector_->size())*GameOrder::id_length); //2 for destination_point_id + starting_point_id
+	setType(1);
+	char temp[getBodyLength()+1];
 	//copying starting point id and destination point id into char[] temp
 	char temp1[2*GameOrder::id_length+1];
 	std::sprintf(temp1, "%*d%*d", GameOrder::id_length, start_point_id_, GameOrder::id_length, destination_id_);
@@ -21,28 +21,28 @@ void MoveOrder::encode(){
 		++i;
 	}
 	//copying temp into body
-	std::memcpy(body(), temp, body_length());
-	encode_header();
+	std::memcpy(getBody(), temp, getBodyLength());
+	encodeHeader();
 	}
 	
 bool MoveOrder::decode(){
 	//using decode_header() from game_sendable base class to get
 	//body length
-	decode_header();
-	//decoding start point id from body()
+	decodeHeader();
+	//decoding start point id from getBody()
 	char start_point_id [GameOrder::id_length] = "";
-	strncat(start_point_id, body(), GameOrder::id_length);
+	strncat(start_point_id, getBody(), GameOrder::id_length);
 	start_point_id_ = atoi(start_point_id);
-	//decoding destination id from body()
+	//decoding destination id from getgetBody()
 	char destination_id [GameOrder::id_length] = "";
-	strncat(destination_id, body()+GameOrder::id_length, GameOrder::id_length);
+	strncat(destination_id, getBody()+GameOrder::id_length, GameOrder::id_length);
 	destination_id_ = atoi(destination_id);
-	//decoding ship ids in loop from body()
+	//decoding ship ids in loop from getgetBody()
 	ship_id_vector_->clear();
 	unsigned int i=GameOrder::id_length*2;
-	while(i<body_length()){
+	while(i<getBodyLength()){
 		char ship_id [GameOrder::id_length]="";
-		strncat(ship_id, body()+i, GameOrder::id_length);
+		strncat(ship_id, getBody()+i, GameOrder::id_length);
 		i +=GameOrder::id_length;
 		ship_id_vector_->push_back(atoi(ship_id));
 		}

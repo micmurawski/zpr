@@ -18,48 +18,48 @@ public:
   {
   }
 
-  const char* data() const
+  const char* getData() const
   {
     return data_;
   }
 
-  char* data()
+  char* getData()
   {
     return data_;
   }
 
-  std::size_t length() const
+  std::size_t getLength() const
   {
     return header_length + body_length_;
   }
 
-  const char* body() const
+  const char* getBody() const
   {
     return data_ + header_length;
   }
 
-  char* body()
+  char* getBody()
   {
     return data_ + header_length;
   }
 
-	void SetType(unsigned int type){
+	void setType(unsigned int type){
 		type_=type;
 		}
 	int getType(){
 		return type_;
 		}
-  std::size_t body_length() const
+  std::size_t getBodyLength() const
   {
     return body_length_;
   }
 
-  void body_length(std::size_t new_length)
+  void setBodyLength(std::size_t new_length)
   {
     body_length_ = new_length;
   }
 
-  bool decode_header()
+  bool decodeHeader()
   {
     char body_length[header_length - type_length + 1] = "";
     char type[type_length + 1]= "";
@@ -69,7 +69,7 @@ public:
     type_ = std::atoi(type);
   }
 
-  void encode_header()
+  void encodeHeader()
   {
     char header[header_length + 1] = "";
     std::sprintf(header, "%4d%2d", static_cast<int>(body_length_), type_);

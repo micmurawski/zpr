@@ -16,14 +16,14 @@ int main(){
 	MoveOrder move (2, 34, s);
 	move.encode();
 	cout<<GameOrder::header_length <<" ";
-	cout<<move.body_length() <<"\n";
-	cout.write(move.data(), move.body_length()+GameOrder::header_length);
+	cout<<move.getBodyLength() <<"\n";
+	cout.write(move.getData(), move.getBodyLength()+GameOrder::header_length);
 	cout <<'\n';
 	cout <<"test 2";
 	MoveOrder m;
-	strncpy(m.data(), move.data(), move.body_length()+GameOrder::header_length);
+	strncpy(m.getData(), move.getData(), move.getBodyLength()+GameOrder::header_length);
 	cout<<endl;
-	cout.write(m.data(), move.body_length()+GameOrder::header_length);
+	cout.write(m.getData(), move.getBodyLength()+GameOrder::header_length);
 	cout <<endl;
 	m.decode();
 	cout<< endl <<m.getStartPoint() <<endl <<m.getDestination() <<endl;
