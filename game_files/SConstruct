@@ -1,6 +1,14 @@
 env =Environment()
-sources = ['game_order.cpp', 'tt.cpp']
-targets = ['game_order.o', 'a.out']
+sources = ['tt.cpp']
+lib_sources = ['game_engine.cpp', 'game_order.cpp']
 cxxflags = ['-std=c++17']
-env.Object(target = targets [0], source = sources[0], CXXFLAGS = cxxflags)
-env.Program(target = targets[1], source = [targets[0], sources[1]], CXXFLAGS = cxxflags)
+env.Library('game', lib_sources, CXXFLAGS = cxxflags)
+env.Program(target='test', source = sources, LIBS = 'game', LIBPATH = '.', CXXFLAGS = cxxflags);
+
+   
+     
+        
+                  
+      
+  
+

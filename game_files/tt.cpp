@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include "order_decoder.hpp"
 
 using namespace std;
 
@@ -20,16 +21,12 @@ int main(){
 	cout.write(move.getData(), move.getBodyLength()+GameOrder::header_length);
 	cout <<'\n';
 	cout <<"test 2";
-	MoveOrder m;
-	strncpy(m.getData(), move.getData(), move.getBodyLength()+GameOrder::header_length);
-	cout<<endl;
-	cout.write(m.getData(), move.getBodyLength()+GameOrder::header_length);
-	cout <<endl;
-	m.decode();
-	cout<< endl <<m.getStartPoint() <<endl <<m.getDestination() <<endl;
-	for (auto id : *m.getShipVector()){
-		cout<<endl <<id ;
-		}
-	
+	GameSendable recived;
+	strncpy(recived.getData(), move.getData(), move.getBodyLength()+GameOrder::header_length);
+	OrderDecoder decoder;
+	shared_ptr<GameOrder>g = decoder.decode(recived);
+	shared_ptr<MoveOrder>p = dynamic_pointer_cast<MoveOrder> (g);
+	cout<<endl <<(p)->getDestination() <<endl;
+	cout<<endl <<(p)->getStartPoint() <<endl;
 	return 0;
 }

@@ -6,7 +6,7 @@
 
 void MoveOrder::encode(){
 	setBodyLength((2+ship_id_vector_->size())*GameOrder::id_length); //2 for destination_point_id + starting_point_id
-	setType(1);
+	setType(MoveOrder::type_id);
 	char temp[getBodyLength()+1];
 	//copying starting point id and destination point id into char[] temp
 	char temp1[2*GameOrder::id_length+1];
@@ -46,6 +46,6 @@ bool MoveOrder::decode(){
 		i +=GameOrder::id_length;
 		ship_id_vector_->push_back(atoi(ship_id));
 		}
-	
-	}
+}
+
 
