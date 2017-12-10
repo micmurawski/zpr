@@ -29,15 +29,15 @@ bool MoveOrder::decode(){
 	//using decode_header() from game_sendable base class to get
 	//body length
 	decodeHeader();
-	//decoding start point id from getBody()
+	//decoding start point id from body
 	char start_point_id [GameOrder::id_length] = "";
 	strncat(start_point_id, getBody(), GameOrder::id_length);
 	start_point_id_ = atoi(start_point_id);
-	//decoding destination id from getgetBody()
+	//decoding destination id from body
 	char destination_id [GameOrder::id_length] = "";
 	strncat(destination_id, getBody()+GameOrder::id_length, GameOrder::id_length);
 	destination_id_ = atoi(destination_id);
-	//decoding ship ids in loop from getgetBody()
+	//decoding ship ids in loop from body
 	ship_id_vector_->clear();
 	unsigned int i=GameOrder::id_length*2;
 	while(i<getBodyLength()){
@@ -48,4 +48,62 @@ bool MoveOrder::decode(){
 		}
 }
 
+void MoveOrder::execute(GameEngine& game){
+		//game.move(...)
+	}
+	
+void BuildOrder::encode(){
+	setBodyLength(2*GameOrder::id_length);
+	setType(BuildOrder::type_id);
+	char temp[getBodyLength()+1];
+	//copying point id and type of building into char[] temp
+	std::sprintf(temp, "%*d%*d", GameOrder::id_length, point_id_, GameOrder::id_length, building_type_);
+	//copying temp into body
+	std::memcpy(getBody(), temp, getBodyLength());
+	encodeHeader();
+	}
+	
+bool BuildOrder::decode(){
+	//using decode_header() from game_sendable base class to get
+	//body length
+	decodeHeader();
+	//decoding start point id from body
+	char point_id [GameOrder::id_length] = "";
+	strncat(point_id, getBody(), GameOrder::id_length);
+	point_id_ = atoi(point_id);
+	//decoding building type from body
+	char building_type[GameOrder::id_length] = "";
+	strncat(building_type, getBody()+GameOrder::id_length, GameOrder::id_length);
+	building_type_ = atoi(building_type);
+	}
+void BuildOrder::execute(GameEngine& game){
+		//game.buid(...)
+	}
 
+void CreateShipOrder::encode(){
+	setBodyLength(2*GameOrder::id_length);
+	setType(CreateShipOrder::type_id);
+	char temp[getBodyLength()+1];
+	//copying point id and type of ship into char[] temp
+	std::sprintf(temp, "%*d%*d", GameOrder::id_length, point_id_, GameOrder::id_length, ship_type_);
+	//copying temp into body
+	std::memcpy(getBody(), temp, getBodyLength());
+	encodeHeader();
+	}
+	
+bool CreateShipOrder::decode(){
+	//using decode_header() from game_sendable base class to get
+	//body length
+	decodeHeader();
+	//decoding  point id from body
+	char point_id [GameOrder::id_length] = "";
+	strncat(point_id, getBody(), GameOrder::id_length);
+	point_id_ = atoi(point_id);
+	//decoding ship type from body
+	char ship_type[GameOrder::id_length] = "";
+	strncat(ship_type, getBody()+GameOrder::id_length, GameOrder::id_length);
+	ship_type_ = atoi(ship_type);
+	}
+void CreateShipOrder::execute(GameEngine& game){
+		//game.create_ship(...)
+	}

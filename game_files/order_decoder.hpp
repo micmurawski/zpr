@@ -15,16 +15,27 @@ public:
 		game_sendable.decodeHeader();
 		unsigned int type = game_sendable.getType();
 		switch(type){
-		case MoveOrder::type_id :
+		case MoveOrder::type_id : {
 			shared_ptr<MoveOrder> move = make_shared<MoveOrder>();
 			strncat(move->getData(),  game_sendable.getData(), game_sendable.getLength());
 			move->decode();
 			return move;
-		break;
-
-		//default:
-		//
-		//break;
+			break;
+			}
+		case  BuildOrder::type_id : {
+			shared_ptr<BuildOrder> build = make_shared<BuildOrder>();
+			strncat(build->getData(),  game_sendable.getData(), game_sendable.getLength());
+			build->decode();
+			return build;
+			break;
+			}
+		case  CreateShipOrder::type_id : {
+			shared_ptr<CreateShipOrder> create = make_shared<CreateShipOrder>();
+			strncat(create->getData(),  game_sendable.getData(), game_sendable.getLength());
+			create->decode();
+			return create;
+			break;
+			}
 		}
 	}
 private:

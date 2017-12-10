@@ -11,7 +11,7 @@ public:
 	enum {id_length = 6};
 	virtual void encode() = 0;
 	virtual bool decode() = 0;
-	virtual void execute(GameEngine game) = 0;
+	virtual void execute(GameEngine& game) = 0;
 
 };
 
@@ -26,28 +26,37 @@ public:
 	unsigned int getStartPoint() const {return start_point_id_;}
 	unsigned int getDestination() const {return destination_id_;}
 	const ship_vector_uptr& getShipVector() const {return ship_id_vector_;}
-	virtual void execute (GameEngine game){};
+	virtual void execute (GameEngine& game);
 private:
 	unsigned int start_point_id_;
 	unsigned int destination_id_;
 	ship_vector_uptr ship_id_vector_;
 };
 
-class BuildOrder: GameOrder{
+class BuildOrder: public GameOrder{
 public:
-
+	BuildOrder(unsigned int point_id = 0, unsigned int building_type = 0): point_id_(point_id), building_type_(building_type){}
+	enum {type_id= 2};
+	virtual void encode();
+	virtual bool decode();
+	unsigned int getPointId(){return point_id_;}
+	unsigned int getBuildingType(){return building_type_;}
+	virtual void execute (GameEngine& game);
+	
 private:
-	unsigned int point_id;
+	unsigned int point_id_;
+	unsigned int building_type_;
 };
 
-class CreateShipOrder: GameOrder{
+class CreateShipOrder: public GameOrder{
 public:
-	CreateShipOrder();
-	//CreateShipOrder();
-	virtual void encode(){};
-	virtual bool decode(){};
+	enum {type_id= 3};
+	CreateShipOrder(unsigned int point_id = 0, unsigned int ship_type = 0): point_id_(point_id), ship_type_(ship_type){}
+	virtual void encode();
+	virtual bool decode();
 	unsigned int getPointId();
 	unsigned int getShipType();
+	virtual void execute (GameEngine& game);
 private:
 	unsigned int point_id_;
 	unsigned int ship_type_;
