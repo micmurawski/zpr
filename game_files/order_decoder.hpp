@@ -5,41 +5,38 @@
 #include <memory>
 #include "typedefs.hpp"
 #include "game_order.hpp"
-#include "game_sendable.hpp"
+#include <regex>
 
 using namespace std;
 
 class OrderDecoder{
 public:
-	shared_ptr<GameOrder> decode(GameSendable& game_sendable){
-		game_sendable.decodeHeader();
-		unsigned int type = game_sendable.getType();
-		switch(type){
-		case MoveOrder::type_id : {
-			shared_ptr<MoveOrder> move = make_shared<MoveOrder>();
-			strncat(move->getData(),  game_sendable.getData(), game_sendable.getLength());
-			move->decode();
-			return move;
+	void decode(string order){	
+	//erasing first "#" from the beggining of string
+	string s = order.substr(1, s.size());
+	//spliting string s into two substrings, first is type of object 
+	//and second is data used to create GameOrder of this type
+	regex r("#");
+	smatch m; 
+	regex_search(s, m, r); 
+	int split_on = m.position();
+	string type = (s.substr(0, split_on));
+	string data  = s.substr(split_on + m.length()); 
+	switch(std::stoi(type)){
+		case MoveOrder::type:{
+			shared_ptr<MoveOrder> ptr  = make_shared<MoveOrder>(data);
+			move_orders_.push_back(ptr);
 			break;
 			}
-		case  BuildOrder::type_id : {
-			shared_ptr<BuildOrder> build = make_shared<BuildOrder>();
-			strncat(build->getData(),  game_sendable.getData(), game_sendable.getLength());
-			build->decode();
-			return build;
+		case CreateShipOrder::type:{
+			shared_ptr<CreateShipOrder> ptr = make_shared<CreateShipOrder>(data);
+			create_ship_orders_.push_back(ptr);
 			break;
 			}
-		case  CreateShipOrder::type_id : {
-			shared_ptr<CreateShipOrder> create = make_shared<CreateShipOrder>();
-			strncat(create->getData(),  game_sendable.getData(), game_sendable.getLength());
-			create->decode();
-			return create;
-			break;
-			}
-		}
+		}	
 	}
-private:
-	
+	vector<shared_ptr<MoveOrder>> move_orders_;
+	vector<shared_ptr<CreateShipOrder>> create_ship_orders_;
 };
 
 #endif //ORDER_DECODER_HPP

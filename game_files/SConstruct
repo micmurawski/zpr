@@ -1,7 +1,7 @@
 env =Environment()
 sources = ['tt.cpp']
 lib_sources = ['game_engine.cpp', 'game_order.cpp']
-cxxflags = ['-std=c++17']
+cxxflags = ['-std=c++17', '-lboost_algorithm']
 env.Library('game', lib_sources, CXXFLAGS = cxxflags)
 env.Program(target='test', source = sources, LIBS = 'game', LIBPATH = '.', CXXFLAGS = cxxflags);
 

@@ -1,24 +1,14 @@
-class Ship{
+#include "game_object.hpp"
+class Ship : public GameObject{
 public:
-	virtual int getHP() const {return hp_;}
-	virtual int getDamage() const {return damage_;}
-	virtual void modifyHP(int hp)=0;
-	virtual int getMovePoints() const {return move_points_;};
+	virtual void modifyHP(int hp) {
+		hp_ +=hp;
+		if(hp_<0)
+			hp_ = 0;
+		}
+	virtual int getDamage() {return 10;}
+	Ship(int id): hp_(80), id_(id) {}
 private:
-	unsigned int max_hp_;
-	unsigned int move_points_;
-	unsigned int hp_;
-	unsigned int id_;
-	int damage_;
-	};
-
-class BasicShip : public Ship{
-public:
-	virtual void modifyHP(int hp) {hp_ = (hp_-hp>0) ? (hp_-hp)%max_hp_ : 0;}
-	BasicShip(int id): max_hp_(90), move_points_(1), hp_(90), id_(id) {}
-private:
-	unsigned int max_hp_;
-	unsigned int move_points_;
 	unsigned int hp_;
 	unsigned int id_;
 	};

@@ -5,7 +5,6 @@
 #include <vector>
 #include "player.hpp"
 #include "map_point.hpp"
-#include "game_sendable.hpp"
 #include "game_order.hpp"
 
 typedef std::unique_ptr<Player> player_ptr;
