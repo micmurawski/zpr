@@ -7,8 +7,9 @@
 #include "building.hpp"
 #include "resources.hpp"
 
-class MapPoint{
+class MapPoint : public GameObject{
 public:
+		MapPoint(){};
 		MapPoint(int id, std::vector<unsigned int>& connections, int x, int y, Resources resources): 
 		id_(id), connections_(connections), x_(x), y_(y) {}
 		unsigned int getId() const {return id_;} 

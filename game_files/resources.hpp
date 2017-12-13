@@ -1,7 +1,9 @@
 #ifndef RESOURCES_HPP
 #define RESOURCES_HPP
 
-struct Resources{
+#include "game_object.hpp"
+
+struct Resources : public GameObject{
 	unsigned int metal;
 };
 

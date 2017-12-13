@@ -35,6 +35,11 @@ public:
 			}
 		}	
 	}
+	
+	void clear(){
+		move_orders_.clear();
+		create_ship_orders_.clear();
+		}
 	vector<shared_ptr<MoveOrder>> move_orders_;
 	vector<shared_ptr<CreateShipOrder>> create_ship_orders_;
 };

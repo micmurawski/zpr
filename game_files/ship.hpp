@@ -1,14 +1,35 @@
+#ifndef SHIP_HPP
+#define SHIP_HPP
+
+#include <iostream>
+#include <memory>
+#include <string>
 #include "game_object.hpp"
+
+
 class Ship : public GameObject{
 public:
-	virtual void modifyHP(int hp) {
-		hp_ +=hp;
-		if(hp_<0)
-			hp_ = 0;
-		}
+	Ship(unsigned int id=0, unsigned int map_point_id=0): hp_(80), id_(id), map_point_id_(map_point_id) {}
+	//Ship(){};
+	virtual void modifyHP(int hp);
 	virtual int getDamage() {return 10;}
-	Ship(int id): hp_(80), id_(id) {}
+	virtual std::string toString(unsigned int player_id = 0);
+	virtual void loadFromString (std::string data);
+	//used to determine type in GameObjectsFactory
+	virtual unsigned int getType();
+	//used to create objects in GameObjectsFactory
+	static std::shared_ptr<GameObject> create();
+	//ID is needed for ObjectFacotry
+	static unsigned int ID_;
+
 private:
 	unsigned int hp_;
+	//map_point_id is ship location
+	unsigned int map_point_id_;
+	//id of the individual ship
 	unsigned int id_;
+
 	};
+	
+
+#endif //SHIP_HPP

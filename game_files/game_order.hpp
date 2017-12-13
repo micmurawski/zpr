@@ -6,6 +6,7 @@
 #include <string>
 #include "game_engine.hpp"
 
+typedef std::unique_ptr<std::vector<unsigned int>> ship_vector_uptr;
 
 class MoveOrder{
 public:
