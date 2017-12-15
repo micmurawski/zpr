@@ -38,6 +38,9 @@
         "ratio": "cpp",
         "thread": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "string": "cpp",
+        "queue": "cpp",
+        "future": "cpp"
     }
 }
