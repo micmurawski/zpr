@@ -1,9 +1,9 @@
-#include "game_order.hpp"
+#include "../game_order/game_order.hpp"
 #include "building.hpp"
 #include <cstdio>
 #include <iostream>
 #include <vector>
-#include "order_decoder.hpp"
+#include "../game_order/order_decoder.hpp"
 #include "game_object_factory.hpp"
 #include "game_object.hpp"
 #include "map_point.hpp"

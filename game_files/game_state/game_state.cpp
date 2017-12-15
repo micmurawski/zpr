@@ -1,10 +1,4 @@
 #include "game_state.hpp"
-#include "game_object.hpp"
-#include "ship.hpp"
-#include "building.hpp"
-#include "resources.hpp"
-#include "map_point.hpp"
-
 
 using namespace std;
 

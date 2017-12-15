@@ -1,10 +1,10 @@
 #ifndef GAME_ORDER_HPP
 #define GAME_ORDER_HPP
-#include "typedefs.hpp"
+#include "../typedefs.hpp"
 #include <vector>
 #include <memory>
 #include <string>
-#include "game_engine.hpp"
+#include "../game_engine/game_engine.hpp"
 
 typedef std::unique_ptr<std::vector<unsigned int>> ship_vector_uptr;
 

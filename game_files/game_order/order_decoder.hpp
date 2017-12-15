@@ -3,7 +3,7 @@
 
 #include <map>
 #include <memory>
-#include "typedefs.hpp"
+#include "../typedefs.hpp"
 #include "game_order.hpp"
 #include <regex>
 

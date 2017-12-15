@@ -1,5 +1,5 @@
 #include "game_order.hpp"
-#include "typedefs.hpp"
+#include "../typedefs.hpp"
 #include <cstring>
 #include <iostream>
 #include <boost/algorithm/string.hpp>

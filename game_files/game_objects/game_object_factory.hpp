@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include "ship.hpp"
-#include "game_state.hpp"
+#include "../game_state/game_state.hpp"
 
 using namespace std;
 

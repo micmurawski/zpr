@@ -1,6 +1,12 @@
 env =Environment()
 sources = ['tt.cpp']
-lib_sources = ['game_engine.cpp', 'game_order.cpp', 'game_object_factory.cpp', 'game_state.cpp', 'ship.cpp', 'map_point.cpp', 'resources.cpp']
+lib_sources = ['../game_engine/game_engine.cpp',
+ '../game_order/game_order.cpp',
+ '../game_objects/game_object_factory.cpp',
+ '../game_state/game_state.cpp',
+ '../game_objects/ship.cpp',
+ '../game_objects/map_point.cpp',
+ '../game_objects/resources.cpp']
 cxxflags = ['-std=c++17', '-lboost_algorithm']
 env.Library('game', lib_sources, CXXFLAGS = cxxflags)
 env.Program(target='test', source = sources, LIBS = 'game', LIBPATH = '.', CXXFLAGS = cxxflags);
