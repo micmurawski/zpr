@@ -21,6 +21,6 @@ void GameState::accept(game_object_ptr object){
 		players_[object->player_id_]->ships_.push_back(dynamic_pointer_cast<Ship> (object));
 	else if(object->getType() == building_prototype_.getType())
 		players_[object->player_id_]->buildings_.push_back(dynamic_pointer_cast<Building> (object));
-	//if(object.getType() == resources_prototype_.getType())
-		//players_[object.player_id_]->resources_ = dynamic_pointer_cast<Resources> (object);
+	else if(object->getType() == resources_prototype_.getType())
+		players_[object->player_id_]->resources_ = *(dynamic_pointer_cast<Resources> (object));
 	}

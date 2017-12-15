@@ -8,7 +8,7 @@ shared_ptr<GameState> GameObjectFactory::decode(vector<string> vec){
 	game_state_ptr game_state= make_shared<GameState>(4);
 	for(auto str : vec){	
 		//erasing first "#" from the beggining of string
-		string s = str.substr(1, s.size());
+		string s = str.substr(1);
 		//getting type of object from string
 		regex r("#");
 		smatch m; 
@@ -26,6 +26,7 @@ shared_ptr<GameState> GameObjectFactory::decode(vector<string> vec){
 		int player_id = stoi(player_id_s);
 		//creating new object based on type
 		//then loading it from string data
+		//and passing it to game state object
 		game_object_ptr object = create(type);
 		if(object!=nullptr){
 			object->player_id_ = player_id;
@@ -42,6 +43,7 @@ shared_ptr<GameState> GameObjectFactory::decode(vector<string> vec){
 	objects_creators_.insert(std::pair<unsigned int, createGameObject>(++ID_,fun));
 	return ID_;
 	}
+	
 	game_object_ptr GameObjectFactory::create(unsigned int type){
 		//Creating new object based on id
 		func_map::iterator it=objects_creators_.find(type);

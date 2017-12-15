@@ -19,7 +19,7 @@ public:
 	virtual unsigned int getType();
 	//used to create objects in GameObjectsFactory
 	static std::shared_ptr<GameObject> create();
-	//ID is needed for ObjectFacotry
+	//ID is needed for ObjectFactory
 	static unsigned int ID_;
 
 private:
