@@ -29,7 +29,7 @@ public:
     void start();
     void processInput(std::string input);
     void removePlayer(std::shared_ptr<tcp::tcp_client> client);
-    int getPlayers();
+    std::vector<player_ptr> getPlayers();
     int state();
     ~GameEngine();
 protected:

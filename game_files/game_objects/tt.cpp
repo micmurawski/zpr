@@ -37,12 +37,12 @@ int main(){
 	//function decode creates new GameState object that represents current situation in game
 	shared_ptr<GameState> gamestate = factory.decode(vec);
 	
-	cout<<endl<<vec[0];
-	cout<<endl<<(gamestate->players_[2]->ships_[0]->toString());
-	cout<<endl<<vec[2];
-	cout<<endl<<(gamestate->map_points_[0]->toString());
-	cout<<endl<<vec[1];
-	cout<<endl<<(gamestate->players_[1]->resources_.toString());
+	cout<<endl<<vec[0]<<endl;
+	cout<<endl<<(gamestate->players_[2]->ships_[0]->toString())<<endl;
+	cout<<endl<<vec[2]<<endl;
+	cout<<endl<<(gamestate->map_points_[0]->toString())<<endl;
+	cout<<endl<<vec[1]<<endl;
+	cout<<endl<<(gamestate->players_[1]->resources_.toString())<<endl;
 
 
 	return 0;

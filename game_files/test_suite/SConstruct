@@ -1,7 +1,7 @@
 env = Environment()
 LIBPATH = ['../libs/.']
 cxxflags=['-std=c++17']
-LIBS=['tcp','boost_regex']
+LIBS=['tcp','boost_regex','boost_unit_test_framework']
 LINKFLAGS=  ['-lpthread','-pthread']
 tcp_source =[
         '../tcp/network/io_service.cpp',
@@ -16,26 +16,24 @@ tcp_source =[
         '../tcp/utils/logger.cpp',
         '../tcp/utils/thread_pool.cpp'
 ]
-print("KOMPILACJA BIBLIOTEKI TCP")
+print("KOMPILACJA TESTOW")
 env.Library('../libs/tcp',
 tcp_source,
 LINKFLAGS=LINKFLAGS,
 CXXFLAGS=cxxflags)
 print("KOMPILACJA TESOW SERVERA")
-env.Program(target = ['game_server_test'],
-        source = ['game_server_test.cpp',
+env.Program(target = ['test_suite'],
+        source = ['test_suite.cpp',
         '../game_engine/game_engine.cpp',
         '../game_engine/game_server.cpp',
-        '../game_objects/resources.cpp'],
+        '../game_engine/game_client.cpp',
+        '../game_objects/resources.cpp',
+        '../game_objects/ship.cpp',
+        '../game_objects/map_point.cpp',
+        '../game_objects/game_object_factory.cpp',
+        '../game_order/game_order.cpp',
+        '../game_state/game_state.cpp'],
         LINKFLAGS=LINKFLAGS,
-        LIBS=LIBS,
-        LIBPATH=LIBPATH,
-        CXXFLAGS = cxxflags);
-print("KOMPILACJA TESOW KLIENTA")
-env.Program(target = ['game_client_test'],
-        source = ['game_client_test.cpp',
-        '../game_engine/game_client.cpp'],
-        LINKFLAGS= LINKFLAGS,
         LIBS=LIBS,
         LIBPATH=LIBPATH,
         CXXFLAGS = cxxflags);

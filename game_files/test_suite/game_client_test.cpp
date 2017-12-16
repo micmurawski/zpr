@@ -27,7 +27,6 @@ int main(void) {
   GameClient gameClient;
   gameClient._name="Amadeusz";
   gameClient.connect("127.0.0.1",3002);
-  //gameClient.sendCmd("<join>Amadeusz</join>");
   gameClient.join();
   signal(SIGINT, &signint_handler);
   std::mutex mtx;

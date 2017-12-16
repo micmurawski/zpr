@@ -2,10 +2,12 @@
 #define GAME_SERVER_HPP
 #include "../tcp/tcp.hpp"
 #include "game_engine.hpp"
+#include <vector>
 #include <iostream>
 #include "../game_objects/player.hpp"
 #ifdef _WIN32
 #include <Winsock2.h>
+#include <list>
 #endif /* _WIN32 */
 
 class GameServer {
@@ -19,7 +21,7 @@ public:
     static void state_processor(const std::shared_ptr<tcp::tcp_client>& client, const tcp::tcp_client::read_result& res);
     static void serverDataFlow(const std::shared_ptr<tcp::tcp_client>& client);
     void start(const std::string& host, std::uint32_t port);
-    static int getClients(tcp::tcp_server *_server);
+    std::vector<player_ptr>  getPlayers();
 
 };
 

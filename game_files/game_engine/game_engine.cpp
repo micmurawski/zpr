@@ -76,8 +76,8 @@ void GameEngine::removePlayer(std::shared_ptr<tcp::tcp_client> client){
         
     }
 
-int GameEngine::getPlayers(){
-        return _players.size();
+std::vector<player_ptr> GameEngine::getPlayers(){
+        return _players;
     }
 
 int GameEngine::state(){

@@ -12,8 +12,8 @@ GameServer & GameServer::get(){
         return gameServer;
 }
 
-int GameServer::getClients(tcp::tcp_server *_server){
-  return _server->get_clients().size();
+std::vector<player_ptr> GameServer::getPlayers(){
+  return GameEngine::get().getPlayers();
 }
 
 void GameServer::state_processor(const std::shared_ptr<tcp::tcp_client>& client,const tcp::tcp_client::read_result& res){
@@ -27,10 +27,10 @@ void GameServer::state_processor(const std::shared_ptr<tcp::tcp_client>& client,
   else {
 
     std::cout << "Klient opuścił gre"<< std::endl;
-    std::cout<<GameEngine::get().getPlayers()<<std::endl;
+    std::cout<<"ilosc graczy przed opuszczeniem: "<<GameEngine::get().getPlayers().size()<<std::endl;
     GameEngine::get().removePlayer(client);
     _clients_ptr.erase(std::remove(_clients_ptr.begin(), _clients_ptr.end(), client), _clients_ptr.end());
-    std::cout<<"ilosc obecznych graczy: "<<GameEngine::get().getPlayers()<<std::endl;
+    std::cout<<"ilosc obecznych graczy: "<<GameEngine::get().getPlayers().size()<<std::endl;
     client->disconnect();
     
   }
