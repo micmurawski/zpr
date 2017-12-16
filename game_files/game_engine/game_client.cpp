@@ -5,8 +5,7 @@ std::string GameClient::_name;
 
 void GameClient::read(tcp::tcp_client& client, const tcp::tcp_client::read_result& res) {
   if (res.success) {
-    //odczytwanie stanu gry
-    //res.buffer
+       std::cout<<std::string(res.buffer.begin(), res.buffer.end())<<std::endl;
        client.async_read({1024, std::bind(&read,std::ref(client), std::placeholders::_1)});
     }
     else {
@@ -18,7 +17,7 @@ void GameClient::read(tcp::tcp_client& client, const tcp::tcp_client::read_resul
 void GameClient::connect(const std::string& host="127.0.0.1", std::uint32_t port=3002){
   try{
       _client.connect(host,port);
-      std::cout<<_client.get_host() <<_client.get_port() << std::endl;
+      std::cout<<_client.get_host()<<":"<<_client.get_port() << std::endl;
     }catch(tcp::tcp_error error){
       std::cout<<"nie udało się połączyć z serverem TCP"<<error.what()<<std::endl;
     }
@@ -32,7 +31,6 @@ void GameClient::sendCmd(std::string cmd){
 
 void GameClient::join(){
   std::string cmd = "<join>"+_name+"</join>";
-  std::vector<char> sendable(cmd.begin(), cmd.end());
-  _client.async_write({sendable, nullptr});
+  sendCmd(cmd);
 }
 

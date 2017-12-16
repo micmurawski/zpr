@@ -24,13 +24,14 @@ void GameEngine::run(){
         processInput(_queue.front());
         _queue.pop();
         for(std::shared_ptr<tcp::tcp_client> client: GameServer::get()._clients_ptr){
-            client->async_write({{'k','u','k','l','e'}, nullptr});
+            client->async_write({{'s','t','a','n','g','r','y'}, nullptr});
         }
         }
     }
     }
 
 void GameEngine::sendCmd(std::string input,std::string host){
+        std::cout<<"Wysłano: "<<"<ip>"+host+"</ip>"+input<<std::endl;
         _queue.push("<ip>"+host+"</ip>"+input);
         
     }
@@ -42,6 +43,7 @@ void GameEngine::start(){
 
 
 void GameEngine::processInput(std::string input){
+    std::cout<<"Przetworzanie ... "<<input<<std::endl;
         std::string result = "";
         switch (_currentState)
     {

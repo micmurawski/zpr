@@ -20,8 +20,8 @@ void GameServer::state_processor(const std::shared_ptr<tcp::tcp_client>& client,
   if (res.success) {
     std::cout << "Otrzymano dane: " <<std::endl;
     GameEngine::get().sendCmd(std::string(res.buffer.begin(), res.buffer.end()),client->get_host());
-    std::cout<<GameEngine::get().state()<<std::endl;
-    _clients_ptr[0]->async_write({{'h','a','i'}, nullptr});
+    std::cout<<"GAME_STATE: "<<GameEngine::get().state()<<std::endl;
+    //_clients_ptr[0]->async_write({{'g','','i'}, nullptr});
     client->async_read({1024, std::bind(&state_processor, client, std::placeholders::_1)});
   }
   else {
@@ -38,7 +38,7 @@ void GameServer::state_processor(const std::shared_ptr<tcp::tcp_client>& client,
 
 void GameServer::start(const std::string& host="127.0.0.1", std::uint32_t port=3002){
     _server.start(host, port, [&](const std::shared_ptr<tcp::tcp_client>& client) -> bool {
-    std::cout << "Nowy klient dołączył do gry" <<client->get_host()<< std::endl;
+    std::cout << "Nowy klient dołączył do gry " <<client->get_host()<< std::endl;
     GameServer::_clients_ptr.push_back(client);
     for(std::shared_ptr<tcp::tcp_client> i : _clients_ptr){
       std::cout<<i->get_host()<<std::endl;
