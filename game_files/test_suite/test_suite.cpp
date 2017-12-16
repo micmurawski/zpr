@@ -22,6 +22,19 @@ using namespace boost::unit_test;
   
 
 std::string connectedPlayerTest(){
+
+  int main(void) {
+#ifdef _WIN32
+  //! Windows netword DLL init
+  WORD version = MAKEWORD(2, 2);
+  WSADATA data;
+
+  if (WSAStartup(version, &data) != 0) {
+    std::cerr << "WSAStartup() failure" << std::endl;
+    return -1;
+  }
+#endif /* _WIN32 */
+
   GameServer::get().start("127.0.0.1",3002);
   GameClient gameClient;
   gameClient._name="Amadeusz";
@@ -29,6 +42,11 @@ std::string connectedPlayerTest(){
   gameClient.join();
   usleep(2000);
   return GameServer::get().getPlayers()[0]->name_+" "+GameServer::get().getPlayers()[0]->host_;
+
+  #ifdef _WIN32
+  WSACleanup();
+#endif /* _WIN32 */
+
 }
 
 
