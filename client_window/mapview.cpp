@@ -47,7 +47,10 @@ MapView::MapView (QWidget *parent) : QFrame(parent) {
     connect(zoomOutIcon, SIGNAL(clicked()), this, SLOT(zoomOut()));
     connect(zoomInIcon, SIGNAL(clicked()), this, SLOT(zoomIn()));
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     setupMatrix();
 }
 
@@ -78,7 +81,11 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
 
     scene = new QGraphicsScene;
     graphicsView()->setScene(scene);
+<<<<<<< HEAD
+    connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
+=======
 
+>>>>>>> master
 
     graphicsView()->setBackgroundBrush(QBrush(QColor::fromRgb(40, 40, 40), Qt::SolidPattern));
 
@@ -134,7 +141,10 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
 
 void MapView::setSelectedPoint(unsigned int id){
     selected_point_ = id;
+<<<<<<< HEAD
+=======
     emit pointSelected();
+>>>>>>> master
 
 }
 

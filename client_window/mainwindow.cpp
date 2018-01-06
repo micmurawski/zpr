@@ -73,7 +73,11 @@ MainWindow::MainWindow(QWidget *parent) :
     bottom_dock ->setWidget(bottom_bar_);
     bottom_dock ->setTitleBarWidget(new QWidget);
     addDockWidget(Qt::BottomDockWidgetArea, bottom_dock);
+<<<<<<< HEAD
+    connect(map_view_, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()) );
+=======
     connect(map_view_->scene(), SIGNAL(selectionChanged()), this, SLOT(selectionChanged()) );
+>>>>>>> master
 
 }
 

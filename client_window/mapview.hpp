@@ -41,9 +41,15 @@ public slots:
 
 private slots:
     void setupMatrix();
+<<<<<<< HEAD
+    void selectionChangedSlot(){};
+signals:
+    void selectionChanged();
+=======
 signals:
     void pointSelected();
     void pointDeselected();
+>>>>>>> master
 
 private:
     PlayersColors colors_;
