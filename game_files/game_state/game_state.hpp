@@ -11,14 +11,17 @@
 
 class GameState{
 	public:
-	GameState(unsigned int players_nr);
+	GameState(unsigned int players_nr=0);
+	map_point_ptr getPointById(unsigned int id);
 	void accept(game_object_ptr object);
 	std::vector <player_ptr> players_;
-	std::vector <map_point_ptr> map_points_;
+    std::vector <map_point_ptr> map_points_;
 	Ship ship_prototype_;
 	MapPoint map_point_prototype_;
 	Building building_prototype_;
 	Resources resources_prototype_;
+	int MapPointOwnerId(unsigned int map_point_id);
+    int WhoHasFleet(unsigned int map_point_id);
 	};
 
 	

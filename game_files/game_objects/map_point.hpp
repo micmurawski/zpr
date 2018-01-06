@@ -14,11 +14,12 @@
 class MapPoint : public GameObject{
 public:
 	MapPoint(){};
-	MapPoint(int id, std::vector<unsigned int>& connections, int x, int y, Resources resources): 
+	MapPoint(int id, const std::vector<unsigned int>& connections, int x, int y, Resources resources): 
 	id_(id), connections_(connections), x_(x), y_(y) {resources_ = resources;}
 	unsigned int getId() const {return id_;} 
 	unsigned int getX() const {return x_;} 
-	unsigned int gety() const {return y_;} 
+	unsigned int getY() const {return y_;} 
+	const std::vector<unsigned int>& getConnections() {return connections_;}
 	
 	
 	virtual std::string toString(unsigned int player_id = 0);
@@ -32,10 +33,12 @@ public:
 		
 		
 private:
-	
+	//id of the owner
+	unsigned int owner_id;
 	//id of the individual point
 	unsigned int id_;
 	//vector of id's of the connected points
+	public:
 	std::vector<unsigned int> connections_;
 	unsigned int x_;
 	unsigned int y_;	

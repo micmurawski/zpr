@@ -8,7 +8,7 @@ GameState::GameState(unsigned int players_number){
 	}
 
 void GameState::accept(game_object_ptr object){
-	//GameObject object = *(game_object);
+	
 	if(object->getType() == map_point_prototype_.getType())
 		map_points_.push_back(dynamic_pointer_cast<MapPoint>(object));
 	else if(object->getType() == ship_prototype_.getType())
@@ -17,4 +17,35 @@ void GameState::accept(game_object_ptr object){
 		players_[object->player_id_]->buildings_.push_back(dynamic_pointer_cast<Building> (object));
 	else if(object->getType() == resources_prototype_.getType())
 		players_[object->player_id_]->resources_ = *(dynamic_pointer_cast<Resources> (object));
+	}
+
+map_point_ptr GameState::getPointById(unsigned int id){
+	for (auto p : map_points_){
+		if(p->getId() == id)
+			return p;
+		}
+	return nullptr;
+	}
+	
+int GameState::MapPointOwnerId(unsigned int map_point_id){
+	for(auto p : players_){
+		for(auto ship : p->ships_){
+			if(ship->getMapPointId()==map_point_id)
+				return p->getId();
+			}
+		for(auto building : p->buildings_){
+			if(building->getMapPointId()==map_point_id)
+				return p->getId();	
+			}
+		}
+	return -1;
+	}
+int GameState::WhoHasFleet(unsigned int map_point_id){
+		for(auto p : players_){
+		for(auto ship : p->ships_){
+			if(ship->getMapPointId()==map_point_id)
+				return p->getId();
+			}
+		}
+	return -1;
 	}

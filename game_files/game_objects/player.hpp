@@ -17,6 +17,8 @@ class Player{
 		Resources resources_;
 		std::string name_;
 		std::string host_;
+		unsigned int id_;
+		unsigned int getId(){return id_;};
 		std::string get_name() {return name_;}
 		void set_name(std::string name) {name_ = name;}
 		Player(std::string name_ = "noname",std::string host_="127.0.0.1"): name_(name_), host_(host_){

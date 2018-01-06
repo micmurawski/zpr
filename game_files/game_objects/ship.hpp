@@ -10,7 +10,6 @@
 class Ship : public GameObject{
 public:
 	Ship(unsigned int id=0, unsigned int map_point_id=0): hp_(80), id_(id), map_point_id_(map_point_id) {}
-	//Ship(){};
 	virtual void modifyHP(int hp);
 	virtual int getDamage() {return 10;}
 	virtual std::string toString(unsigned int player_id = 0);
@@ -21,6 +20,8 @@ public:
 	static std::shared_ptr<GameObject> create();
 	//ID is needed for ObjectFactory
 	static unsigned int ID_;
+	//returns position of the ship
+	unsigned int getMapPointId(){return map_point_id_;}
 
 private:
 	unsigned int hp_;
