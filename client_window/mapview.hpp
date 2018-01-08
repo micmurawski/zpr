@@ -32,10 +32,10 @@ public:
     explicit MapView(QWidget *parent = 0);
     QGraphicsView* graphicsView() const;
     void readGameStatus(std::shared_ptr<GameState> game_state);
-    int getSelectedPointId();
+    //int getSelectedPointId();
     bool pointSelected(){return point_selected_;}
     void pointIsSelected();
-
+    int selected_point_id_;
 
 
 public slots:
@@ -59,6 +59,7 @@ private:
     QSlider *zoomSlider;
     std::shared_ptr<GameState> game_state_;
     bool point_selected_;
+
 
 
 

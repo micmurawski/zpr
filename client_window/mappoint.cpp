@@ -35,8 +35,10 @@ void mapPoint::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
    // QColor fillColor = color_;
     QColor fillColor = (option->state & QStyle::State_Selected) ? color_.dark(150) : color_;
     selected_=(option->state & QStyle::State_Selected) ? true : false;
-    if(option->state & QStyle::State_Selected)
+    if(option->state & QStyle::State_Selected){
+        map_view_->selected_point_id_= id_;
         map_view_->pointIsSelected();
+    }
 
     if (option->state & QStyle::State_MouseOver)
         fillColor = fillColor.light(125);
@@ -50,6 +52,7 @@ void mapPoint::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 }
 
 void mapPoint::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    map_view_->selected_point_id_= id_;
     QGraphicsItem::mousePressEvent(event);
     update();
 }

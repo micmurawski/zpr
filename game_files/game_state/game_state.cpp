@@ -20,7 +20,10 @@ void GameState::accept(game_object_ptr object){
 	}
 
 map_point_ptr GameState::getPointById(unsigned int id){
-	for (auto p : map_points_){
+    //std::cerr<<"\n" <<id;
+    for (auto p : map_points_){
+        //test
+        //std::cerr<<"\n" <<p->getId();
 		if(p->getId() == id)
 			return p;
 		}
@@ -40,6 +43,7 @@ int GameState::MapPointOwnerId(unsigned int map_point_id){
 		}
 	return -1;
 	}
+
 int GameState::WhoHasFleet(unsigned int map_point_id){
 		for(auto p : players_){
 		for(auto ship : p->ships_){
@@ -49,3 +53,15 @@ int GameState::WhoHasFleet(unsigned int map_point_id){
 		}
 	return -1;
 	}
+
+std::vector<std::shared_ptr<Ship>> GameState::FleetOnPoint(unsigned int map_point_id){
+    std::vector<std::shared_ptr<Ship>> vec;
+
+    for(auto p : players_){
+    for(auto ship : p->ships_){
+        if(ship->getMapPointId()==map_point_id)
+            vec.push_back(ship);
+        }
+    }
+    return vec;
+}

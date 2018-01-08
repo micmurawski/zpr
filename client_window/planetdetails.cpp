@@ -30,5 +30,8 @@ PlanetDetails::PlanetDetails()
     layout->addWidget(properties_[2], 2, 1);
     layout->addWidget(labels_[3], 3, 0);
     layout->addWidget(properties_[3], 3, 1);
+
+    ship_list_ = new QListWidget;
+    layout->addWidget(ship_list_, 4, 1, 1, 2);
     setLayout(layout);
 }

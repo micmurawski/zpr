@@ -22,6 +22,8 @@ public:
 	static unsigned int ID_;
 	//returns position of the ship
 	unsigned int getMapPointId(){return map_point_id_;}
+    //returns id of the individual ship
+    unsigned int getId(){return id_;}
 
 private:
 	unsigned int hp_;

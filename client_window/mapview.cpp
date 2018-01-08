@@ -49,6 +49,7 @@ MapView::MapView (QWidget *parent) : QFrame(parent) {
 
     setupMatrix();
     point_selected_=false;
+    selected_point_id_=-1;
 }
 
 
@@ -134,9 +135,6 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
 }//readGameStatus
 
 
-int MapView::getSelectedPointId(){
-    return 10;
-}
 
 void MapView::selectionChangedSlot(){
     point_selected_=false;
@@ -144,9 +142,9 @@ void MapView::selectionChangedSlot(){
 }
 
 void MapView::pointIsSelected(){
-    if(!point_selected_){
-        point_selected_=true;
-    emit selectionChanged();
-    }
+   if(!point_selected_){
+       point_selected_=true;
+        emit selectionChanged();
+        }
 }
 

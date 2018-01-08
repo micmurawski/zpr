@@ -14,12 +14,12 @@ public:
     QRectF boundingRect() const;
     QPainterPath shape() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget);
-    bool isVisible(unsigned int id){return true;}
+    //bool isVisible(unsigned int id){return true;}
     bool isSelected();
     unsigned int getId(){return id_;}
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event){}
+    //void mouseReleaseEvent(QGraphicsSceneMouseEvent *event){}
 
 private:
     int x_;

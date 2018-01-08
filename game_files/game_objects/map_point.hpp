@@ -19,6 +19,7 @@ public:
 	unsigned int getId() const {return id_;} 
 	unsigned int getX() const {return x_;} 
 	unsigned int getY() const {return y_;} 
+    int getMetal() const {return resources_.metal_;}
 	const std::vector<unsigned int>& getConnections() {return connections_;}
 	
 	
