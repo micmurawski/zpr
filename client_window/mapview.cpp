@@ -7,7 +7,7 @@ MapView::MapView (QWidget *parent) : QFrame(parent) {
 
     graphics_view_ = new GraphicsView(this);
     graphics_view_->setRenderHint(QPainter::Antialiasing, true);
-    graphics_view_->setDragMode(QGraphicsView::RubberBandDrag);
+    graphics_view_->setDragMode(QGraphicsView::NoDrag);
     graphics_view_->setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
     graphics_view_->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 
@@ -47,11 +47,8 @@ MapView::MapView (QWidget *parent) : QFrame(parent) {
     connect(zoomOutIcon, SIGNAL(clicked()), this, SLOT(zoomOut()));
     connect(zoomInIcon, SIGNAL(clicked()), this, SLOT(zoomIn()));
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     setupMatrix();
+    point_selected_=false;
 }
 
 
@@ -81,11 +78,8 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
 
     scene = new QGraphicsScene;
     graphicsView()->setScene(scene);
-<<<<<<< HEAD
-    connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
-=======
 
->>>>>>> master
+    connect(scene, SIGNAL(selectionChanged()), this, SLOT(selectionChangedSlot()));
 
     graphicsView()->setBackgroundBrush(QBrush(QColor::fromRgb(40, 40, 40), Qt::SolidPattern));
 
@@ -139,17 +133,20 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
 
 }//readGameStatus
 
-void MapView::setSelectedPoint(unsigned int id){
-    selected_point_ = id;
-<<<<<<< HEAD
-=======
-    emit pointSelected();
->>>>>>> master
 
+int MapView::getSelectedPointId(){
+    return 10;
 }
 
-int MapView::getSelectedPoint(){
-    return selected_point_;
+void MapView::selectionChangedSlot(){
+    point_selected_=false;
+    emit selectionChanged();
 }
 
+void MapView::pointIsSelected(){
+    if(!point_selected_){
+        point_selected_=true;
+    emit selectionChanged();
+    }
+}
 

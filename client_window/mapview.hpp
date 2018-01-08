@@ -32,8 +32,11 @@ public:
     explicit MapView(QWidget *parent = 0);
     QGraphicsView* graphicsView() const;
     void readGameStatus(std::shared_ptr<GameState> game_state);
-    void setSelectedPoint(unsigned int id);
-    int getSelectedPoint();
+    int getSelectedPointId();
+    bool pointSelected(){return point_selected_;}
+    void pointIsSelected();
+
+
 
 public slots:
     void zoomIn(int level = 1);
@@ -41,15 +44,11 @@ public slots:
 
 private slots:
     void setupMatrix();
-<<<<<<< HEAD
-    void selectionChangedSlot(){};
+    void selectionChangedSlot();
+
 signals:
     void selectionChanged();
-=======
-signals:
-    void pointSelected();
-    void pointDeselected();
->>>>>>> master
+
 
 private:
     PlayersColors colors_;
@@ -59,7 +58,7 @@ private:
     QLabel *label2;
     QSlider *zoomSlider;
     std::shared_ptr<GameState> game_state_;
-    int selected_point_;
+    bool point_selected_;
 
 
 
