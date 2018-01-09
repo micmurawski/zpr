@@ -22,6 +22,7 @@ class GameState{
 	Resources resources_prototype_;
 	int MapPointOwnerId(unsigned int map_point_id);
     int WhoHasFleet(unsigned int map_point_id);
+    int WhoHasBuilding(unsigned int map_point_id);
     std::vector<std::shared_ptr<Ship>> FleetOnPoint(unsigned int map_point_id);
 	};
 

@@ -7,6 +7,7 @@
 class BottomBar : public QFrame{
 public:
     BottomBar();
+    void setButtonEnabled(unsigned int index, bool enabled);
 private:
     QPushButton* end_turn_;
     QPushButton* retake_turn_;

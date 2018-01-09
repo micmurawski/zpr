@@ -7,6 +7,7 @@ LeftBar::LeftBar(QWidget *parent) {
     addTab(order_list_, tr("turn"));
     addTab(planet_overwiev_,  tr("planet"));
     setTabEnabled(1, false);
+    connect(planet_overwiev_->ship_list_, SIGNAL(itemSelectionChanged()), this, SIGNAL(selectionChanged()));
 }
 
 void LeftBar::planetSelected(){
@@ -31,16 +32,30 @@ void LeftBar::loadMapPoint(std::shared_ptr<MapPoint> point, bool hasBuilding, in
     planet_overwiev_->properties_[3]->setText(temp);
 }
 
-void LeftBar::loadShips(std::vector<std::shared_ptr<Ship>> ships){
+void LeftBar::loadShips(std::vector<std::shared_ptr<Ship>> ships, bool friendly){
+    ships_.clear();
     planet_overwiev_->ship_list_->clear();
+    planet_overwiev_->ship_list_->setEnabled(friendly);
     for( auto s : ships){
 
         if(s){
             int id = s->getId();
-            std::string s = "Basic ship id: " + std::to_string(id);
-            QString q = QString::fromStdString(s);
+            std::string str = "Basic ship id: " + std::to_string(id);
+            QString q = QString::fromStdString(str);
             QListWidgetItem* item = new QListWidgetItem(q, planet_overwiev_->ship_list_);
             planet_overwiev_->ship_list_->addItem(item);
+            ships_.push_back(s);
             }
     }
+}
+
+ship_vector LeftBar::getSelectedShips(const std::shared_ptr<GameState> game_state){
+    //ship_vector_ptr vec_ptr = std::make_shared<ship_vector>();
+    ship_vector vec;
+    QModelIndexList list = planet_overwiev_->ship_list_->selectionModel()->selectedIndexes();
+    //iterujemy po liscie zaznaczonych obiektow, pobieramy index i dopisujemy do talbicy odpowiedni wskaznik
+    for(auto i : list){
+        vec.push_back(ships_[i.row()]);
+    }
+    return vec;
 }

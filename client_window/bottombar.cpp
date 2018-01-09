@@ -18,3 +18,24 @@ BottomBar::BottomBar()
 
 
 }
+
+void BottomBar::setButtonEnabled(unsigned int index, bool enabled){
+    switch(index){
+    case 0:
+        end_turn_->setEnabled(enabled);
+    break;
+    case 1:
+        retake_turn_->setEnabled(enabled);
+    break;
+    case 2:
+        create_ship_->setEnabled(enabled);
+    break;
+    case 3:
+        create_building_->setEnabled(enabled);
+    break;
+    case 4:
+        move_ships_->setEnabled(enabled);
+    break;
+    }
+}
+

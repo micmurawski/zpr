@@ -65,3 +65,13 @@ std::vector<std::shared_ptr<Ship>> GameState::FleetOnPoint(unsigned int map_poin
     }
     return vec;
 }
+
+int GameState::WhoHasBuilding(unsigned int map_point_id){
+    for(auto p : players_){
+    for(auto building : p->buildings_){
+        if(building->getMapPointId()==map_point_id)
+            return p->getId();
+        }
+    }
+return -1;
+}

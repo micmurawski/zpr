@@ -32,6 +32,9 @@ PlanetDetails::PlanetDetails()
     layout->addWidget(properties_[3], 3, 1);
 
     ship_list_ = new QListWidget;
+    ship_list_->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    ship_list_->setToolTip(tr("You can select multiple ships by using ctrl, shift or dragging mouse over ships"));
     layout->addWidget(ship_list_, 4, 1, 1, 2);
     setLayout(layout);
 }
+
