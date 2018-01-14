@@ -24,6 +24,7 @@ class GameState{
     int WhoHasFleet(unsigned int map_point_id);
     int WhoHasBuilding(unsigned int map_point_id);
     std::vector<std::shared_ptr<Ship>> FleetOnPoint(unsigned int map_point_id);
+    bool isConnection(unsigned int map_point1, unsigned int map_point2);
 	};
 
 	

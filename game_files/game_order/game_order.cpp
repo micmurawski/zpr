@@ -23,9 +23,9 @@ MoveOrder::MoveOrder(std::string data){
 	
 	}
 	
-string MoveOrder::toString(){
+string MoveOrder::toString() const{
 	string s;
-	s = "#" + to_string(MoveOrder::type)+ "#"+ to_string(start_point_id_) + "#" + to_string(destination_id_);
+    s = "#" + to_string(MoveOrder::type_id)+ "#"+ to_string(start_point_id_) + "#" + to_string(destination_id_);
 	for (auto v : *ship_id_vector_){
 		s=s+"#"+to_string(v);
 		}
@@ -38,12 +38,11 @@ CreateShipOrder::CreateShipOrder(std::string data){
 	boost::split(vec, data, boost::is_any_of("#"));
 	//setting class variables using individual values in vector
 	point_id_=stoi(vec[0]);
-	ship_type_ = stoi(vec[1]);
 	}
 	
-string CreateShipOrder::toString(){
+string CreateShipOrder::toString() const{
 	string s;
-	s= "#" + to_string(CreateShipOrder::type) + "#" + to_string(point_id_) + "#" + to_string(ship_type_);
+    s= "#" + to_string(CreateShipOrder::type_id) + "#" + to_string(point_id_);
 	return s;
 	}
 

@@ -8,49 +8,52 @@
 
 typedef std::unique_ptr<std::vector<unsigned int>> ship_vector_uptr;
 
-class MoveOrder{
+class GameOrder{
 public:
-	enum {type = 1};
+  virtual std::string toString() const=0;
+  virtual int type() const = 0;
+
+};
+
+class MoveOrder : public GameOrder{
+public:
+    enum {type_id = 1};
 	MoveOrder():start_point_id_(0), destination_id_(0) {ship_id_vector_ = std::make_unique<std::vector<unsigned int>>();}
 	MoveOrder(unsigned int start_point_id, unsigned int destination_id, const std::vector<unsigned int>& ship_id_vector):
 	start_point_id_(start_point_id), destination_id_(destination_id){ship_id_vector_ = std::make_unique<std::vector<unsigned int>> (ship_id_vector);}
 	MoveOrder(std::string data);
-	std::string toString();
+    std::string toString() const;
 	unsigned int getStartPoint() const {return start_point_id_;}
 	unsigned int getDestination() const {return destination_id_;}
 	const ship_vector_uptr& getShipVector() const {return ship_id_vector_;}
+    int type() const{return MoveOrder::type_id;}
 private:
 	unsigned int start_point_id_;
 	unsigned int destination_id_;
-	ship_vector_uptr ship_id_vector_;
+    ship_vector_uptr ship_id_vector_;
 };
 
-/* class BuildOrder: public GameOrder{
+class BuildOrder : public GameOrder{
 public:
-	BuildOrder(unsigned int point_id = 0, unsigned int building_type = 0): point_id_(point_id), building_type_(building_type){}
+    BuildOrder(unsigned int point_id = 0): point_id_(point_id){}
 	enum {type_id= 2};
-	virtual void encode();
-	virtual bool decode();
-	unsigned int getPointId(){return point_id_;}
-	unsigned int getBuildingType(){return building_type_;}
-	virtual void execute (GameEngine& game);
-	
+    unsigned int getPointId() const {return point_id_;}
+    std::string toString() const{return "";}
+    int type() const {return BuildOrder::type_id;}
 private:
-	unsigned int point_id_;
-	unsigned int building_type_;
-}; */
+    unsigned int point_id_;
+};
 
-class CreateShipOrder{
+class CreateShipOrder: public GameOrder{
 public:
-	enum {type=3};
-	CreateShipOrder(unsigned int point_id = 0, unsigned int ship_type = 0): point_id_(point_id), ship_type_(ship_type){}
-	std::string toString();
+    enum {type_id=3};
+    CreateShipOrder(unsigned int point_id = 0): point_id_(point_id){}
+    std::string toString() const;
 	CreateShipOrder(std::string data);
-	unsigned int getPointId() {return point_id_;}
-	unsigned int getShipType() {return ship_type_;}
+    unsigned int getPointId() const {return point_id_;}
+    int type() const {return CreateShipOrder::type_id;}
 private:
 	unsigned int point_id_;
-	unsigned int ship_type_;
 };
 
 #endif //GAME_ORDER_HPP

@@ -8,6 +8,7 @@
 #include "rightbar.hpp"
 #include "mapview.hpp"
 #include "bottombar.hpp"
+#include "../game_files/game_order/game_order.hpp"
 #include <memory>
 
 typedef std::vector<std::shared_ptr<Ship>> ship_vector;
@@ -27,9 +28,20 @@ private:
     BottomBar* bottom_bar_;
     std::shared_ptr<GameState> game_state_;
     unsigned int player_id_;
+    std::vector<std::shared_ptr<GameOrder>> game_orders_;
+    bool wait_for_click_;
+    unsigned int last_point_;
+    std::vector<unsigned int> selected_ships_;
 public slots:
     void pointSelectionChanged();
     void shipSelectionChanged();
+private slots:
+    void endTurn();
+    void retakeTurn();
+    void createShip();
+    void createBuilding();
+    void moveShip();
+
 //signals:
 
 };

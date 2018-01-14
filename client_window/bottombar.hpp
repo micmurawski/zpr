@@ -5,9 +5,16 @@
 #include <QPushButton>
 
 class BottomBar : public QFrame{
+    Q_OBJECT
 public:
     BottomBar();
     void setButtonEnabled(unsigned int index, bool enabled);
+signals:
+    void endTurn();
+    void retakeTurn();
+    void createShip();
+    void createBuilding();
+    void moveShip();
 private:
     QPushButton* end_turn_;
     QPushButton* retake_turn_;

@@ -16,7 +16,11 @@ BottomBar::BottomBar()
     layout->addWidget(move_ships_);
     setLayout(layout);
 
-
+    connect(end_turn_, SIGNAL(pressed()), this, SIGNAL(endTurn()));
+    connect(retake_turn_, SIGNAL(pressed()), this, SIGNAL(retakeTurn()));
+    connect(create_ship_, SIGNAL(pressed()), this, SIGNAL(createShip()));
+    connect(create_building_, SIGNAL(pressed()), this, SIGNAL(createBuilding()));
+    connect(move_ships_, SIGNAL(pressed()), this, SIGNAL(moveShip()));
 }
 
 void BottomBar::setButtonEnabled(unsigned int index, bool enabled){

@@ -75,3 +75,15 @@ int GameState::WhoHasBuilding(unsigned int map_point_id){
     }
 return -1;
 }
+
+bool GameState::isConnection(unsigned int map_point1, unsigned int map_point2){
+    map_point_ptr p1 = getPointById(map_point1);
+    std::vector<unsigned int> v = p1->getConnections();
+
+    for(auto i : v){
+        if(i == map_point2)
+            return true;
+    }
+    return false;
+
+}

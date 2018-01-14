@@ -9,16 +9,19 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
+    wait_for_click_=false;
+    //***********TEST*****************
     player_id_=1;
     game_state_= std::make_shared<GameState>(4);
     Resources r(500);
     std::vector<unsigned int> vec;
 
-    //***********TEST*****************
+
     srand(time(NULL));
     for(int i = 0; i<=20; i++){
     int b = rand()%20;
@@ -34,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     game_state_->players_[0]->id_=0;
+    game_state_->players_[1]->resources_.metal_ = 40000;
     game_state_->players_[1]->id_=1;
     game_state_->players_[2]->id_=2;
     game_state_->players_[3]->id_=3;
@@ -83,10 +87,37 @@ MainWindow::MainWindow(QWidget *parent) :
     bottom_bar_->setButtonEnabled(3, false);
     bottom_bar_->setButtonEnabled(4, false);
 
+    right_bar_->update(game_state_, 1);
+
+    connect(bottom_bar_, SIGNAL(endTurn()), this, SLOT(endTurn()));
+    connect(bottom_bar_, SIGNAL(retakeTurn()), this, SLOT(retakeTurn()));
+    connect(bottom_bar_, SIGNAL(createBuilding()), this, SLOT(createBuilding()));
+    connect(bottom_bar_, SIGNAL(createShip()), this, SLOT(createShip()));
+    connect(bottom_bar_, SIGNAL(moveShip()), this, SLOT(moveShip()));
+
 }
 
 void MainWindow::pointSelectionChanged(){
     if(!(map_view_->pointSelected())){
+        //sprawdzamy czy zostala wywolana funkcja moveShip i aplikacja czeka na klikniecie
+        if(wait_for_click_){
+            //sprawdzamy czy istnieje polaczenie miedzy punktami
+            if(game_state_->isConnection(last_point_,static_cast<unsigned int> (map_view_->selected_point_id_) )){
+                //tworzymy informacje dla gracza gdzie i jakie statki sa przemieszczane
+                std::string s = "move ships:";
+                for(auto p : selected_ships_){
+                    unsigned int id = p;
+                    s = s +" "+ std::to_string(id);
+                }
+                s= s+ " from " + std::to_string(last_point_) + " to "+std::to_string(map_view_->selected_point_id_)     ;
+                left_bar_->appendText(s);
+                wait_for_click_=false;
+                std::shared_ptr<GameOrder> order = std::make_shared<MoveOrder>(last_point_, static_cast<unsigned int> (map_view_->selected_point_id_), selected_ships_);
+                game_orders_.push_back(order);
+                return;
+            }
+        }
+
         left_bar_->planetNotSelected();
         bottom_bar_->setButtonEnabled(2, false);
         bottom_bar_->setButtonEnabled(3, false);
@@ -100,14 +131,15 @@ void MainWindow::pointSelectionChanged(){
             bool building = false;
             if(game_state_->WhoHasBuilding(map_view_->selected_point_id_)>=0)
                 building = true;
-            //jezeli nie stoi sprawdzamy czy czy pole jest gracza
-            //jezeli tak, mozemy wybudowac budynek - odpowiedni przycisk staje się aktywny
-            if(!building && game_state_->MapPointOwnerId(map_view_->selected_point_id_)==player_id_){
-               bottom_bar_->setButtonEnabled(3, true);
-                }
-            //4 - przenies statek i 2 - utworz statek zostaja odpowiednio ustawione
-            bottom_bar_->setButtonEnabled(4, false);
+            //jezeli nie stoi sprawdzamy czy czy pole jest gracza jezeli tak, mozemy wybudowac budynek -
+            //odpowiedni przycisk staje się aktywny, przy okazji ustawiany jest przycisk "create ship"
+            if(game_state_->MapPointOwnerId(map_view_->selected_point_id_)==static_cast<int>(player_id_)){
+                if(!building)
+                    bottom_bar_->setButtonEnabled(3, true);
             bottom_bar_->setButtonEnabled(2, true);
+            }
+            //przycisk 4 - move ship zostaje odpowiednio ustawiony
+            bottom_bar_->setButtonEnabled(4, false);
             //wczytujemy dane do lewego panelu
             left_bar_->loadMapPoint(point, building, game_state_->MapPointOwnerId(map_view_->selected_point_id_));
             //sprawdzamy czy pole nalezy do gracza
@@ -123,9 +155,43 @@ void MainWindow::pointSelectionChanged(){
 
 void MainWindow::shipSelectionChanged(){
    //jezeli gracz ma jakies zaznaczyl statki, uaktywnia sie przycisk pozwalajacy na wydanie rozkazu przeniesienia statkow
-   ship_vector ships =  left_bar_->getSelectedShips(game_state_);
+   std::vector<unsigned int> ships =  left_bar_->getSelectedShips(game_state_);
    if(ships.size()){
        bottom_bar_->setButtonEnabled(4, true);
    }else
        bottom_bar_->setButtonEnabled(4, false);
+}
+void MainWindow::endTurn(){
+
+}
+void MainWindow::retakeTurn(){
+    game_orders_.clear();
+    left_bar_->clearText();
+
+}
+void MainWindow::createShip(){
+    std::string s = "create ship: p " + std::to_string(map_view_->selected_point_id_);
+    left_bar_->appendText(s);
+    std::shared_ptr<GameOrder> order = std::make_shared<CreateShipOrder>(static_cast<int>(map_view_->selected_point_id_));
+    game_orders_.push_back(order);
+}
+void MainWindow::createBuilding(){
+    //sprawdzanie czy istnieje juz taki rozkaz
+    for(auto o: game_orders_){
+        if(o->type() == BuildOrder::type_id){
+           auto t = std::dynamic_pointer_cast<BuildOrder>(o);
+            if(t->getPointId() == map_view_->selected_point_id_ )
+                return;
+        }
+    }
+    std::string s = "create building: p" + std::to_string(map_view_->selected_point_id_);
+    left_bar_->appendText(s);
+    std::shared_ptr<GameOrder> order = std::make_shared<BuildOrder>(static_cast<int>(map_view_->selected_point_id_));
+    game_orders_.push_back(order);
+
+}
+void MainWindow::moveShip(){
+    wait_for_click_=true;
+    last_point_=map_view_->selected_point_id_;
+    selected_ships_ = left_bar_->getSelectedShips(game_state_);
 }
