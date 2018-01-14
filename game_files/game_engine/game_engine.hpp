@@ -1,10 +1,8 @@
-
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
 #include "../typedefs.hpp"
 #include "../tcp/tcp.hpp"
-#include "game_server.hpp"
 #include <string>
 #include <boost/regex.hpp>
 #include <iostream>
@@ -14,23 +12,28 @@
 #include <queue>
 class GameEngine{
 private:
-    static std::vector<player_ptr> _players;
-    std::queue<std::string> _queue;
-    enum state {WAIT_FOR_PLAYERS=0,GAME_INIT=1,PLAYING=2,GAME_OVER=3};
-    state _currentState;
+    std::vector<player_ptr> _players;
+    enum state {WAIT_FOR_PLAYERS=0,WAIT_FOR_MOVE=1,COMPUTE_NEW_STATE=2,GAME_OVER=3};
+    state _currentState=WAIT_FOR_PLAYERS;
     state _nxtState;
-    std::thread *_thread = nullptr;
-    GameEngine();
-    bool _is_running=true;
+    std::mutex mtx;
+    std::condition_variable cv;
 public:
-    static GameEngine & get();
+    std::string _name;
+    std::queue<std::string> _queue;
     void run();
-    void sendCmd(std::string input,std::string host);
+    void stop();
+    std::thread *_thread = nullptr;
+    std::thread *_thread2 = nullptr;
+    bool _is_running=true;
+    void sendCmd(std::string input);
     void start();
     void processInput(std::string input);
-    void removePlayer(std::shared_ptr<tcp::tcp_client> client);
+    int removePlayer(const std::shared_ptr<tcp::tcp_client>& client);
+    void addPlayer( std::string name,const std::shared_ptr<tcp::tcp_client>& _client_ptr);
     std::vector<player_ptr> getPlayers();
     int state();
+    GameEngine(std::string _name,std::string _mastername,const std::shared_ptr<tcp::tcp_client>& master);
     ~GameEngine();
 protected:
     std::string join(std::string _str);

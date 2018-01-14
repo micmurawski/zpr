@@ -28,9 +28,17 @@ env.Program(target = ['game_server_test'],
         LIBS=LIBS,
         LIBPATH=LIBPATH,
         CXXFLAGS = cxxflags);
-print("KOMPILACJA TESOW KLIENTA")
-env.Program(target = ['game_client_test'],
-        source = ['game_client_test.cpp','game_client.cpp'],
+print("KOMPILACJA TESOW KLIENTA1")
+env.Program(target = ['player1'],
+        source = ['player1.cpp','game_client.cpp'],
+        LINKFLAGS= LINKFLAGS,
+        LIBS=LIBS,
+        LIBPATH=LIBPATH,
+        CXXFLAGS = cxxflags);
+
+print("KOMPILACJA TESOW KLIENTA2")
+env.Program(target = ['player2'],
+        source = ['player2.cpp','game_client.cpp'],
         LINKFLAGS= LINKFLAGS,
         LIBS=LIBS,
         LIBPATH=LIBPATH,

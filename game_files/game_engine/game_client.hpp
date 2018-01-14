@@ -6,6 +6,7 @@
 #include <iostream>
 #include<vector>
 #include <mutex>
+#include <math.h>
 #include <signal.h>
 #ifdef _WIN32
 #include <Winsock2.h>
@@ -16,7 +17,7 @@ class GameClient{
 public:
 static tcp::tcp_client _client;
 static std::string _name;
-
+~GameClient();
 static void read(tcp::tcp_client& client, const tcp::tcp_client::read_result& res);
 static void connect(const std::string& host, std::uint32_t port);
 static void sendCmd(std::string cmd);
