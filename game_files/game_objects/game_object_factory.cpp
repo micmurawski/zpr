@@ -5,7 +5,8 @@
 using namespace std;
 
 shared_ptr<GameState> GameObjectFactory::decode(vector<string> vec){
-	game_state_ptr game_state= make_shared<GameState>(4);
+    /*
+    game_state_ptr game_state= make_shared<GameState>(4);
 	for(auto str : vec){	
 		//erasing first "#" from the beggining of string
 		string s = str.substr(1);
@@ -37,6 +38,7 @@ shared_ptr<GameState> GameObjectFactory::decode(vector<string> vec){
 		
 		}
 	return game_state;
+    */
 	}
 	
 	unsigned int GameObjectFactory::registerObject (createGameObject fun){

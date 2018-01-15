@@ -9,6 +9,8 @@
  * \author $Author: Marcin Brzykcy, Michał Murawski $
  *
  */
+#include <memory>
+
 class Building : public GameObject{
 public:
 	/**
@@ -23,6 +25,15 @@ public:
 	* \return węzeł mapy
  	*/
 	unsigned int getMapPointId(){return point_id_;}
+
+    virtual std::string toString();
+    virtual void loadFromString (std::string data);
+    //used to determine type in GameObjectsFactory
+    virtual unsigned int getType(){return ID_;}
+    //used to create objects in GameObjectsFactory
+    static std::shared_ptr<GameObject> create();
+    //ID needed for ObjectFactory
+    static unsigned int ID_;
 private:
 	unsigned int point_id_;
 };

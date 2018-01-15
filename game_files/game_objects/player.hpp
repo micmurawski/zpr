@@ -19,7 +19,7 @@
  *
  */
 
-class Player{
+class Player: public GameObject{
 	public:
 		std::vector<std::shared_ptr<Ship>> ships_;
 		std::vector<std::shared_ptr<Building>> buildings_;
@@ -32,6 +32,8 @@ class Player{
         unsigned int getId(){return id_;}
 		std::string get_name() {return name_;}
 		void set_name(std::string name) {name_ = name;}
+        std::string toString();
+        void loadFromString(std::string data);
 
 		/**
  		* Konstruktor klasy

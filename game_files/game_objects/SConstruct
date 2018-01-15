@@ -5,11 +5,13 @@ lib_sources = ['../game_engine/game_engine.cpp',
  '../game_objects/game_object_factory.cpp',
  '../game_state/game_state.cpp',
  '../game_objects/ship.cpp',
+ '../game_objects/building.cpp',
+ '../game_objects/player.cpp',
  '../game_objects/map_point.cpp',
  '../game_objects/resources.cpp']
 cxxflags = ['-std=c++17', '-lboost_algorithm']
 env.Library('game', lib_sources, CXXFLAGS = cxxflags)
-env.Program(target='test', source = sources, LIBS = 'game', LIBPATH = '.', CXXFLAGS = cxxflags);
+env.Program(target='test', source = sources, LIBS = ['game', 'boost_regex'], LIBPATH = '.', CXXFLAGS = cxxflags);
 
    
      

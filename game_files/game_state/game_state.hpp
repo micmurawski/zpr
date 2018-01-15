@@ -14,7 +14,8 @@ class GameState{
 	public:
 	GameState();
 	map_point_ptr getPointById(unsigned int id);
-	void accept(game_object_ptr object);
+    //void accept(game_object_ptr object);
+    void loadFromString(std::string data){};
 	std::vector <player_ptr> players_;
     std::vector <map_point_ptr> map_points_;
 	Ship ship_prototype_;

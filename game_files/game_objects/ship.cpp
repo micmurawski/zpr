@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <boost/algorithm/string.hpp>
+#include "../get_regex_function.hpp"
 #include <algorithm>
 
 using namespace std;
@@ -15,18 +16,15 @@ void Ship::modifyHP(int hp) {
 
 
 std::string Ship::toString(unsigned int player_id){
-	string s ="#"+to_string(ID_)+ "#" + to_string(player_id) + "#" + to_string(id_) + "#"+ to_string(map_point_id_) + "#" + to_string(hp_);
+    string s ="<ship><id>"+to_string(id_)+"</id><map_point>"+to_string(map_point_id_)+"</map_point></ship>";
 	return s;
 	}
 	
 void Ship::loadFromString (std::string data){
-	//splitting string by "#"
-	std::vector<std::string> vec;
-	boost::split(vec, data, boost::is_any_of("#"));
-	//setting class variables using individual values in vector
-	id_ = stoi(vec[0]);
-	map_point_id_=stoi(vec[1]);
-	hp_=stoi(vec[2]);
+    string id = getRegex(data,"(?<=<id>)(.*)(?=</id>)");
+    id_=static_cast<int> (stoi(id));
+    string point= getRegex(data,"(?<=<map_point>)(.*)(?=</map_point>)");
+    map_point_id_=static_cast<int> (stoi(point));
 	}
 	
 unsigned int Ship::getType(){
