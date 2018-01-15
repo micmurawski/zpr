@@ -1,0 +1,41 @@
+\hypertarget{classBottomBar}{}\section{Bottom\+Bar Class Reference}
+\label{classBottomBar}\index{Bottom\+Bar@{Bottom\+Bar}}
+
+
+Inheritance diagram for Bottom\+Bar\+:
+% FIG 0
+
+
+Collaboration diagram for Bottom\+Bar\+:
+% FIG 1
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries end\+Turn} ()\hypertarget{classBottomBar_a08b2dce9f3c30f7e607185b39956d4dc}{}\label{classBottomBar_a08b2dce9f3c30f7e607185b39956d4dc}
+
+\item 
+void {\bfseries retake\+Turn} ()\hypertarget{classBottomBar_a7eba60c908f375dca2a2efe7503b7df7}{}\label{classBottomBar_a7eba60c908f375dca2a2efe7503b7df7}
+
+\item 
+void {\bfseries create\+Ship} ()\hypertarget{classBottomBar_ae23c186840faed641b37937e29fbeaaf}{}\label{classBottomBar_ae23c186840faed641b37937e29fbeaaf}
+
+\item 
+void {\bfseries create\+Building} ()\hypertarget{classBottomBar_af34861c45524377c2c3e309f797e5b62}{}\label{classBottomBar_af34861c45524377c2c3e309f797e5b62}
+
+\item 
+void {\bfseries move\+Ship} ()\hypertarget{classBottomBar_a2124dc047d01bf9a8973fcfa6b9c7aea}{}\label{classBottomBar_a2124dc047d01bf9a8973fcfa6b9c7aea}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries set\+Button\+Enabled} (unsigned int index, bool enabled)\hypertarget{classBottomBar_aeea2966755cb6f3815c6882190fda633}{}\label{classBottomBar_aeea2966755cb6f3815c6882190fda633}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+client\+\_\+window/bottombar.\+hpp\item 
+client\+\_\+window/bottombar.\+cpp\item 
+client\+\_\+window/moc\+\_\+bottombar.\+cpp\end{DoxyCompactItemize}

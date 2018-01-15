@@ -1,0 +1,31 @@
+
+\begin{DoxyItemize}
+\item Opis Gry
+\end{DoxyItemize}
+
+Bedzię to turowa gra strategiczna odbywająca się na mapie w postaci grafu. Gracz będzie budował swoje statki wzamian za swoje zasoby i wysyłał je do węzłów grafu. W momencie kiedy dojdzie do spotkania staków przeciwnych graczy będzie następować wymiana ognia.
+
+
+\begin{DoxyItemize}
+\item Folder game\+\_\+engine zawiera Klasy \hyperlink{classGameServer}{Game\+Server},\hyperlink{classGameClient}{Game\+Client}, \hyperlink{classGameEngine}{Game\+Engine}.
+\end{DoxyItemize}
+
+\hyperlink{classGameServer}{Game\+Server} jest to klasa dopowiedzialna za serwer gry.
+
+\hyperlink{classGameEngine}{Game\+Engine} odpowiada za przechowywanie stanu gry i generowanie nowego stanu na podstawie otrzymanych danych od graczy
+
+\hyperlink{classGameClient}{Game\+Client} odpowiada za wastwę klienta gry
+
+
+\begin{DoxyItemize}
+\item Folder game\+\_\+object zawiera klasy realizujące obiekty gry
+\end{DoxyItemize}
+
+Klasa \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} działa jak fabryka skalowalna i generuje odpowiednie obiekty gry na podstawie otrzymanych stringów
+\begin{DoxyItemize}
+\item Folder game\+\_\+order przechowuje klasę Game\+Order która realizuje komendy wysyłane przez klientów gry
+\item Folder game\+\_\+state przechowuje klasę Game\+State, która realizuje chwilowy stan gry, w póżniejszym czasie stan ten będzie renderowany na interfejsie gracza
+\item Biblioteka to osbługi T\+CP została pobrana, zmodyfikowana o potrzebną funkcjonalność i lokalnie skompilowana jako biblioteka statyczna z repozytorium github \href{https://github.com/Cylix/tacopie}{\tt https\+://github.\+com/\+Cylix/tacopie}
+\item Interfejs uzytkownika będzie napisany przy wykorzystaniu biblioteki Qt w wersji 5.\+5 \href{http://doc.qt.io/qt-5/linux-deployment.html}{\tt http\+://doc.\+qt.\+io/qt-\/5/linux-\/deployment.\+html}
+\item Folder test\+\_\+suite przechowuje przykładowe testy jednostkowe kompilowane do pliku wykonywalnego test\+\_\+suite 
+\end{DoxyItemize}

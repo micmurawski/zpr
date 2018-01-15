@@ -10,10 +10,30 @@
 #include "game_object.hpp"
 #include "resources.hpp"
 #include <vector>
-
+/**
+ * \class MapPoint
+ *
+ * Definicja klasy MapPoint, która realizuje mape gry. Dziedziczy wirtualnie po klasie GameObject
+ * \author $Author: Marcin Brzykcy, Michał Murawski $
+ *
+ */
 class MapPoint : public GameObject{
 public:
+	/**
+ 	* Konstruktor domyślny klasy
+ 	*
+ 	*/
 	MapPoint(){};
+	/**
+ 	* Konstruktor klasy
+ 	*
+ 	* \param[in] id ilośc identyfikator węzła mapy
+	* \param[in] connections połączenia węzłyów mapy, grafu
+	* \param[in] x położenie na osi x
+	* \param[in] y położenie na osi y
+	* \param[in] resources zasoby przechowywane na mapie
+	*
+ 	*/
 	MapPoint(int id, const std::vector<unsigned int>& connections, int x, int y, Resources resources): 
 	id_(id), connections_(connections), x_(x), y_(y) {resources_ = resources;}
 	unsigned int getId() const {return id_;} 
@@ -21,15 +41,30 @@ public:
 	unsigned int getY() const {return y_;} 
     int getMetal() const {return resources_.metal_;}
 	const std::vector<unsigned int>& getConnections() {return connections_;}
-	
-	
+	/**
+ 	* Funkcja zwracająca reprezentacje obiektu w stringu
+ 	* \return zwraca string reprezentujący obiekt
+ 	*/	
 	virtual std::string toString(unsigned int player_id = 0);
+	/**
+ 	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
+ 	* \return typ
+ 	*/
 	virtual void loadFromString (std::string data);
-	//used to determine type in GameObjectsFactory
+	/**
+ 	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
+ 	* \return typ
+ 	*/
 	virtual unsigned int getType();
-	//used to create objects in GameObjectsFactory
+	/**
+ 	* Funkcja zwracająca wskaźnik na GameObject wykorzystywane do utworzenia instacji obiektu w GameObjectFactory
+ 	* \return wkaźnik na GameObject
+ 	*/
 	static std::shared_ptr<GameObject> create();
-	//ID needed for ObjectFactory
+	/**
+ 	* Funkcja zwracająca położenie na mapie
+ 	* \return zwraca położenie na mapie
+ 	*/
 	static unsigned int ID_;
 		
 		

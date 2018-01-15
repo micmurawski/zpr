@@ -1,0 +1,114 @@
+\hypertarget{classGameClient}{}\section{Game\+Client Class Reference}
+\label{classGameClient}\index{Game\+Client@{Game\+Client}}
+
+
+{\ttfamily \#include $<$game\+\_\+client.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGameClient_abca673a8fcdb7d2ae8c0da02f91e4e64}{$\sim$\+Game\+Client} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classGameClient_a73c9685b821c1480f48e23e63823ad1d}{read} (tcp\+::tcp\+\_\+client \&client, const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&res)
+\item 
+static void \hyperlink{classGameClient_a2f8c1f7f62a01fd9a6624236285b02d6}{connect} (const std\+::string \&host, std\+::uint32\+\_\+t port)
+\item 
+static void \hyperlink{classGameClient_a52e2b91ca95b287a30e3c47b82a97547}{send\+Cmd} (std\+::string cmd)
+\item 
+static void \hyperlink{classGameClient_ad3eda37920dab8f5fcded42f3e08ce25}{join} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static tcp\+::tcp\+\_\+client {\bfseries \+\_\+client}\hypertarget{classGameClient_a0ae16fa49b4937e75ec20eb85130d35d}{}\label{classGameClient_a0ae16fa49b4937e75ec20eb85130d35d}
+
+\item 
+static std\+::string {\bfseries \+\_\+name} =\char`\"{}noname\char`\"{}\hypertarget{classGameClient_a4fc5adb552542ebc455a25a26926025d}{}\label{classGameClient_a4fc5adb552542ebc455a25a26926025d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classGameClient}{Game\+Client}, która realizuje klienta gry \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Michał Murawski, Marcin Brzykcy 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Game\+Client@{Game\+Client}!````~Game\+Client@{$\sim$\+Game\+Client}}
+\index{````~Game\+Client@{$\sim$\+Game\+Client}!Game\+Client@{Game\+Client}}
+\subsubsection[{\texorpdfstring{$\sim$\+Game\+Client()}{~GameClient()}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Client\+::$\sim$\+Game\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameClient_abca673a8fcdb7d2ae8c0da02f91e4e64}{}\label{classGameClient_abca673a8fcdb7d2ae8c0da02f91e4e64}
+Destruktor klasy 
+
+\subsection{Member Function Documentation}
+\index{Game\+Client@{Game\+Client}!connect@{connect}}
+\index{connect@{connect}!Game\+Client@{Game\+Client}}
+\subsubsection[{\texorpdfstring{connect(const std\+::string \&host, std\+::uint32\+\_\+t port)}{connect(const std::string &host, std::uint32_t port)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Client\+::connect (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{host = {\ttfamily \char`\"{}127.0.0.1\char`\"{}}, }
+\item[{std\+::uint32\+\_\+t}]{port = {\ttfamily 3002}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameClient_a2f8c1f7f62a01fd9a6624236285b02d6}{}\label{classGameClient_a2f8c1f7f62a01fd9a6624236285b02d6}
+funkcja realizująca połączenie
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em host} & referencja na host gry zadany w stringu \\
+\hline
+\mbox{\tt in}  & {\em port} & port serwera \\
+\hline
+\end{DoxyParams}
+\index{Game\+Client@{Game\+Client}!join@{join}}
+\index{join@{join}!Game\+Client@{Game\+Client}}
+\subsubsection[{\texorpdfstring{join()}{join()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Client\+::join (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameClient_ad3eda37920dab8f5fcded42f3e08ce25}{}\label{classGameClient_ad3eda37920dab8f5fcded42f3e08ce25}
+funkcja realizująca dołączenie do gry gracza \index{Game\+Client@{Game\+Client}!read@{read}}
+\index{read@{read}!Game\+Client@{Game\+Client}}
+\subsubsection[{\texorpdfstring{read(tcp\+::tcp\+\_\+client \&client, const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&res)}{read(tcp::tcp_client &client, const tcp::tcp_client::read_result &res)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Client\+::read (
+\begin{DoxyParamCaption}
+\item[{tcp\+::tcp\+\_\+client \&}]{client, }
+\item[{const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&}]{res}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameClient_a73c9685b821c1480f48e23e63823ad1d}{}\label{classGameClient_a73c9685b821c1480f48e23e63823ad1d}
+funkcja realizująca odczyt danych z protokołu tcp
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em client} & klient tcp \\
+\hline
+\mbox{\tt in}  & {\em wskaźnik} & na strukturę odpowiedzi w protokole tcp \\
+\hline
+\end{DoxyParams}
+\index{Game\+Client@{Game\+Client}!send\+Cmd@{send\+Cmd}}
+\index{send\+Cmd@{send\+Cmd}!Game\+Client@{Game\+Client}}
+\subsubsection[{\texorpdfstring{send\+Cmd(std\+::string cmd)}{sendCmd(std::string cmd)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Client\+::send\+Cmd (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{cmd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameClient_a52e2b91ca95b287a30e3c47b82a97547}{}\label{classGameClient_a52e2b91ca95b287a30e3c47b82a97547}
+funkcja realizująca wysyłanie komend przez gracza
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & string komendy \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+client.\+hpp\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+client.\+cpp\end{DoxyCompactItemize}

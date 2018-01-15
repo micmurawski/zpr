@@ -1,0 +1,84 @@
+\hypertarget{classGameObject}{}\section{Game\+Object Class Reference}
+\label{classGameObject}\index{Game\+Object@{Game\+Object}}
+
+
+{\ttfamily \#include $<$game\+\_\+object.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+Object\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \hyperlink{classGameObject_aabe25448b728506ce27e975d07217858}{to\+String} (unsigned int player\+\_\+id=0)
+\item 
+virtual void \hyperlink{classGameObject_a85a98216580e583e15477cd9178fa6e7}{load\+From\+String} (std\+::string data)
+\item 
+virtual unsigned int \hyperlink{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}{get\+Type} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int {\bfseries player\+\_\+id\+\_\+}\hypertarget{classGameObject_a950303b3e85ba6afa09c188bca96c7c5}{}\label{classGameObject_a950303b3e85ba6afa09c188bca96c7c5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy wirtualnej \hyperlink{classGameObject}{Game\+Object(\+Intefejs)} po której dziedziczą wszystkie realizowane obiekty w grze \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Marcin Brzykcy, Michał Murawski 
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\index{Game\+Object@{Game\+Object}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Game\+Object@{Game\+Object}}
+\subsubsection[{\texorpdfstring{get\+Type()}{getType()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual unsigned int Game\+Object\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}{}\label{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+typ 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMapPoint_a5f869aa003f10b7480907f0d0089e887}{Map\+Point}, \hyperlink{classShip_a0ab4d1841a06e86cf75143bdd82273c0}{Ship}, and \hyperlink{classResources_a5c61031db208f5d3c54c9f64c9f20ac3}{Resources}.
+
+\index{Game\+Object@{Game\+Object}!load\+From\+String@{load\+From\+String}}
+\index{load\+From\+String@{load\+From\+String}!Game\+Object@{Game\+Object}}
+\subsubsection[{\texorpdfstring{load\+From\+String(std\+::string data)}{loadFromString(std::string data)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Object\+::load\+From\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classGameObject_a85a98216580e583e15477cd9178fa6e7}{}\label{classGameObject_a85a98216580e583e15477cd9178fa6e7}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+typ 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMapPoint_add482d105e9b5089fb274dd1f32dfa9d}{Map\+Point}, \hyperlink{classShip_a5bc993a110736454a5da0afbce0adcf8}{Ship}, and \hyperlink{classResources_af52fa90c94244aabef9dd7c0b03c817e}{Resources}.
+
+\index{Game\+Object@{Game\+Object}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Game\+Object@{Game\+Object}}
+\subsubsection[{\texorpdfstring{to\+String(unsigned int player\+\_\+id=0)}{toString(unsigned int player_id=0)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::string Game\+Object\+::to\+String (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{player\+\_\+id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classGameObject_aabe25448b728506ce27e975d07217858}{}\label{classGameObject_aabe25448b728506ce27e975d07217858}
+Funkcja zwracająca reprezentacje obiektu w stringu \begin{DoxyReturn}{Returns}
+zwraca string reprezentujący obiekt 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMapPoint_a45aa1bd9ce0a2d172c135f324f823973}{Map\+Point}, \hyperlink{classShip_ad743a4cd0710f1cae47440d8c5ef1df2}{Ship}, and \hyperlink{classResources_a2c7f9b4b9b3cf776f43b265ed0c8bdd5}{Resources}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+objects/game\+\_\+object.\+hpp\end{DoxyCompactItemize}

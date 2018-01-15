@@ -1,0 +1,94 @@
+\hypertarget{classPlayer}{}\section{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+
+
+{\ttfamily \#include $<$player.\+hpp$>$}
+
+
+
+Collaboration diagram for Player\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int {\bfseries get\+Id} ()\hypertarget{classPlayer_aefc3db8fc54fab638b25764a4c37f078}{}\label{classPlayer_aefc3db8fc54fab638b25764a4c37f078}
+
+\item 
+std\+::string {\bfseries get\+\_\+name} ()\hypertarget{classPlayer_a788340fc5f21143f47eed04f6fd79976}{}\label{classPlayer_a788340fc5f21143f47eed04f6fd79976}
+
+\item 
+void {\bfseries set\+\_\+name} (std\+::string name)\hypertarget{classPlayer_a318d379b56621caf571b97b54965b2e9}{}\label{classPlayer_a318d379b56621caf571b97b54965b2e9}
+
+\item 
+\hyperlink{classPlayer_a11226c6f07703e035c6a774ac96fce09}{Player} (std\+::string name, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client\+\_\+ptr=nullptr)
+\item 
+\hyperlink{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\+Player} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classShip}{Ship} $>$ $>$ {\bfseries ships\+\_\+}\hypertarget{classPlayer_a52ebeef62bb950415a79909a6d50f6f7}{}\label{classPlayer_a52ebeef62bb950415a79909a6d50f6f7}
+
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classBuilding}{Building} $>$ $>$ {\bfseries buildings\+\_\+}\hypertarget{classPlayer_ae9978fe9975e3d4f953a3b227af8b2f7}{}\label{classPlayer_ae9978fe9975e3d4f953a3b227af8b2f7}
+
+\item 
+std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ {\bfseries \+\_\+client\+\_\+ptr}\hypertarget{classPlayer_ae4887553567f66c9114eeede1123cee8}{}\label{classPlayer_ae4887553567f66c9114eeede1123cee8}
+
+\item 
+\hyperlink{classResources}{Resources} {\bfseries resources\+\_\+}\hypertarget{classPlayer_a45a1c81404c7622e80eba7dede5a2a36}{}\label{classPlayer_a45a1c81404c7622e80eba7dede5a2a36}
+
+\item 
+std\+::string {\bfseries name\+\_\+}\hypertarget{classPlayer_ae48b626fa81cdf4fe831c20122287649}{}\label{classPlayer_ae48b626fa81cdf4fe831c20122287649}
+
+\item 
+std\+::string {\bfseries host\+\_\+}\hypertarget{classPlayer_a4fb6eccf87c3555f2023ed519c88e9ef}{}\label{classPlayer_a4fb6eccf87c3555f2023ed519c88e9ef}
+
+\item 
+unsigned int {\bfseries id\+\_\+}\hypertarget{classPlayer_a37144a57b1fb28ef20eea5fff1d8d506}{}\label{classPlayer_a37144a57b1fb28ef20eea5fff1d8d506}
+
+\item 
+bool {\bfseries \+\_\+finished} = false\hypertarget{classPlayer_a8c8bf83771c911c579908d57d20e4255}{}\label{classPlayer_a8c8bf83771c911c579908d57d20e4255}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classPlayer}{Player}, która przechowuje zasoby gracza w grze \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Michał Murawski, Marcin Brzykcy 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Player(std\+::string name, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client\+\_\+ptr=nullptr)}{Player(std::string name, const std::shared_ptr< tcp::tcp_client > &client_ptr=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Player (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&}]{client\+\_\+ptr = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPlayer_a11226c6f07703e035c6a774ac96fce09}{}\label{classPlayer_a11226c6f07703e035c6a774ac96fce09}
+Konstruktor klasy
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & Nazwa gracza \\
+\hline
+\mbox{\tt in}  & {\em client\+\_\+ptr} & wskaźnik na klienta protokołu tcp. \\
+\hline
+\end{DoxyParams}
+\index{Player@{Player}!````~Player@{$\sim$\+Player}}
+\index{````~Player@{$\sim$\+Player}!Player@{Player}}
+\subsubsection[{\texorpdfstring{$\sim$\+Player()}{~Player()}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::$\sim$\+Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}{}\label{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}
+Destruktor klasy 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+objects/player.\+hpp\end{DoxyCompactItemize}

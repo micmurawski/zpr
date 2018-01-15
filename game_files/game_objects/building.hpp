@@ -2,10 +2,26 @@
 #define BUILDING_HPP
 
 #include "game_object.hpp"
-
+/**
+ * \class MapPoint
+ *
+ * Definicja klasy Building, która realizuje budynki. Dziedziczy wirtualnie po klasie GameObject
+ * \author $Author: Marcin Brzykcy, Michał Murawski $
+ *
+ */
 class Building : public GameObject{
 public:
+	/**
+ 	* Konstruktor klasy
+ 	*
+ 	* \param[in] point_id_ pozycja na mapie budynku, domyślnie 0
+	*
+ 	*/
     Building(int point_id_=0): point_id_(0){}
+	/**
+ 	* Funkcja zwracająca położenie w węźle mapy
+	* \return węzeł mapy
+ 	*/
 	unsigned int getMapPointId(){return point_id_;}
 private:
 	unsigned int point_id_;

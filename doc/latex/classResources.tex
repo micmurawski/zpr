@@ -1,0 +1,140 @@
+\hypertarget{classResources}{}\section{Resources Class Reference}
+\label{classResources}\index{Resources@{Resources}}
+
+
+{\ttfamily \#include $<$resources.\+hpp$>$}
+
+
+
+Inheritance diagram for Resources\+:
+% FIG 0
+
+
+Collaboration diagram for Resources\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classResources_a88c450c874f16921b3db4e5f18bcb0f8}{Resources} (int metal=0)
+\item 
+std\+::string {\bfseries to\+String\+Data\+Only} ()\hypertarget{classResources_ac4877d2c97641511f9f17d7623376e60}{}\label{classResources_ac4877d2c97641511f9f17d7623376e60}
+
+\item 
+virtual std\+::string \hyperlink{classResources_a2c7f9b4b9b3cf776f43b265ed0c8bdd5}{to\+String} (unsigned int player\+\_\+id=0)
+\item 
+virtual void \hyperlink{classResources_af52fa90c94244aabef9dd7c0b03c817e}{load\+From\+String} (std\+::string data)
+\item 
+virtual unsigned int \hyperlink{classResources_a5c61031db208f5d3c54c9f64c9f20ac3}{get\+Type} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classGameObject}{Game\+Object} $>$ \hyperlink{classResources_a9f824eb39d28bc409e069c4a2d1da801}{create} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int {\bfseries metal\+\_\+}\hypertarget{classResources_a0a353af07f4492deca9570e3c80bd7aa}{}\label{classResources_a0a353af07f4492deca9570e3c80bd7aa}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned int \hyperlink{classResources_a0e8bde75030b9818a78df8ded58e5998}{I\+D\+\_\+} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classResources}{Resources}, która realizuje zasoby gracza. Dziedziczy wirtualnie po klasie \hyperlink{classGameObject}{Game\+Object} \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Marcin Brzykcy, Michał Murawski 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Resources@{Resources}!Resources@{Resources}}
+\index{Resources@{Resources}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{Resources(int metal=0)}{Resources(int metal=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Resources\+::\+Resources (
+\begin{DoxyParamCaption}
+\item[{int}]{metal = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classResources_a88c450c874f16921b3db4e5f18bcb0f8}{}\label{classResources_a88c450c874f16921b3db4e5f18bcb0f8}
+Konstruktor klasy
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em metl} & ilośc przechowywanych zasobów \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Resources@{Resources}!create@{create}}
+\index{create@{create}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{create()}{create()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<$ {\bf Game\+Object} $>$ Resources\+::create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classResources_a9f824eb39d28bc409e069c4a2d1da801}{}\label{classResources_a9f824eb39d28bc409e069c4a2d1da801}
+Funkcja zwracająca wskaźnik na \hyperlink{classGameObject}{Game\+Object} wykorzystywane do utworzenia instacji obiektu w \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+wkaźnik na \hyperlink{classGameObject}{Game\+Object} 
+\end{DoxyReturn}
+\index{Resources@{Resources}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{get\+Type()}{getType()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Resources\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classResources_a5c61031db208f5d3c54c9f64c9f20ac3}{}\label{classResources_a5c61031db208f5d3c54c9f64c9f20ac3}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+typ 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}{Game\+Object}.
+
+\index{Resources@{Resources}!load\+From\+String@{load\+From\+String}}
+\index{load\+From\+String@{load\+From\+String}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{load\+From\+String(std\+::string data)}{loadFromString(std::string data)}}]{\setlength{\rightskip}{0pt plus 5cm}void Resources\+::load\+From\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classResources_af52fa90c94244aabef9dd7c0b03c817e}{}\label{classResources_af52fa90c94244aabef9dd7c0b03c817e}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+typ 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classGameObject_a85a98216580e583e15477cd9178fa6e7}{Game\+Object}.
+
+\index{Resources@{Resources}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{to\+String(unsigned int player\+\_\+id=0)}{toString(unsigned int player_id=0)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Resources\+::to\+String (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{player\+\_\+id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classResources_a2c7f9b4b9b3cf776f43b265ed0c8bdd5}{}\label{classResources_a2c7f9b4b9b3cf776f43b265ed0c8bdd5}
+Funkcja zwracająca reprezentacje obiektu w stringu \begin{DoxyReturn}{Returns}
+zwraca string reprezentujący obiekt 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classGameObject_aabe25448b728506ce27e975d07217858}{Game\+Object}.
+
+
+
+\subsection{Member Data Documentation}
+\index{Resources@{Resources}!I\+D\+\_\+@{I\+D\+\_\+}}
+\index{I\+D\+\_\+@{I\+D\+\_\+}!Resources@{Resources}}
+\subsubsection[{\texorpdfstring{I\+D\+\_\+}{ID_}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Resources\+::\+I\+D\+\_\+ = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classResources_a0e8bde75030b9818a78df8ded58e5998}{}\label{classResources_a0e8bde75030b9818a78df8ded58e5998}
+Funkcja zwracająca położenie na mapie \begin{DoxyReturn}{Returns}
+zwraca położenie na mapie 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+objects/resources.\+hpp\item 
+game\+\_\+files/game\+\_\+objects/resources.\+cpp\end{DoxyCompactItemize}
