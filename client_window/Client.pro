@@ -38,7 +38,9 @@ SOURCES += \
     ../game_files/game_order/game_order.cpp \
     ../game_files/game_state/game_state.cpp \
     playerscolors.cpp \
-    planetdetails.cpp
+    planetdetails.cpp \
+    ../game_files/game_objects/building.cpp \
+    ../game_files/game_objects/player.cpp
 
 
 HEADERS += \
@@ -60,12 +62,14 @@ HEADERS += \
     ../game_files/game_state/game_state.hpp \
     ../game_files/typedefs.hpp \
     playerscolors.hpp \
-    planetdetails.hpp
+    planetdetails.hpp \
+    ../game_files/get_regex_function.hpp
 
 
 FORMS += \
         mainwindow.ui
 LIBS += -L -libgame.a
+LIBS += -L -lboost_regex
 CONFIG +=c++17
 QMAKE_CXXFLAGS += -std=c++17
 

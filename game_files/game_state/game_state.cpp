@@ -7,17 +7,17 @@ GameState::GameState(){
 	//	players_.push_back(make_unique<Player>());
 }
 
-void GameState::accept(game_object_ptr object){
+//void GameState::accept(game_object_ptr object){
 	
-	if(object->getType() == map_point_prototype_.getType())
-		map_points_.push_back(dynamic_pointer_cast<MapPoint>(object));
-	else if(object->getType() == ship_prototype_.getType())
-		players_[object->player_id_]->ships_.push_back(dynamic_pointer_cast<Ship> (object));
-	else if(object->getType() == building_prototype_.getType())
-		players_[object->player_id_]->buildings_.push_back(dynamic_pointer_cast<Building> (object));
-	else if(object->getType() == resources_prototype_.getType())
-		players_[object->player_id_]->resources_ = *(dynamic_pointer_cast<Resources> (object));
-	}
+//	if(object->getType() == map_point_prototype_.getType())
+//		map_points_.push_back(dynamic_pointer_cast<MapPoint>(object));
+//	else if(object->getType() == ship_prototype_.getType())
+//		players_[object->player_id_]->ships_.push_back(dynamic_pointer_cast<Ship> (object));
+//	else if(object->getType() == building_prototype_.getType())
+//		players_[object->player_id_]->buildings_.push_back(dynamic_pointer_cast<Building> (object));
+//	else if(object->getType() == resources_prototype_.getType())
+//		players_[object->player_id_]->resources_ = *(dynamic_pointer_cast<Resources> (object));
+//	}
 
 map_point_ptr GameState::getPointById(unsigned int id){
     //std::cerr<<"\n" <<id;

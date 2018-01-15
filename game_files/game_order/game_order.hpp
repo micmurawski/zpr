@@ -3,10 +3,11 @@
 #include "../typedefs.hpp"
 #include <vector>
 #include <memory>
-#include <string>
 #include "../game_engine/game_engine.hpp"
 
 typedef std::unique_ptr<std::vector<unsigned int>> ship_vector_uptr;
+
+
 
 class GameOrder{
 public:
@@ -36,9 +37,10 @@ private:
 class BuildOrder : public GameOrder{
 public:
     BuildOrder(unsigned int point_id = 0): point_id_(point_id){}
+    BuildOrder(std::string data);
 	enum {type_id= 2};
     unsigned int getPointId() const {return point_id_;}
-    std::string toString() const{return "";}
+    std::string toString() const;
     int type() const {return BuildOrder::type_id;}
 private:
     unsigned int point_id_;

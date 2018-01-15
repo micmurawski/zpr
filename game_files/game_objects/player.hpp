@@ -19,7 +19,7 @@
  *
  */
 
-class Player{
+class Player: public GameObject{
 	public:
 		std::vector<std::shared_ptr<Ship>> ships_;
 		std::vector<std::shared_ptr<Building>> buildings_;
@@ -32,6 +32,8 @@ class Player{
         unsigned int getId(){return id_;}
 		std::string get_name() {return name_;}
 		void set_name(std::string name) {name_ = name;}
+        std::string toString();
+        void loadFromString(std::string data);
 
 		/**
  		* Konstruktor klasy
@@ -43,19 +45,9 @@ class Player{
 		Player(std::string name,const std::shared_ptr<tcp::tcp_client>& client_ptr=nullptr){
 			name_=name;
 			_client_ptr = client_ptr;
-			std::cout<<"Utworzon instancje nowego gracza "<<std::endl;
-			std::cout<<"_name: "<<name_<<std::endl;
-			std::cout<<"_host: "<<_client_ptr->get_host()<<std::endl;
-			std::cout<<"_port: "<<_client_ptr->get_port()<<std::endl;
+
 		}
-		/**
- 		* Destruktor klasy
- 		*/
-		~Player(){
-			std::cout<<"Usunięto instancje gracza "<<std::endl;
-			std::cout<<"_name: "<<name_<<std::endl;
-			std::cout<<"_host: "<<host_<<std::endl;
-		}
+
 		int getDamageAtNode(int i){
 			int sum = 0;
 			for(std::shared_ptr<Ship> ship_ptr : ships_){

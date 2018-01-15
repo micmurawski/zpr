@@ -1,31 +1,30 @@
 #include "map_point.hpp"
 #include <boost/algorithm/string.hpp>
+#include "../get_regex_function.hpp"
 #include <algorithm>
 #include <iostream>
 
 using namespace std;
 
 std::string MapPoint::toString(unsigned int player_id){
-	string s= "#" +to_string(ID_)+"#"+to_string(0)+ "#" + to_string(id_)+"#"+ to_string(connections_.size())+"#" ;
+    string s= "<map_point><x>"+to_string(x_)+"</x><y>"+to_string(y_)+"</y><connections>";
 	for( auto v : connections_)
 		s = s+to_string(v)+"#";
-	s= s+to_string(x_)+"#"+ to_string(y_) +"#"+resources_.toStringDataOnly();
+    s= s+"</connections>"+resources_.toString()+"</map_point>";
 	return s; 
 	}
 void MapPoint::loadFromString (std::string data){
-	//splitting string by "#"
+    string x = getRegex(data,"(?<=<x>)(.*)(?=</x>)");
+    x_ = stoi(x);
+    string y = getRegex(data,"(?<=<y>)(.*)(?=</y>)");
+    y_ = stoi(y);
+    string connections = getRegex(data,"(?<=<connections>)(.*)(?=</connections>)");
+    //dzielenie connections uzywajac "#"
 	std::vector<std::string> vec;
-	boost::split(vec, data, boost::is_any_of("#"));
-	//setting class variables using individual values in vector
-	id_=stoi(vec[0]);
-	int connections_size=stoi(vec[1]);
-	//setting connections' id
-	for_each(vec.begin()+2, vec.begin()+connections_size+2, [&] (auto v) {connections_.push_back(stoi(v));});
-	x_ = stoi(*(vec.begin()+connections_size+2));
-	y_ = stoi(* (vec.begin()+connections_size+3));
-	Resources r;
-	r.loadFromString(vec.back());
-	resources_=r;
+    boost::split(vec, connections, boost::is_any_of("#"));
+    for_each(vec.begin(), vec.end()-1, [&] (auto v) {connections_.push_back(stoi(v));});
+    string resources = getRegex(data,"(?<=<resources>)(.*)(?=</resources>)");
+    resources_.loadFromString(resources);
 	}
 
 unsigned int MapPoint::getType(){

@@ -1,25 +1,19 @@
 #include "resources.hpp"
+#include "../get_regex_function.hpp"
 #include <boost/algorithm/string.hpp>
 #include <algorithm>
 #include <iostream>
 
 using namespace std;
 
-std::string Resources::toString(unsigned int player_id){
-	string s= "#" +to_string(ID_)+"#"+to_string(player_id)+"#"+toStringDataOnly();
+string Resources::toString(){
+    string s= "<resources><metal>"+to_string(metal_)+"</metal></resources>";
 	return s; 
 	}
 	
-std::string Resources::toStringDataOnly(){
-	string s =  to_string(metal_)+"R";
-	return s;
-	}
 void Resources::loadFromString (std::string data){
-	//splitting string by "$"
-	std::vector<std::string> vec;
-	boost::split(vec, data, boost::is_any_of("R"));
-	//setting class variables using individual values in vector
-	metal_=stoi(vec[0]);
+    string metal = getRegex(data,"(?<=<metal>)(.*)(?=</metal>)");
+    metal_=stoi(metal);
 	}
 
 unsigned int Resources::getType(){
