@@ -85,6 +85,7 @@ int main(){
 	point2.loadFromString(point.toString());
 	cout<<endl<<point2.toString();*/
 	Player player("player");
+	
 	player.resources_=r;
 	player.ships_.push_back(make_shared<Ship>(12,13));
 	player.ships_.push_back(make_shared<Ship>(32,123));
@@ -92,7 +93,7 @@ int main(){
 	player.id_=3;
 	cout<<player.toString();
 	cout<<endl;
-	cout<<endl;
+	cout<<endl; 
 	Player player2("");
 	player2.loadFromString(player.toString());
 	cout<<player2.toString();

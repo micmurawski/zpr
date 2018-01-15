@@ -16,7 +16,7 @@ string Player::toString(){
     }
     data=data+"</buildings>";
     data=data+resources_.toString();
-
+    data=data+"</player>";
     return data;
 }
 void Player::loadFromString(string data){

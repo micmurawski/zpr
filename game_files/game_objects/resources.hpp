@@ -29,7 +29,7 @@ class Resources : public GameObject{
  	* Funkcja zwracająca reprezentacje obiektu w stringu
  	* \return zwraca string reprezentujący obiekt
  	*/
-	virtual std::string toString(unsigned int player_id = 0);
+    virtual std::string toString();
 	/**
  	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
  	* \return typ

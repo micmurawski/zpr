@@ -19,7 +19,7 @@ public:
  	* \param[in] point_id_ pozycja na mapie budynku, domyślnie 0
 	*
  	*/
-    Building(int point_id_=0): point_id_(0){}
+    Building(int point_id=0): point_id_(point_id){}
 	/**
  	* Funkcja zwracająca położenie w węźle mapy
 	* \return węzeł mapy
