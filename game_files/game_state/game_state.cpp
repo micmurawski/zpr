@@ -122,7 +122,7 @@ void GameState::loadFromString(std::string data){
     string point_str = points.substr(points.find("<map_point>")+11, points.find("</map_point>")-11);
     shared_ptr<MapPoint> point = make_shared<MapPoint>();
     point->loadFromString(point_str);
-    points_.push_back(building);
+    map_points_.push_back(point);
     points = points.substr(points.find("</map_point>")+12);
         }
 
