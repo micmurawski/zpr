@@ -36,5 +36,7 @@ unsigned int Ship::getType(){
 std::shared_ptr<GameObject> Ship::create(){
 	return make_shared<Ship>();
 	}
-
+unsigned int Ship::getHP(){
+	return hp_;
+}
 unsigned int Ship::ID_ = 0;

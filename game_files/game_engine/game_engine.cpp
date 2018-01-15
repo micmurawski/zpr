@@ -1,7 +1,6 @@
 #include "game_engine.hpp"
 #include "game_server.hpp"
 
-
 //funkcje pomocnicze
 std::string getRegex(std::string &request,std::string pattern){
   boost::regex rgxIp(pattern);
@@ -16,6 +15,7 @@ std::string getRegex(std::string &request,std::string pattern){
 GameEngine::GameEngine(std::string _name,std::string _mastername,const std::shared_ptr<tcp::tcp_client>& master){
     addPlayer(_mastername,master);
     std::cout<<"ENGINE CREATED"<<std::endl;
+    //GameEngine::_gameState;
     GameEngine::_name=_name;
     std::cout<<"nazwa serwera: "<<GameServer::get()._name<<std::endl;
     std::cout<<"nazwa: "<<GameEngine::_name<<std::endl;
@@ -61,18 +61,18 @@ void GameEngine::sendCmd(std::string input){
 
 void GameEngine::processInput(std::string input){
     std::cout<<"PRZETWARZANIE KOMENDY... "<<input<<std::endl;
-    std::cout<<"LICZBA GRACZY "<<_players.size()<<std::endl;
+    std::cout<<"LICZBA GRACZY "<<_gameState.players_.size()<<std::endl;
     std::string host = getRegex(input,"(?<=<ip>)(.*)(?=</ip>)");
     std::string port = getRegex(input,"(?<=<port>)(.*)(?=</port>)");
     std::vector<player_ptr>::iterator it;
-    for(player_ptr player:_players) std::cout<<player.get()->name_<<std::endl;
+    for(player_ptr player:_gameState.players_) std::cout<<player.get()->name_<<std::endl;
     std::cout<<"STAN OBECNY "<<_currentState<<std::endl;
     std::string result = "";
         switch (_currentState){
         case WAIT_FOR_PLAYERS:
-            if(_players.size()==2){
+            if(_gameState.players_.size()==2){
                 std::cout<<"Dołączyła odpowiednia ilość graczy"<<std::endl;
-                for(player_ptr player : _players){
+                for(player_ptr player : _gameState.players_){
                     std::cout<<"name "<<player->name_<<std::endl;
                     std::cout<<"host "<<player->_client_ptr->get_host()<<std::endl;
                     std::cout<<"port "<<player->_client_ptr->get_port()<<std::endl;
@@ -80,21 +80,21 @@ void GameEngine::processInput(std::string input){
                 
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Dołączyła odpowiednia ilość graczy. Rozpoczynanie gry...</msg>";
                 //Tutaj następuje inicjalizacjia gry i wysłanie stanu gry do graczy
-                for(player_ptr player : _players){
+                for(player_ptr player : _gameState.players_){
                     GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
                 }
                 _nxtState= WAIT_FOR_MOVE;
             }else{
                 std::cout<<"Oczekiwanie na graczy..."<<std::endl;
-                for(player_ptr player : _players){
+                for(player_ptr player : _gameState.players_){
                     std::cout<<"name "<<player->name_<<std::endl;
                     std::cout<<"host "<<player->_client_ptr->get_host()<<std::endl;
                     std::cout<<"port "<<player->_client_ptr->get_port()<<std::endl;
                 }
                 _nxtState=WAIT_FOR_PLAYERS;
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Oczekiwanie na graczy</msg>";
-                for(player_ptr player : _players){
+                for(player_ptr player : _gameState.players_){
                     GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+result);
                 }
@@ -106,11 +106,11 @@ void GameEngine::processInput(std::string input){
              std::cout<<"GRACZE WYKONUJA RUCH"<<std::endl;
              //sprawdzanie czy gracz wykonał ruch
              
-            it= std::find_if(_players.begin(), _players.end(), 
+            it= std::find_if(_gameState.players_.begin(), _gameState.players_.end(), 
                 [&host,&port](player_ptr const& i){ 
                     return i.get()->_client_ptr->get_host() == host &&
                 i.get()->_client_ptr->get_port()==atoi(port.c_str()); });
-            if(it != _players.end()){
+            if(it != _gameState.players_.end()){
                 if((*it)->_finished){
                     //wykonano ruch
                     GameServer::get().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
@@ -120,9 +120,9 @@ void GameEngine::processInput(std::string input){
                     GameServer::get().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string((*it)->_client_ptr->get_port())+"</port><msg>"+"Dziękuje za wykonanie ruchu oczekujemy na reszte graczy"+"</msg>");
                 }
-                if(all_of(_players.begin(), _players.end(),[](player_ptr const& i){ return i.get()->_finished == true; })){
+                if(all_of(_gameState.players_.begin(), _gameState.players_.end(),[](player_ptr const& i){ return i.get()->_finished == true; })){
                     std::cout<<"Wszyscy gracze wykonali ruch. Następuje obliczanie nowego stanu gry"<<std::endl;
-                    for(player_ptr player : _players){
+                    for(player_ptr player : _gameState.players_){
                         player->_finished=false;
                     GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
@@ -145,10 +145,10 @@ void GameEngine::processInput(std::string input){
 
 //void GameEngine::removePlayer(const std::shared_ptr<tcp::tcp_client>& client){
 //        int i=0;
-//        for (i=0;i<_players.size(); ){
-//                if(_players[i]->_client_ptr->get_host()==client->get_host()){
-//                        _players.erase(_players.begin() + i);
-//                        std::vector<player_ptr>(_players.begin(), _players.end()).swap(_players);
+//        for (i=0;i<_gameState.players_.size(); ){
+//                if(_gameState.players_[i]->_client_ptr->get_host()==client->get_host()){
+//                        _gameState.players_.erase(_gameState.players_.begin() + i);
+//                        std::vector<player_ptr>(_gameState.players_.begin(), _gameState.players_.end()).swap(_gameState.players_);
 //                        
 //                }else{
 //                    i++;
@@ -159,7 +159,7 @@ void GameEngine::processInput(std::string input){
 //    }
 //
 std::vector<player_ptr> GameEngine::getPlayers(){
-        return _players;
+        return _gameState.players_;
     }
 
 int GameEngine::state(){
@@ -168,18 +168,42 @@ int GameEngine::state(){
 
 void GameEngine::addPlayer(std::string name,const std::shared_ptr<tcp::tcp_client>& _client_ptr){
     std::cout<<"addPlayer"<<std::endl;
-     _players.push_back(std::make_shared<Player>(name,_client_ptr));
+    _gameState.players_.push_back(std::make_shared<Player>(name,_client_ptr));
 }
 
 
 int GameEngine::removePlayer(const std::shared_ptr<tcp::tcp_client>& _client_ptr){
-    _players.erase(
+    _gameState.players_.erase(
     std::remove_if(
-    _players.begin(),
-    _players.end(),
+    _gameState.players_.begin(),
+    _gameState.players_.end(),
     [&_client_ptr](const player_ptr& _player){ return _player.get()->_client_ptr.get()==_client_ptr.get(); }
     ),
-    _players.end());
+    _gameState.players_.end());
 
-    return _players.size();
+    return _gameState.players_.size();
+}
+
+
+void GameEngine::execute(){
+    //Iterowanie kolejno po węźle mapy
+    for(map_point_ptr node : _gameState.map_points_){
+        //TODO Wybudowanie budynków
+        //Zadanie obrażeń przez graczy
+        for(unsigned int i =0;i<_gameState.players_.size();i++){
+            for(unsigned int j =0;j<_gameState.players_.size();j++){
+                if(i!=j) _gameState.players_.at(i).get()->modifyHpAtNodeOfAllShips(
+                    node.get()->getId(),
+                    _gameState.players_.at(i).get()->getDamageAtNode(node.get()->getId())
+                    );
+                }
+        }
+        
+        //Usunięcie wszystkich obiektów mających 0 lub mniej hp
+        
+        //Zebranie zasobów
+    }
+    _gameState.removeShips();
+    
+    //Przejście do kolejnego węzła mapy
 }

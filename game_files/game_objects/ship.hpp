@@ -33,6 +33,7 @@ public:
  	* 
  	*/
 	virtual void modifyHP(int hp);
+	unsigned int getHP();
 	/**
  	* Funkcja zwracająca obrażenia statku
  	* \return zwraca obrażenia 

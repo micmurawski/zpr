@@ -8,10 +8,11 @@
 #include "../game_objects/building.hpp"
 #include "../game_objects/resources.hpp"
 #include "../game_objects/map_point.hpp"
+#include <algorithm>
 
 class GameState{
 	public:
-	GameState(unsigned int players_nr=0);
+	GameState();
 	map_point_ptr getPointById(unsigned int id);
 	void accept(game_object_ptr object);
 	std::vector <player_ptr> players_;
@@ -20,6 +21,7 @@ class GameState{
 	MapPoint map_point_prototype_;
 	Building building_prototype_;
 	Resources resources_prototype_;
+	void removeShips();
 	int MapPointOwnerId(unsigned int map_point_id);
     int WhoHasFleet(unsigned int map_point_id);
     int WhoHasBuilding(unsigned int map_point_id);

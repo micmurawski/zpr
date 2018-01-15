@@ -2,10 +2,10 @@
 
 using namespace std;
 
-GameState::GameState(unsigned int players_number){
-	for (int i = 0; i<players_number; i++)
-		players_.push_back(make_unique<Player>());
-	}
+GameState::GameState(){
+	//for (int i = 0; i<players_number; i++)
+	//	players_.push_back(make_unique<Player>());
+}
 
 void GameState::accept(game_object_ptr object){
 	
@@ -86,4 +86,16 @@ bool GameState::isConnection(unsigned int map_point1, unsigned int map_point2){
     }
     return false;
 
+}
+
+void GameState::removeShips(){
+	for(player_ptr p: players_){
+		p.get()->ships_.erase(
+        remove_if(
+        p.get()->ships_.begin(),
+       	p.get()->ships_.end(),
+        [](const shared_ptr<Ship>& ship_p){ return ship_p.get()->getHP()==0; }
+        ),
+        p.get()->ships_.end());
+	}
 }

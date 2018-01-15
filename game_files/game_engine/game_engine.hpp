@@ -3,6 +3,7 @@
 
 #include "../typedefs.hpp"
 #include "../tcp/tcp.hpp"
+#include "../game_state/game_state.hpp"
 #include <string>
 #include <boost/regex.hpp>
 #include <iostream>
@@ -23,7 +24,8 @@
 class GameEngine{
 private:
     // wektor wskaźników na graczy
-    std::vector<player_ptr> _players;
+    GameState _gameState;
+    //std::vector<player_ptr> _players;
     //stany gry
     enum state {WAIT_FOR_PLAYERS=0,WAIT_FOR_MOVE=1,COMPUTE_NEW_STATE=2,GAME_OVER=3};
     //obecny stan gry
@@ -83,6 +85,11 @@ protected:
  	* \return odpowiedź gry
  	*/
     std::string gameInit();
+    /**
+ 	* Funkcja obliczająca nowy stan gry
+ 	* \return ??
+ 	*/
+    void execute();
     std::string playing(std::string _str);
 
 };

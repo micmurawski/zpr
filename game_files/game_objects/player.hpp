@@ -56,9 +56,30 @@ class Player{
 			std::cout<<"_name: "<<name_<<std::endl;
 			std::cout<<"_host: "<<host_<<std::endl;
 		}
-	
+		int getDamageAtNode(int i){
+			int sum = 0;
+			for(std::shared_ptr<Ship> ship_ptr : ships_){
+				if(ship_ptr.get()->getMapPointId()==i){
+					sum+=ship_ptr.get()->getDamage();
+				}
+			}
+			return sum;
+		}
+		void modifyHpAtNodeOfAllShips(int i,int dmg){
+			int N=0;
+			for(std::shared_ptr<Ship> ship_ptr : ships_){
+				if(ship_ptr.get()->getMapPointId()==i){
+					N++;
+				}
+			}
 
-	
+			for(std::shared_ptr<Ship> ship_ptr : ships_){
+				if(ship_ptr.get()->getMapPointId()==i){
+					ship_ptr.get()->modifyHP(-dmg/N);
+				}
+			}
+
+		}
 
 };
 
