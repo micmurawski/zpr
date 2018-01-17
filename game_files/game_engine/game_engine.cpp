@@ -82,7 +82,7 @@ void GameEngine::processInput(std::string input){
                 //Tutaj następuje inicjalizacjia gry i wysłanie stanu gry do graczy
                 for(player_ptr player : _gameState.players_){
                     GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
-                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
+                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port><start>1<\start><cmd>STAN GRY</cmd>");
                 }
                 _nxtState= WAIT_FOR_MOVE;
             }else{

@@ -24,10 +24,9 @@ int main(void) {
   }
 #endif /* _WIN32 */
 
-  GameClient gameClient;
-  gameClient._name="Player1";
-  gameClient.connect("127.0.0.1",3002);
-  gameClient.sendCmd("<create>gra1</create>");
+  GameClient::get()._name="Player1";
+  GameClient::get().connect("127.0.0.1",3002);
+  GameClient::get().sendCmd("<create>gra1</create>");
   signal(SIGINT, &signint_handler);
   std::mutex mtx;
   std::unique_lock<std::mutex> lock(mtx);

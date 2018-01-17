@@ -8,6 +8,7 @@
 #include <mutex>
 #include <math.h>
 #include <signal.h>
+#include <queue>
 #ifdef _WIN32
 #include <Winsock2.h>
 #endif /* _WIN32 */
@@ -25,10 +26,13 @@ class GameClient{
 public:
 static tcp::tcp_client _client;
 static std::string _name;
+static std::queue<std::string> _queue;
+static std::mutex _m;
+bool getState(){return wait_;};
 /**
-* Destruktor klasy
+* Singleton
 */
-~GameClient();
+static GameClient & get();
 /**
 * funkcja realizująca odczyt danych z protokołu tcp
 *
@@ -58,6 +62,17 @@ static void sendCmd(std::string cmd);
 * 
 */
 static void join();
+private:
+void processQueue();
+std::thread *_thread;
+bool wait_=true;
+bool _is_running=true;
+GameClient();
+/**
+* Destruktor klasy
+*/
+~GameClient();
+
 
 };
 
