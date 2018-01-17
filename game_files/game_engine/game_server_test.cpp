@@ -12,7 +12,7 @@ void signint_handler(int) {
 }
 
 int main(void) {
-GameServer::get().start("127.0.0.1",3002);
+GameServer::getInstance().start("127.0.0.1",3002);
 
   signal(SIGINT, &signint_handler);
   std::mutex mtx;

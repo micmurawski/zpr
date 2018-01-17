@@ -23,6 +23,7 @@
  */
 class GameServer {
 private:
+    static std::mutex m_;
     static tcp::tcp_server _server;
     static long unsigned int _buffer_length;
     static std::queue<std::string> _queue_requests;
@@ -33,6 +34,8 @@ private:
     void process_queue_response();
     ///void kickPlayer(const std::shared_ptr<tcp::tcp_client>& client);
     static bool _is_running;
+    std::shared_ptr<GameEngine> findGameEngine(std::string name);
+    std::shared_ptr<tcp::tcp_client> findTCPClient(std::string host,std::string port);
     void run();
     /**
  	* Konstruktor klasy
@@ -48,7 +51,7 @@ public:
     /**
  	* Funkcja zwracająca statyczny obiekt klasy
  	*/
-    static GameServer & get();
+    static GameServer & getInstance();
     /**
  	* Funkcja umieszczająca w kolejce wynik do wysłania
     * \param[in] result 
@@ -79,6 +82,7 @@ public:
     * \return zwraca wektor wskaźników na graczy
  	*/
     std::vector<player_ptr>  getPlayers();
+    std::string getLobby();
 
 };
 

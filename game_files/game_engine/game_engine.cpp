@@ -15,9 +15,8 @@ std::string getRegex(std::string &request,std::string pattern){
 GameEngine::GameEngine(std::string _name,std::string _mastername,const std::shared_ptr<tcp::tcp_client>& master){
     addPlayer(_mastername,master);
     std::cout<<"ENGINE CREATED"<<std::endl;
-    //GameEngine::_gameState;
     GameEngine::_name=_name;
-    std::cout<<"nazwa serwera: "<<GameServer::get()._name<<std::endl;
+    std::cout<<"nazwa serwera: "<<GameServer::getInstance()._name<<std::endl;
     std::cout<<"nazwa: "<<GameEngine::_name<<std::endl;
     _thread = new std::thread(&GameEngine::run, this);
 }
@@ -66,7 +65,7 @@ void GameEngine::processInput(std::string input){
     std::string port = getRegex(input,"(?<=<port>)(.*)(?=</port>)");
     std::vector<player_ptr>::iterator it;
     for(player_ptr player:_gameState.players_) std::cout<<player.get()->name_<<std::endl;
-    std::cout<<"STAN OBECNY "<<_currentState<<std::endl;
+    std::cout<<"STAN OBECNY = "<<_currentState<<std::endl;
     std::string result = "";
         switch (_currentState){
         case WAIT_FOR_PLAYERS:
@@ -81,8 +80,8 @@ void GameEngine::processInput(std::string input){
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Dołączyła odpowiednia ilość graczy. Rozpoczynanie gry...</msg>";
                 //Tutaj następuje inicjalizacjia gry i wysłanie stanu gry do graczy
                 for(player_ptr player : _gameState.players_){
-                    GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
-                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
+                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd><start>1</start></cmd>");
                 }
                 _nxtState= WAIT_FOR_MOVE;
             }else{
@@ -95,7 +94,7 @@ void GameEngine::processInput(std::string input){
                 _nxtState=WAIT_FOR_PLAYERS;
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Oczekiwanie na graczy</msg>";
                 for(player_ptr player : _gameState.players_){
-                    GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+result);
                 }
                 
@@ -113,18 +112,18 @@ void GameEngine::processInput(std::string input){
             if(it != _gameState.players_.end()){
                 if((*it)->_finished){
                     //wykonano ruch
-                    GameServer::get().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string((*it)->_client_ptr->get_port())+"</port><msg>"+"Wykonano rych"+"</msg>");
                 }else{
                     (*it)->_finished=true;
-                    GameServer::get().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string((*it)->_client_ptr->get_port())+"</port><msg>"+"Dziękuje za wykonanie ruchu oczekujemy na reszte graczy"+"</msg>");
                 }
                 if(all_of(_gameState.players_.begin(), _gameState.players_.end(),[](player_ptr const& i){ return i.get()->_finished == true; })){
                     std::cout<<"Wszyscy gracze wykonali ruch. Następuje obliczanie nowego stanu gry"<<std::endl;
                     for(player_ptr player : _gameState.players_){
                         player->_finished=false;
-                    GameServer::get().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
                     }
                 }
