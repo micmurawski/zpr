@@ -1,4 +1,5 @@
 #include "game_state.hpp"
+#include "../get_regex_function.hpp"
 
 using namespace std;
 
@@ -7,17 +8,6 @@ GameState::GameState(){
 	//	players_.push_back(make_unique<Player>());
 }
 
-//void GameState::accept(game_object_ptr object){
-	
-//	if(object->getType() == map_point_prototype_.getType())
-//		map_points_.push_back(dynamic_pointer_cast<MapPoint>(object));
-//	else if(object->getType() == ship_prototype_.getType())
-//		players_[object->player_id_]->ships_.push_back(dynamic_pointer_cast<Ship> (object));
-//	else if(object->getType() == building_prototype_.getType())
-//		players_[object->player_id_]->buildings_.push_back(dynamic_pointer_cast<Building> (object));
-//	else if(object->getType() == resources_prototype_.getType())
-//		players_[object->player_id_]->resources_ = *(dynamic_pointer_cast<Resources> (object));
-//	}
 
 map_point_ptr GameState::getPointById(unsigned int id){
     //std::cerr<<"\n" <<id;
@@ -98,4 +88,43 @@ void GameState::removeShips(){
         ),
         p.get()->ships_.end());
 	}
+}
+
+std::string GameState::toString(){
+    string data = "<game_state><players>";
+    for(auto player : players_){
+    data=data+player->toString();
+    }
+    data=data+"</players>";
+    data=data+"<map_points>";
+    for(auto point : map_points_){
+    data=data+point->toString();
+    }
+    data =data+"</map_points></game_state>";
+    return data;
+}
+void GameState::loadFromString(std::string data){
+    players_.clear();
+    map_points_.clear();
+    //wczytywanie graczy
+    string players = getRegex(data,"(?<=<players>)(.*)(?=</players>)");
+    while(players.size()>0){
+    string player_str = players.substr(players.find("<player>")+8, players.find("</player>")-8);
+    shared_ptr<Player> player = make_shared<Player>("");
+    player->loadFromString(player_str);
+    players_.push_back(player);
+    players = players.substr(players.find("</player>")+9);
+        }
+
+    //wczytywanie punktow
+    string points = getRegex(data,"(?<=<map_points>)(.*)(?=</map_points>)");
+    while(points.size()>0){
+    string point_str = points.substr(points.find("<map_point>")+11, points.find("</map_point>")-11);
+    shared_ptr<MapPoint> point = make_shared<MapPoint>();
+    point->loadFromString(point_str);
+    map_points_.push_back(point);
+    points = points.substr(points.find("</map_point>")+12);
+        }
+
+
 }

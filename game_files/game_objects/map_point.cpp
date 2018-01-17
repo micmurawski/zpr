@@ -14,6 +14,7 @@ std::string MapPoint::toString(unsigned int player_id){
 	return s; 
 	}
 void MapPoint::loadFromString (std::string data){
+    connections_.clear();
     string x = getRegex(data,"(?<=<x>)(.*)(?=</x>)");
     x_ = stoi(x);
     string y = getRegex(data,"(?<=<y>)(.*)(?=</y>)");

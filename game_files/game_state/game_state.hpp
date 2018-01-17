@@ -10,18 +10,16 @@
 #include "../game_objects/map_point.hpp"
 #include <algorithm>
 
+using namespace std;
+
 class GameState{
 	public:
 	GameState();
-	map_point_ptr getPointById(unsigned int id);
-    //void accept(game_object_ptr object);
-    void loadFromString(std::string data){};
-	std::vector <player_ptr> players_;
+    map_point_ptr getPointById(unsigned int id);
+    std::string toString();
+    void loadFromString(std::string data);
+    std::vector <shared_ptr<Player>> players_;
     std::vector <map_point_ptr> map_points_;
-	Ship ship_prototype_;
-	MapPoint map_point_prototype_;
-	Building building_prototype_;
-	Resources resources_prototype_;
 	void removeShips();
 	int MapPointOwnerId(unsigned int map_point_id);
     int WhoHasFleet(unsigned int map_point_id);

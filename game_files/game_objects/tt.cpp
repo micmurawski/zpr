@@ -84,21 +84,36 @@ int main(){
 	MapPoint point2;
 	point2.loadFromString(point.toString());
 	cout<<endl<<point2.toString();*/
-	Player player("player");
+	shared_ptr<Player> player = make_shared<Player>("player");
 	
-	player.resources_=r;
-	player.ships_.push_back(make_shared<Ship>(12,13));
-	player.ships_.push_back(make_shared<Ship>(32,123));
-	player.buildings_.push_back(make_shared<Building>(12));
-	player.id_=3;
-	cout<<player.toString();
+	player->resources_=r;
+	player->ships_.push_back(make_shared<Ship>(12,13));
+	player->ships_.push_back(make_shared<Ship>(32,123));
+	player->buildings_.push_back(make_shared<Building>(12));
+	player->id_=3;
+	shared_ptr<Player> player2 = make_shared<Player>("player2");
+	Resources r2(300);
+	player2->resources_=r2;
+	player2->ships_.push_back(make_shared<Ship>(1,3));
+	player2->ships_.push_back(make_shared<Ship>(322,1213));
+	player2->buildings_.push_back(make_shared<Building>(12));
+	player2->buildings_.push_back(make_shared<Building>(124));
+	player2->buildings_.push_back(make_shared<Building>(112));
+	player2->id_=2;
+	GameState game_state;
+	game_state.players_.push_back(player);
+	game_state.players_.push_back(player2);
 	cout<<endl;
-	cout<<endl; 
-	Player player2("");
-	player2.loadFromString(player.toString());
-	cout<<player2.toString();
+	//cout<<endl;
+	//cout<<game_state.toString(); 
+	GameState game_state2;
+	game_state2.loadFromString(game_state.toString());
+	//cout<<game_state2.toString();
+	//player2.loadFromString(player.toString());
+	//cout<<player2.toString();
 	
-	
+	if((game_state.toString()).compare(game_state2.toString())){
+		}else cout<<"tak";
 	
 
 
