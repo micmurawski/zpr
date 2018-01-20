@@ -25,9 +25,9 @@ int main(void) {
 #endif /* _WIN32 */
 
   
-  GameClient::get()._name="Player2";
-  GameClient::get().connect("127.0.0.1",3002);
-  GameClient::get().sendCmd("<join>gra1</join>");
+  GameClient::getInstance()._name="Player2";
+  GameClient::getInstance().connect("127.0.0.1",3002);
+  GameClient::getInstance().sendCmd("<join>gra1</join>");
   signal(SIGINT, &signint_handler);
   std::mutex mtx;
   std::unique_lock<std::mutex> lock(mtx);

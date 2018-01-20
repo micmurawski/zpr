@@ -32,7 +32,7 @@ bool getState(){return wait_;};
 /**
 * Singleton
 */
-static GameClient & get();
+static GameClient & getInstance();
 /**
 * funkcja realizująca odczyt danych z protokołu tcp
 *

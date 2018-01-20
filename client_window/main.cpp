@@ -15,19 +15,19 @@ int main(int argc, char *argv[])
     }
     std::string cmd(argv[1]);
     if (cmd=="-c"){
-        GameClient::get()._name=argv[4];
-        GameClient::get().connect(std::string(argv[2]),atoi(argv[3]));
-        GameClient::get().sendCmd("<create>"+std::string(argv[5])+"</create>");
+        GameClient::getInstance()._name=argv[4];
+        GameClient::getInstance().connect(std::string(argv[2]),atoi(argv[3]));
+        GameClient::getInstance().sendCmd("<create>"+std::string(argv[5])+"</create>");
         std::cout<<"Oczekiwanie..."<<std::endl;
-        while(GameClient::get().getState()); //Oczekiwanie na inicjalizacje gry
+        while(GameClient::getInstance().getState()); //Oczekiwanie na inicjalizacje gry
     }else if(cmd=="-j"){
-        GameClient::get()._name=argv[4];
-        GameClient::get().connect(std::string(argv[2]),atoi(argv[3]));
-        GameClient::get().sendCmd("<join>"+std::string(argv[5])+"</join>");
-        while(GameClient::get().getState()); //Oczekiwanie na inicjalizacje gry
+        GameClient::getInstance()._name=argv[4];
+        GameClient::getInstance().connect(std::string(argv[2]),atoi(argv[3]));
+        GameClient::getInstance().sendCmd("<join>"+std::string(argv[5])+"</join>");
+        while(GameClient::getInstance().getState()); //Oczekiwanie na inicjalizacje gry
     }else if(cmd=="-l"){
-        GameClient::get()._name=argv[4];
-        GameClient::get().connect(std::string(argv[2]),atoi(argv[3]));
+        GameClient::getInstance()._name=argv[4];
+        GameClient::getInstance().connect(std::string(argv[2]),atoi(argv[3]));
         getchar();
         return 0;
     }else{

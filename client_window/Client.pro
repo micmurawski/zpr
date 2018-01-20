@@ -31,6 +31,7 @@ SOURCES += \
     leftbar.cpp \
     rightbar.cpp \
     bottombar.cpp \
+    ../game_files/game_engine/game_client.cpp \
     ../game_files/game_objects/game_object_factory.cpp \
     ../game_files/game_objects/map_point.cpp \
     ../game_files/game_objects/resources.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     leftbar.hpp \
     rightbar.hpp \
     bottombar.hpp \
+    ../game_files/game_engine/game_client.hpp \
     ../game_files/game_objects/building.hpp \
     ../game_files/game_objects/game_object.hpp \
     ../game_files/game_objects/game_object_factory.hpp \
@@ -70,6 +72,7 @@ FORMS += \
         mainwindow.ui
 LIBS += -L -libgame.a
 LIBS += -L -lboost_regex
+LIBS += -L$$PWD/../game_files/libs/ -ltcp
 CONFIG +=c++17
 QMAKE_CXXFLAGS += -std=c++17
 

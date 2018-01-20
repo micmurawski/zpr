@@ -51,7 +51,7 @@ void GameClient::read(tcp::tcp_client& client, const tcp::tcp_client::read_resul
 }
 
 
-GameClient & GameClient::get(){
+GameClient & GameClient::getInstance(){
         std::lock_guard<std::mutex> lock(m_);
         static GameClient gameClient;
         return gameClient;
