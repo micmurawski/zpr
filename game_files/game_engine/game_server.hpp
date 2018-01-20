@@ -52,6 +52,7 @@ public:
  	* Funkcja zwracająca statyczny obiekt klasy
  	*/
     static GameServer & getInstance();
+    static void pushToQueueResponse(std::string str);
     /**
  	* Funkcja umieszczająca w kolejce wynik do wysłania
     * \param[in] result 

@@ -5,7 +5,7 @@
 //Deklaracja pól satycznych
 tcp::tcp_server GameServer::_server;
 std::vector<std::shared_ptr<tcp::tcp_client>> GameServer::_clients_ptr;
-long unsigned int GameServer::_buffer_length=3;
+long unsigned int GameServer::_buffer_length=5;
 std::queue<std::string> GameServer::_queue_requests;
 std::queue<std::string> GameServer::_queue_responses;
 std::vector<std::shared_ptr<GameEngine>> GameServer::_engines;
@@ -67,6 +67,7 @@ GameServer::~GameServer(){
 }
 
 GameServer & GameServer::getInstance(){
+        lock_guard<mutex> lock(m_);
         static GameServer gameServer;
         return gameServer;
 }
@@ -92,7 +93,7 @@ void GameServer::data_collector(const std::shared_ptr<tcp::tcp_client>& client,c
       str = "<ip>"+client->get_host()+"</ip><port>"+std::to_string(client->get_port())+"</port>"+str;
       GameServer::_queue_requests.push(str);
       //przygotowanie buffora na przyjecie kolejnej dlugosci
-      GameServer::_buffer_length = 3;
+      GameServer::_buffer_length = 5;
     }
     client->async_read({_buffer_length, std::bind(&data_collector, client, std::placeholders::_1)});
   }
@@ -147,12 +148,12 @@ if(join!=""){
   if(engine_ptr==nullptr){
     std::cout<<"engine nullptr!"<<std::endl;
     //gra nie istnieje byebye
-    _queue_responses.push("<ip>"+host+"</ip><port>"+port+
+    pushToQueueResponse("<ip>"+host+"</ip><port>"+port+
     "</port><msg>Gra o podanej nazwie istnieje. Wybierz innną nazwę</msg>");
   }else if(engine_ptr!=nullptr){
     std::cout<<"DODAWANIE"<<std::endl;
     //gra istnieje dołączanie gracza
-      _queue_responses.push("<ip>"+host+"</ip><port>"+port+"</port><msg>Dołączonono do gry</msg>");
+      pushToQueueResponse("<ip>"+host+"</ip><port>"+port+"</port><msg>Dołączonono do gry</msg>");
       engine_ptr.get()->addPlayer(name,client_ptr);
       engine_ptr.get()->_queue.push("HANDSHAKE");
    // 
@@ -166,7 +167,7 @@ if(create!=""){
   if(engine_ptr!=nullptr){
     //gra istnieje byebye
     std::cout<<"Gra nie istnieje"<<std::endl;
-    _queue_responses.push("<ip>"+host+"</ip><port>"+port+"</port><msg>Gra o podanej nazwie nie istnieje. Wybierz innną nazwę</msg>"); 
+    pushToQueueResponse("<ip>"+host+"</ip><port>"+port+"</port><msg>Gra o podanej nazwie nie istnieje. Wybierz innną nazwę</msg>"); 
   }else{
     std::cout<<"tworzenie nowje!"<<std::endl;
     //Utworzenie nnowej gry
@@ -174,12 +175,17 @@ if(create!=""){
     std::shared_ptr<GameEngine> engine_ptr = findGameEngine(create);
     _engines.push_back(std::make_shared<GameEngine>(create,name,client_ptr));
     _engines.back()->_queue.push("HANDSHAKE");
-    _queue_responses.push("<ip>"+host+"</ip><port>"+port+"</port><msg>Utworzono grę</msg>");
+    pushToQueueResponse("<ip>"+host+"</ip><port>"+port+"</port><msg>Utworzono grę</msg>");
     }
 }
 
    }
    }
+}
+void GameServer::pushToQueueResponse(std::string str){
+  int digits = std::to_string(str.size()).size();
+  std::string tmp = std::string( 5-digits, '0').append(std::to_string(str.size()));
+  _queue_responses.push(tmp+str);
 }
 
 void GameServer::process_queue_response(){
@@ -206,14 +212,11 @@ void GameServer::process_queue_response(){
   }
 }
 
-void GameServer::queue_result(std::string result){
-  _queue_responses.push(result);
-}
 
 std::string GameServer::getLobby(){
-  std::string result="NAZWA GRY\n";
-  if(_engines.size()>0)for(std::shared_ptr<GameEngine> engine_ptr : _engines) result+=engine_ptr.get()->_name+"\n";
-  return result;
+  //std::string result="NAZWA GRY\n";
+  //if(_engines.size()>0)for(std::shared_ptr<GameEngine> engine_ptr : _engines) result+=engine_ptr.get()->_name+"\n";
+  return "";
 }
 
 

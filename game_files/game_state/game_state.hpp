@@ -18,6 +18,7 @@ class GameState{
     map_point_ptr getPointById(unsigned int id);
     std::string toString();
     void loadFromString(std::string data);
+    void init();
     std::vector <shared_ptr<Player>> players_;
     std::vector <map_point_ptr> map_points_;
 	void removeShips();

@@ -10,14 +10,29 @@
 #include <time.h>
 #include <stdio.h>
 #include <QDebug>
+#include "../game_files/game_engine/game_client.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
-    //wait_for_click_=false;
+
+    wait_for_click_=false;
     ////***********TEST*****************
-    //player_id_=1;
-    //game_state_= std::make_shared<GameState>(4);
+    player_id_=1;
+    GameClient::getInstance();
+    std::cout<<"XD";
+    for(player_ptr ptr :GameClient::getInstance().gameState_ptr_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
+    game_state_=GameClient::getInstance().gameState_ptr_;
+    for(player_ptr ptr :game_state_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
+    //std::cout<<"skopiowano"<<std::endl;
+    //std::vector<player_ptr> players;
+    //players.push_back(std::make_shared<Player>(std::string("name")));
+    //players.push_back(std::make_shared<Player>(std::string("name2")));
+    //players.at(0).get()->id_=1;
+    //players.at(1).get()->id_=2;
+    //game_state_= std::make_shared<GameState>();
+    //game_state_.get()->players_=players;
+    //game_state_.get()->init();
     //Resources r(500);
     //std::vector<unsigned int> vec;
 //

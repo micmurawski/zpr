@@ -42,6 +42,7 @@
         "string": "cpp",
         "queue": "cpp",
         "future": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "slist": "cpp"
     }
 }

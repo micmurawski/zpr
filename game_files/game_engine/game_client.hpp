@@ -1,6 +1,7 @@
 #ifndef GAME_CLIENT_HPP
 #define GAME_CLIENT_HPP
 #include "../tcp/tcp.hpp"
+#include "../game_state/game_state.hpp"
 #include <string>
 #include <condition_variable>
 #include <iostream>
@@ -28,6 +29,9 @@ static tcp::tcp_client _client;
 static std::string _name;
 static std::queue<std::string> _queue;
 static std::mutex _m;
+static unsigned int _buffer_length;
+GameState gameState_;
+std::shared_ptr<GameState> gameState_ptr_;
 bool getState(){return wait_;};
 /**
 * Singleton

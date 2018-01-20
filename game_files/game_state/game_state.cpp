@@ -1,14 +1,76 @@
 #include "game_state.hpp"
+#include "map_generator.hpp"
 #include "../get_regex_function.hpp"
+#include <random>
+#include <cmath>
 
 using namespace std;
 
 GameState::GameState(){
-	//for (int i = 0; i<players_number; i++)
-	//	players_.push_back(make_unique<Player>());
+    //Generacja mapy
+	//std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    //std::mt19937 gen(rd());
+    //std::uniform_real_distribution<> dis(0.0, 1.0);
+    //std::uniform_real_distribution<> dis2(0, 1000);
+    //std::uniform_real_distribution<> dis3(0, 6.28);
+    ////std::vector<map_point_ptr> map_points_;
+    //unsigned int N = 20;
+    //unsigned int m[N][N];
+    //for(int i=0;i<N;i++){
+    //    for(int j=i;j<N;j++){
+    //        if(dis(gen)>=0.5){
+    //            m[i][j]=1;
+    //            m[i][j]=m[j][i];
+    //        }else{
+    //            m[i][j]=0;
+    //            m[i][j]=m[j][i];
+    //        }
+    //    }
+    //}
+    //Resources r(500);
+    //for(int i=0;i<N;i++){
+    //    std::vector<unsigned int> conn;
+    //    for(int j=0;j<N-1;j++) conn.push_back(m[i][j+1]);
+    //    float a = dis3(gen);
+    //    float x = 20*i*((cos(a)-sin(a)))+500;
+    //    float y = 20*i*((cos(a)+sin(a)))+500;
+    //    map_points_.push_back(std::make_shared<MapPoint>(
+    //    i,
+    //    conn,
+    //    static_cast<int>(x),
+    //    static_cast<int>(y),
+    //    r
+    //    ));
+    //    //push_back(std::make_shared<Player>(name,_client_ptr));
+    //}
+    //Generacja graczy
+    MapGenerator generator(1,1);
+    map_points_=generator.generate();
+
+        
+        
+        //dodawanie zasobów
 }
 
-
+void GameState::init(){
+    for(int i=0;i<players_.size();i++)players_.at(i).get()->id_=i;
+    std::vector<int> p;
+    std::random_device rd;
+    int x;
+    for(int i=0;i<players_.size();i++){
+        players_.at(i).get()->id_=i;
+        do{
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<> dis(0, map_points_.size());
+        x=static_cast<int>(dis(gen));
+        std::cout<<x<<std::endl;
+        }while((std::find(p.begin(), p.end(), x) != p.end()));
+        p.push_back(x);
+        // dodawanie budynku i statku w innym punkcie
+        players_.at(i).get()->ships_.push_back(std::make_shared<Ship>(i+1,p.at(i)));
+        players_.at(i).get()->buildings_.push_back(std::make_shared<Building>(p.at(i)));
+    }
+}
 map_point_ptr GameState::getPointById(unsigned int id){
     //std::cerr<<"\n" <<id;
     for (auto p : map_points_){

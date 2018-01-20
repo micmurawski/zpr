@@ -38,6 +38,7 @@ SOURCES += \
     ../game_files/game_objects/ship.cpp \
     ../game_files/game_order/game_order.cpp \
     ../game_files/game_state/game_state.cpp \
+    ../game_files/game_state/map_generator.cpp \
     playerscolors.cpp \
     planetdetails.cpp \
     ../game_files/game_objects/building.cpp \
@@ -62,6 +63,7 @@ HEADERS += \
     ../game_files/game_order/game_order.hpp \
     ../game_files/game_order/order_decoder.hpp \
     ../game_files/game_state/game_state.hpp \
+    ../game_files/game_state/map_generator.hpp \
     ../game_files/typedefs.hpp \
     playerscolors.hpp \
     planetdetails.hpp \

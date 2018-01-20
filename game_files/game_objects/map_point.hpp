@@ -36,11 +36,14 @@ public:
  	*/
 	MapPoint(int id, const std::vector<unsigned int>& connections, int x, int y, Resources resources): 
 	id_(id), connections_(connections), x_(x), y_(y) {resources_ = resources;}
+	MapPoint(int id,  int x, int y, Resources resources): 
+	id_(id),  x_(x), y_(y) {resources_ = resources;}	
 	unsigned int getId() const {return id_;} 
 	unsigned int getX() const {return x_;} 
 	unsigned int getY() const {return y_;} 
     int getMetal() const {return resources_.metal_;}
 	const std::vector<unsigned int>& getConnections() {return connections_;}
+    void addConnection(unsigned int id){connections_.push_back(id);};
 	/**
  	* Funkcja zwracająca reprezentacje obiektu w stringu
  	* \return zwraca string reprezentujący obiekt

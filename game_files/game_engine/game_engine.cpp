@@ -79,9 +79,12 @@ void GameEngine::processInput(std::string input){
                 
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Dołączyła odpowiednia ilość graczy. Rozpoczynanie gry...</msg>";
                 //Tutaj następuje inicjalizacjia gry i wysłanie stanu gry do graczy
+                _gameState.init();
                 for(player_ptr player : _gameState.players_){
-                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
-                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd><start>1</start></cmd>");
+                    std::string data = "<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd><start>1</start>"+
+                    _gameState.toString()+"</cmd>";
+                    GameServer::getInstance().pushToQueueResponse(data);
                 }
                 _nxtState= WAIT_FOR_MOVE;
             }else{
@@ -94,7 +97,7 @@ void GameEngine::processInput(std::string input){
                 _nxtState=WAIT_FOR_PLAYERS;
                 result="<state>WAIT_FOR_PLAYERS</state><msg>Oczekiwanie na graczy</msg>";
                 for(player_ptr player : _gameState.players_){
-                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().pushToQueueResponse("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+result);
                 }
                 
@@ -112,18 +115,18 @@ void GameEngine::processInput(std::string input){
             if(it != _gameState.players_.end()){
                 if((*it)->_finished){
                     //wykonano ruch
-                    GameServer::getInstance().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().pushToQueueResponse("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string((*it)->_client_ptr->get_port())+"</port><msg>"+"Wykonano rych"+"</msg>");
                 }else{
                     (*it)->_finished=true;
-                    GameServer::getInstance().queue_result("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().pushToQueueResponse("<ip>"+(*it)->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string((*it)->_client_ptr->get_port())+"</port><msg>"+"Dziękuje za wykonanie ruchu oczekujemy na reszte graczy"+"</msg>");
                 }
                 if(all_of(_gameState.players_.begin(), _gameState.players_.end(),[](player_ptr const& i){ return i.get()->_finished == true; })){
                     std::cout<<"Wszyscy gracze wykonali ruch. Następuje obliczanie nowego stanu gry"<<std::endl;
                     for(player_ptr player : _gameState.players_){
                         player->_finished=false;
-                    GameServer::getInstance().queue_result("<ip>"+player->_client_ptr->get_host()+"</ip>"+
+                    GameServer::getInstance().pushToQueueResponse("<ip>"+player->_client_ptr->get_host()+"</ip>"+
                     "<port>"+std::to_string(player->_client_ptr->get_port())+"</port>"+"<cmd>STAN GRY</cmd>");
                     }
                 }
