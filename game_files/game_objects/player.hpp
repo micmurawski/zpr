@@ -38,8 +38,8 @@ class Player: public GameObject{
 		/**
  		* Konstruktor klasy
  		*
- 		* \param[in] name Nazwa gracza
- 		* \param[in] client_ptr wskaźnik na klienta protokołu tcp.
+ 		* \param name Nazwa gracza
+ 		* \param client_ptr wskaźnik na klienta protokołu tcp.
  		* 
  		*/
 		Player(std::string name,const std::shared_ptr<tcp::tcp_client>& client_ptr=nullptr){
@@ -50,7 +50,7 @@ class Player: public GameObject{
 		/**
  		* Funkcja obliczająca sumę obrażeń w punkcie mapy podczas bitwy
  		*
- 		* \param[in] i id punktu mapy
+ 		* \param i id punktu mapy
  		* 
  		*/
 		int getDamageAtNode(int i){
@@ -65,8 +65,8 @@ class Player: public GameObject{
 				/**
  		* Funkcja zadająca obrażenia statkom w punkcie
  		*
- 		* \param[in] i id punktu mapy
-  		* \param[in] dmg obrażenia
+ 		* \param i id punktu mapy
+  		* \param dmg obrażenia
  		* 
  		*/
 		void modifyHpAtNodeOfAllShips(int i,int dmg){

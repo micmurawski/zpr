@@ -17,7 +17,7 @@ class Resources : public GameObject{
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] metal ilośc przechowywanych zasobów
+ 	* \param metal ilośc przechowywanych zasobów
  	*/
 	Resources(int metal=0) : metal_(metal){};
 	unsigned int metal_;
@@ -29,7 +29,7 @@ class Resources : public GameObject{
     virtual std::string toString();
 	/**
  	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
- 	* \param[in] reprezentacja obiektu w std::string
+ 	* \param reprezentacja obiektu w std::string
  	*/
 	virtual void loadFromString (std::string data);
 

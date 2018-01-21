@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
         std::cout<<"-j #host #port #player_name #game_name - dołącza do gry"<<std::endl;
 
         return 1;
-    }
+    }else{
+
     std::string cmd(argv[1]);
     if (cmd=="-c"){
         GameClient::getInstance()._name=argv[4];
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
     }else{
         return 1;
     }
-
+    }
     std::cout<<"Uruchomienie UI"<<std::endl;
     QApplication a(argc, argv);
     MainWindow w;

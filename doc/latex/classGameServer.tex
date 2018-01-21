@@ -1,0 +1,147 @@
+\hypertarget{classGameServer}{}\section{Game\+Server Class Reference}
+\label{classGameServer}\index{Game\+Server@{Game\+Server}}
+
+
+{\ttfamily \#include $<$game\+\_\+server.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGameServer_a1059a53ce3bd5fe9fad31a16c6310104}{queue\+\_\+result} (std\+::string result)
+\item 
+void \hyperlink{classGameServer_a8c6534df2bb4196b7bdcd8c4f15ce8fc}{start} (const std\+::string \&host, std\+::uint32\+\_\+t port)
+\item 
+std\+::vector$<$ player\+\_\+ptr $>$ \hyperlink{classGameServer_a24b8a605a18de2c5a1e183e505cd7684}{get\+Players} ()
+\item 
+std\+::string \hyperlink{classGameServer_ac8dfcb08211ddfbf28c846c04892d0c4}{get\+Lobby} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classGameServer}{Game\+Server} \& \hyperlink{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}{get\+Instance} ()
+\item 
+static void \hyperlink{classGameServer_ac19c80082a7c4c27db9615bbb9d7ecd0}{push\+To\+Queue\+Response} (std\+::string str)
+\item 
+static void \hyperlink{classGameServer_ac54878b70dc19acf32ff914708b409f1}{data\+\_\+collector} (const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client, const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&res)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries \+\_\+name} =\char`\"{}server\char`\"{}\hypertarget{classGameServer_a48c6dc5a829d372970dbe98b0dc99d16}{}\label{classGameServer_a48c6dc5a829d372970dbe98b0dc99d16}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classGameEngine}{Game\+Engine} $>$ $>$ \hyperlink{classGameServer_a39f72d0082d78d1327b8c34b19c4aa66}{\+\_\+engines}
+\item 
+static std\+::vector$<$ std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ $>$ \hyperlink{classGameServer_abaa2e87ca0e4112c317a5d74d7f68be2}{\+\_\+clients\+\_\+ptr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classGameServer}{Game\+Server}, która realizuje serwer gry \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Michał Murawski, Marcin Brzykcy 
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\index{Game\+Server@{Game\+Server}!data\+\_\+collector@{data\+\_\+collector}}
+\index{data\+\_\+collector@{data\+\_\+collector}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{data\+\_\+collector(const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client, const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&res)}{data_collector(const std::shared_ptr< tcp::tcp_client > &client, const tcp::tcp_client::read_result &res)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Server\+::data\+\_\+collector (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&}]{client, }
+\item[{const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&}]{res}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_ac54878b70dc19acf32ff914708b409f1}{}\label{classGameServer_ac54878b70dc19acf32ff914708b409f1}
+Funkcja agregująca dane w serwerze 
+\begin{DoxyParams}{Parameters}
+{\em client} & referencja na wskaźnik klienta wysyłającego dane do serwera \\
+\hline
+{\em client} & referencja na wskaźnik struktury read\+\_\+result \\
+\hline
+\end{DoxyParams}
+\index{Game\+Server@{Game\+Server}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{get\+Instance()}{getInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Server} \& Game\+Server\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}{}\label{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}
+Funkcja zwracająca statyczny obiekt klasy \index{Game\+Server@{Game\+Server}!get\+Lobby@{get\+Lobby}}
+\index{get\+Lobby@{get\+Lobby}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{get\+Lobby()}{getLobby()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Game\+Server\+::get\+Lobby (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameServer_ac8dfcb08211ddfbf28c846c04892d0c4}{}\label{classGameServer_ac8dfcb08211ddfbf28c846c04892d0c4}
+Fukcja Zwracająca liste gier \begin{DoxyReturn}{Returns}
+zwraca wektor wskaźników na graczy 
+\end{DoxyReturn}
+\index{Game\+Server@{Game\+Server}!get\+Players@{get\+Players}}
+\index{get\+Players@{get\+Players}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{get\+Players()}{getPlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ player\+\_\+ptr $>$ Game\+Server\+::get\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameServer_a24b8a605a18de2c5a1e183e505cd7684}{}\label{classGameServer_a24b8a605a18de2c5a1e183e505cd7684}
+Fukcja Zwracająca liste graczy \begin{DoxyReturn}{Returns}
+zwraca wektor wskaźników na graczy 
+\end{DoxyReturn}
+\index{Game\+Server@{Game\+Server}!push\+To\+Queue\+Response@{push\+To\+Queue\+Response}}
+\index{push\+To\+Queue\+Response@{push\+To\+Queue\+Response}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{push\+To\+Queue\+Response(std\+::string str)}{pushToQueueResponse(std::string str)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Server\+::push\+To\+Queue\+Response (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_ac19c80082a7c4c27db9615bbb9d7ecd0}{}\label{classGameServer_ac19c80082a7c4c27db9615bbb9d7ecd0}
+Funkcja przekazująca dane do kolejki odpowiedzi 
+\begin{DoxyParams}{Parameters}
+{\em dane} & \\
+\hline
+\end{DoxyParams}
+\index{Game\+Server@{Game\+Server}!queue\+\_\+result@{queue\+\_\+result}}
+\index{queue\+\_\+result@{queue\+\_\+result}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{queue\+\_\+result(std\+::string result)}{queue_result(std::string result)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Server\+::queue\+\_\+result (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{result}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameServer_a1059a53ce3bd5fe9fad31a16c6310104}{}\label{classGameServer_a1059a53ce3bd5fe9fad31a16c6310104}
+Funkcja umieszczająca w kolejce wynik do wysłania 
+\begin{DoxyParams}{Parameters}
+{\em result} & \\
+\hline
+\end{DoxyParams}
+\index{Game\+Server@{Game\+Server}!start@{start}}
+\index{start@{start}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{start(const std\+::string \&host, std\+::uint32\+\_\+t port)}{start(const std::string &host, std::uint32_t port)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Server\+::start (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{host = {\ttfamily \char`\"{}127.0.0.1\char`\"{}}, }
+\item[{std\+::uint32\+\_\+t}]{port = {\ttfamily 3002}}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameServer_a8c6534df2bb4196b7bdcd8c4f15ce8fc}{}\label{classGameServer_a8c6534df2bb4196b7bdcd8c4f15ce8fc}
+Fukcja uruchamijąca serwer 
+\begin{DoxyParams}{Parameters}
+{\em host} & \\
+\hline
+{\em port} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{Game\+Server@{Game\+Server}!\+\_\+clients\+\_\+ptr@{\+\_\+clients\+\_\+ptr}}
+\index{\+\_\+clients\+\_\+ptr@{\+\_\+clients\+\_\+ptr}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{\+\_\+clients\+\_\+ptr}{_clients_ptr}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ $>$ Game\+Server\+::\+\_\+clients\+\_\+ptr\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_abaa2e87ca0e4112c317a5d74d7f68be2}{}\label{classGameServer_abaa2e87ca0e4112c317a5d74d7f68be2}
+wektor przechowywanych wskaźników na klientów tcp podłączonych do serwera \index{Game\+Server@{Game\+Server}!\+\_\+engines@{\+\_\+engines}}
+\index{\+\_\+engines@{\+\_\+engines}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{\+\_\+engines}{_engines}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Game\+Engine} $>$ $>$ Game\+Server\+::\+\_\+engines\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_a39f72d0082d78d1327b8c34b19c4aa66}{}\label{classGameServer_a39f72d0082d78d1327b8c34b19c4aa66}
+wektor przechowywanych wskaźników na instacje gry 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+server.\+hpp\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+server.\+cpp\end{DoxyCompactItemize}

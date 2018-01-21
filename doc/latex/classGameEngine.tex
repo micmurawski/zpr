@@ -1,0 +1,153 @@
+\hypertarget{classGameEngine}{}\section{Game\+Engine Class Reference}
+\label{classGameEngine}\index{Game\+Engine@{Game\+Engine}}
+
+
+{\ttfamily \#include $<$game\+\_\+engine.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries run} ()\hypertarget{classGameEngine_ab01970da2c68fefbf48b98c59d5627ae}{}\label{classGameEngine_ab01970da2c68fefbf48b98c59d5627ae}
+
+\item 
+void {\bfseries stop} ()\hypertarget{classGameEngine_a4a9ed9e9dfdfe675cba6e933a98a00fb}{}\label{classGameEngine_a4a9ed9e9dfdfe675cba6e933a98a00fb}
+
+\item 
+void {\bfseries send\+Cmd} (std\+::string input)\hypertarget{classGameEngine_aa4bbc86141b1279f0c6ec56fec9a91f5}{}\label{classGameEngine_aa4bbc86141b1279f0c6ec56fec9a91f5}
+
+\item 
+void {\bfseries start} ()\hypertarget{classGameEngine_a425ec68e14b2def17e162cbe3c6cfb13}{}\label{classGameEngine_a425ec68e14b2def17e162cbe3c6cfb13}
+
+\item 
+void {\bfseries process\+Input} (std\+::string input)\hypertarget{classGameEngine_a75cc7e6124f0405470e2144423f06444}{}\label{classGameEngine_a75cc7e6124f0405470e2144423f06444}
+
+\item 
+int {\bfseries remove\+Player} (const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client)\hypertarget{classGameEngine_a95999a2ca94e550764cc97f11bbb7e69}{}\label{classGameEngine_a95999a2ca94e550764cc97f11bbb7e69}
+
+\item 
+void {\bfseries add\+Player} (std\+::string name, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&\+\_\+client\+\_\+ptr)\hypertarget{classGameEngine_addd68ccd2a1c3e37996e12ac29a3b05e}{}\label{classGameEngine_addd68ccd2a1c3e37996e12ac29a3b05e}
+
+\item 
+std\+::vector$<$ player\+\_\+ptr $>$ {\bfseries get\+Players} ()\hypertarget{classGameEngine_a17f58e4209bc52641de09abe5d650bae}{}\label{classGameEngine_a17f58e4209bc52641de09abe5d650bae}
+
+\item 
+int \hyperlink{classGameEngine_a2efeb330b4e8c23aaeaf9928ae068301}{state} ()
+\item 
+\hyperlink{classGameEngine_a7ef964f05589c5440d7d06ad3aa3ee16}{Game\+Engine} (std\+::string \+\_\+name, std\+::string \+\_\+mastername, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&master)
+\item 
+\hyperlink{classGameEngine_a8e59d8341ef9d2dcc62eee1437e37f14}{$\sim$\+Game\+Engine} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries \+\_\+name}\hypertarget{classGameEngine_ad405ac36f2e3560b693e1d417a240df3}{}\label{classGameEngine_ad405ac36f2e3560b693e1d417a240df3}
+
+\item 
+std\+::queue$<$ std\+::string $>$ {\bfseries \+\_\+queue}\hypertarget{classGameEngine_abff9f93c1407c61f310dccc2f4da6e83}{}\label{classGameEngine_abff9f93c1407c61f310dccc2f4da6e83}
+
+\item 
+std\+::thread $\ast$ {\bfseries \+\_\+thread} = nullptr\hypertarget{classGameEngine_aaf3a9ff9ff49b63d0ab1713ee5e24cfe}{}\label{classGameEngine_aaf3a9ff9ff49b63d0ab1713ee5e24cfe}
+
+\item 
+bool {\bfseries \+\_\+is\+\_\+running} =true\hypertarget{classGameEngine_abc77225c528e453428f41b44c868a2e0}{}\label{classGameEngine_abc77225c528e453428f41b44c868a2e0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classGameEngine_aa9493de5dbf8e1c08451052820333858}{join} (std\+::string \+\_\+str)
+\item 
+std\+::string \hyperlink{classGameEngine_a65d1f7b9fac5c0e6f52eadfaed7da4e7}{game\+Init} ()
+\item 
+void \hyperlink{classGameEngine_a31a36085b12f19b0b163b3997188154c}{execute} ()
+\item 
+std\+::string {\bfseries playing} (std\+::string \+\_\+str)\hypertarget{classGameEngine_ab48f3a94eabf908c8daed33b07d97b56}{}\label{classGameEngine_ab48f3a94eabf908c8daed33b07d97b56}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classGameEngine}{Game\+Engine}, która jest instancją gry. \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Michał Murawski, Marcin Brzykcy 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\index{Game\+Engine@{Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{Game\+Engine(std\+::string \+\_\+name, std\+::string \+\_\+mastername, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&master)}{GameEngine(std::string _name, std::string _mastername, const std::shared_ptr< tcp::tcp_client > &master)}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Engine\+::\+Game\+Engine (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{\+\_\+name, }
+\item[{std\+::string}]{\+\_\+mastername, }
+\item[{const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&}]{master}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a7ef964f05589c5440d7d06ad3aa3ee16}{}\label{classGameEngine_a7ef964f05589c5440d7d06ad3aa3ee16}
+Konstruktor klasy
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nazwa gry \\
+\hline
+{\em nazwa} & gracza który utworzył gre \\
+\hline
+{\em referencja} & na wskaźnik klienta tcp który utworzył gre \\
+\hline
+\end{DoxyParams}
+\index{Game\+Engine@{Game\+Engine}!````~Game\+Engine@{$\sim$\+Game\+Engine}}
+\index{````~Game\+Engine@{$\sim$\+Game\+Engine}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{$\sim$\+Game\+Engine()}{~GameEngine()}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Engine\+::$\sim$\+Game\+Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a8e59d8341ef9d2dcc62eee1437e37f14}{}\label{classGameEngine_a8e59d8341ef9d2dcc62eee1437e37f14}
+Destruktor klasy 
+
+\subsection{Member Function Documentation}
+\index{Game\+Engine@{Game\+Engine}!execute@{execute}}
+\index{execute@{execute}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{execute()}{execute()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Engine\+::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classGameEngine_a31a36085b12f19b0b163b3997188154c}{}\label{classGameEngine_a31a36085b12f19b0b163b3997188154c}
+Funkcja obliczająca nowy stan gry \index{Game\+Engine@{Game\+Engine}!game\+Init@{game\+Init}}
+\index{game\+Init@{game\+Init}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{game\+Init()}{gameInit()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Game\+Engine\+::game\+Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classGameEngine_a65d1f7b9fac5c0e6f52eadfaed7da4e7}{}\label{classGameEngine_a65d1f7b9fac5c0e6f52eadfaed7da4e7}
+Funkcja inicjalizująca gre \begin{DoxyReturn}{Returns}
+odpowiedź gry 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!join@{join}}
+\index{join@{join}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{join(std\+::string \+\_\+str)}{join(std::string _str)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Game\+Engine\+::join (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{\+\_\+str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classGameEngine_aa9493de5dbf8e1c08451052820333858}{}\label{classGameEngine_aa9493de5dbf8e1c08451052820333858}
+Funkcja dołaczająca gracza do gry na podstawie stringa \begin{DoxyReturn}{Returns}
+odpowiedź gry 
+\end{DoxyReturn}
+\index{Game\+Engine@{Game\+Engine}!state@{state}}
+\index{state@{state}!Game\+Engine@{Game\+Engine}}
+\subsubsection[{\texorpdfstring{state()}{state()}}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Engine\+::state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGameEngine_a2efeb330b4e8c23aaeaf9928ae068301}{}\label{classGameEngine_a2efeb330b4e8c23aaeaf9928ae068301}
+funkcja zwracająca stan gry
+
+\begin{DoxyReturn}{Returns}
+liczba reperezentująca stan gry 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+engine.\+hpp\item 
+game\+\_\+files/game\+\_\+engine/game\+\_\+engine.\+cpp\end{DoxyCompactItemize}

@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Client
+TARGET = client
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,11 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    mapview.cpp \
-    mappoint.cpp \
-    leftbar.cpp \
-    rightbar.cpp \
-    bottombar.cpp \
+        mapview.cpp \
+        mappoint.cpp \
+        leftbar.cpp \
+        rightbar.cpp \
+        bottombar.cpp \
     ../game_files/game_engine/game_client.cpp \
     ../game_files/game_objects/map_point.cpp \
     ../game_files/game_objects/resources.cpp \

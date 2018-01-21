@@ -9,6 +9,7 @@ var searchData=
   ['getdamageatnode',['getDamageAtNode',['../classPlayer.html#af68c963cdf0b35d8d7b9c606e1e77e35',1,'Player']]],
   ['getid',['getId',['../classShip.html#a069f10228cdfb90c8e2fca03d69ffe07',1,'Ship']]],
   ['getinstance',['getInstance',['../classGameClient.html#adfcb979db6333b335dee4e6d785aabcf',1,'GameClient::getInstance()'],['../classGameServer.html#a588419f7d78b27f71b4bb2446c67b7b8',1,'GameServer::getInstance()']]],
+  ['getlobby',['getLobby',['../classGameServer.html#ac8dfcb08211ddfbf28c846c04892d0c4',1,'GameServer']]],
   ['getmappointid',['getMapPointId',['../classBuilding.html#ad103cb8318a9994183bfa5468cf39f11',1,'Building::getMapPointId()'],['../classShip.html#afc0dda3e395f0f900d76bebc205beda0',1,'Ship::getMapPointId()']]],
   ['getplayers',['getPlayers',['../classGameServer.html#a24b8a605a18de2c5a1e183e505cd7684',1,'GameServer']]],
   ['gettype',['getType',['../classGameObject.html#a96c0dc16e310d0a26a1c8b05ab3d139f',1,'GameObject']]],

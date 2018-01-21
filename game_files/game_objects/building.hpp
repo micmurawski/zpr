@@ -16,7 +16,7 @@ public:
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] point_id_ pozycja na mapie budynku, domyślnie 0
+ 	* \param point_id_ pozycja na mapie budynku, domyślnie 0
 	*
  	*/
     Building(int point_id=0): point_id_(point_id){}
@@ -32,7 +32,7 @@ public:
     virtual std::string toString();
     /**
  	* Funkcja odczytująca obiekt z std::string
-	* \param[in] data przesłany obiekt
+	* \param data przesłany obiekt
  	*/
     virtual void loadFromString (std::string data);
 
