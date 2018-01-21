@@ -13,7 +13,7 @@
 /**
  * \class Player
  *
- * Definicja klasy Player, która przechowuje zasoby gracza w grze 
+ * Definicja klasy Player, która przechowuje informacje o stanie gracza w grze
  * \author $Author: Michał Murawski, Marcin Brzykcy $
  *
  *
@@ -47,7 +47,12 @@ class Player: public GameObject{
 			_client_ptr = client_ptr;
 
 		}
-
+		/**
+ 		* Funkcja obliczająca sumę obrażeń w punkcie mapy podczas bitwy
+ 		*
+ 		* \param[in] i id punktu mapy
+ 		* 
+ 		*/
 		int getDamageAtNode(int i){
 			int sum = 0;
 			for(std::shared_ptr<Ship> ship_ptr : ships_){
@@ -57,6 +62,13 @@ class Player: public GameObject{
 			}
 			return sum;
 		}
+				/**
+ 		* Funkcja zadająca obrażenia statkom w punkcie
+ 		*
+ 		* \param[in] i id punktu mapy
+  		* \param[in] dmg obrażenia
+ 		* 
+ 		*/
 		void modifyHpAtNodeOfAllShips(int i,int dmg){
 			int N=0;
 			for(std::shared_ptr<Ship> ship_ptr : ships_){

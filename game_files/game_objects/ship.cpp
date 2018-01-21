@@ -27,14 +27,6 @@ void Ship::loadFromString (std::string data){
     map_point_id_=static_cast<int> (stoi(point));
 	}
 	
-unsigned int Ship::getType(){
-	return ID_;
-	}
-	
-std::shared_ptr<GameObject> Ship::create(){
-	return make_shared<Ship>();
-	}
 unsigned int Ship::getHP(){
 	return hp_;
 }
-unsigned int Ship::ID_ = 0;

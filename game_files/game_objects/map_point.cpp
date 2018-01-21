@@ -29,12 +29,4 @@ void MapPoint::loadFromString (std::string data){
     string resources = getRegex(data,"(?<=<resources>)(.*)(?=</resources>)");
     resources_.loadFromString(resources);
 }
-unsigned int MapPoint::getType(){
-	return ID_;
-	}
 
-std::shared_ptr<GameObject> MapPoint::create(){
-	return make_shared<MapPoint>();
-	}
-
-unsigned int MapPoint::ID_ = 0;

@@ -122,7 +122,7 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
         }
        //drawing indicator above planet if some players has ships on it
        player_id = game_state->WhoHasFleet(map_point->getId());
-       if(player_id>0){
+       if(player_id>=0){
         color = colors_.getColor(player_id);
         QGraphicsRectItem* rect = new QGraphicsRectItem(map_point->getX(), map_point->getY()-12, 20, 7);
         rect->setBrush(QBrush(color));

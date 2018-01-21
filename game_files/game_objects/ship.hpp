@@ -27,9 +27,9 @@ public:
  	*/
 	Ship(unsigned int id=0, unsigned int map_point_id=0): hp_(80), id_(id), map_point_id_(map_point_id) {}
 	/**
- 	* Funkcja zmieniająca poziom życia
+ 	* Funkcja zmieniająca poziom punktów obrażeń
  	*
- 	* \param[in] hp ilość dodawanego życia
+ 	* \param[in] hp ilość dodawanych/odejmowanych punktów obrażeń
  	* 
  	*/
 	virtual void modifyHP(int hp);
@@ -48,18 +48,8 @@ public:
  	* Funkcja przypisująca pola dla obiektu z zadanego stringa
  	*/
 	virtual void loadFromString (std::string data);
-	/**
- 	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
- 	* \return typ
- 	*/
-	virtual unsigned int getType();
-	/**
- 	* Funkcja zwracająca wskaźnik na GameObject wykorzystywane do utworzenia instacji obiektu w GameObjectFactory
- 	* \return wkaźnik na GameObject
- 	*/
-	static std::shared_ptr<GameObject> create();
-	//ID is needed for ObjectFactory
-	static unsigned int ID_;
+
+
 	/**
  	* Funkcja zwracająca położenie na mapie
  	* \return zwraca położenie na mapie
@@ -73,10 +63,8 @@ public:
 
 private:
 	unsigned int hp_;
-	//map_point_id is ship location
-	unsigned int map_point_id_;
-	//id of the individual ship
 	unsigned int id_;
+	unsigned int map_point_id_;
 
 	};
 	

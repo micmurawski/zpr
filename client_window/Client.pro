@@ -32,7 +32,6 @@ SOURCES += \
     rightbar.cpp \
     bottombar.cpp \
     ../game_files/game_engine/game_client.cpp \
-    ../game_files/game_objects/game_object_factory.cpp \
     ../game_files/game_objects/map_point.cpp \
     ../game_files/game_objects/resources.cpp \
     ../game_files/game_objects/ship.cpp \
@@ -55,7 +54,6 @@ HEADERS += \
     ../game_files/game_engine/game_client.hpp \
     ../game_files/game_objects/building.hpp \
     ../game_files/game_objects/game_object.hpp \
-    ../game_files/game_objects/game_object_factory.hpp \
     ../game_files/game_objects/map_point.hpp \
     ../game_files/game_objects/player.hpp \
     ../game_files/game_objects/resources.hpp \

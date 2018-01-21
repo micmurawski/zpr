@@ -27,17 +27,27 @@ public:
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] id ilośc identyfikator węzła mapy
-	* \param[in] connections połączenia węzłyów mapy, grafu
+ 	* \param[in] id  identyfikator węzła mapy
+	* \param[in] connections - wektor numerów id połączonych punktów
 	* \param[in] x położenie na osi x
 	* \param[in] y położenie na osi y
-	* \param[in] resources zasoby przechowywane na mapie
+	* \param[in] resources zasoby przechowywane na punkcie
 	*
  	*/
 	MapPoint(int id, const std::vector<unsigned int>& connections, int x, int y, Resources resources): 
 	id_(id), connections_(connections), x_(x), y_(y) {resources_ = resources;}
+	/**
+ 	* Konstruktor klasy
+ 	*
+ 	* \param[in] id  identyfikator węzła mapy
+	* \param[in] x położenie na osi x
+	* \param[in] y położenie na osi y
+	* \param[in] resources zasoby przechowywane na punkcie
+	*
+ 	*/
 	MapPoint(int id,  int x, int y, Resources resources): 
-	id_(id),  x_(x), y_(y) {resources_ = resources;}	
+	id_(id),  x_(x), y_(y) {resources_ = resources;}
+	
 	unsigned int getId() const {return id_;} 
 	unsigned int getX() const {return x_;} 
 	unsigned int getY() const {return y_;} 
@@ -54,16 +64,7 @@ public:
  	* \return typ
  	*/
 	virtual void loadFromString (std::string data);
-	/**
- 	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
- 	* \return typ
- 	*/
-	virtual unsigned int getType();
-	/**
- 	* Funkcja zwracająca wskaźnik na GameObject wykorzystywane do utworzenia instacji obiektu w GameObjectFactory
- 	* \return wkaźnik na GameObject
- 	*/
-	static std::shared_ptr<GameObject> create();
+
 	/**
  	* Funkcja zwracająca położenie na mapie
  	* \return zwraca położenie na mapie
@@ -72,12 +73,12 @@ public:
 		
 		
 private:
-	//id of the owner
+	//id właściciela
 	unsigned int owner_id;
-	//id of the individual point
+	//id pojedynczego punktu
 	unsigned int id_;
-	//vector of id's of the connected points
 	public:
+	//wektor połączonych punktów
 	std::vector<unsigned int> connections_;
 	unsigned int x_;
 	unsigned int y_;	

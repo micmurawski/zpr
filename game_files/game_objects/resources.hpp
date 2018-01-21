@@ -17,39 +17,23 @@ class Resources : public GameObject{
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] metl ilośc przechowywanych zasobów
+ 	* \param[in] metal ilośc przechowywanych zasobów
  	*/
 	Resources(int metal=0) : metal_(metal){};
 	unsigned int metal_;
-	
-	//this method is used if we want to get string containing 
-	//only data of variables, withoud additional information
-	std::string toStringDataOnly();
+
 	/**
- 	* Funkcja zwracająca reprezentacje obiektu w stringu
- 	* \return zwraca string reprezentujący obiekt
+ 	* Funkcja zwracająca reprezentacje obiektu w std::string
+ 	* \return zwraca std::string reprezentujący obiekt
  	*/
     virtual std::string toString();
 	/**
  	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
- 	* \return typ
+ 	* \param[in] reprezentacja obiektu w std::string
  	*/
 	virtual void loadFromString (std::string data);
-	/**
- 	* Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów GameObjectFactory
- 	* \return typ
- 	*/
-	virtual unsigned int getType();
-	/**
- 	* Funkcja zwracająca wskaźnik na GameObject wykorzystywane do utworzenia instacji obiektu w GameObjectFactory
- 	* \return wkaźnik na GameObject
- 	*/
-	static std::shared_ptr<GameObject> create();
-	/**
- 	* Funkcja zwracająca położenie na mapie
- 	* \return zwraca położenie na mapie
- 	*/
-	static unsigned int ID_;
+
+
 };
 
 #endif //RESOURCES_HPP

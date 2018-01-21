@@ -18,8 +18,3 @@ void Building::loadFromString (std::string data){
         }
 
 
-std::shared_ptr<GameObject> Building::create(){
-        return std::make_shared<Building>();
-        }
-
-unsigned int Building::ID_ = 0;
