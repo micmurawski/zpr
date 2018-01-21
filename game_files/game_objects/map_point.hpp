@@ -27,11 +27,11 @@ public:
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] id  identyfikator węzła mapy
-	* \param[in] connections - wektor numerów id połączonych punktów
-	* \param[in] x położenie na osi x
-	* \param[in] y położenie na osi y
-	* \param[in] resources zasoby przechowywane na punkcie
+ 	* \param id  identyfikator węzła mapy
+	* \param connections - wektor numerów id połączonych punktów
+	* \param x położenie na osi x
+	* \param y położenie na osi y
+	* \param resources zasoby przechowywane na punkcie
 	*
  	*/
 	MapPoint(int id, const std::vector<unsigned int>& connections, int x, int y, Resources resources): 
@@ -39,10 +39,10 @@ public:
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] id  identyfikator węzła mapy
-	* \param[in] x położenie na osi x
-	* \param[in] y położenie na osi y
-	* \param[in] resources zasoby przechowywane na punkcie
+ 	* \param id  identyfikator węzła mapy
+	* \param x położenie na osi x
+	* \param y położenie na osi y
+	* \param resources zasoby przechowywane na punkcie
 	*
  	*/
 	MapPoint(int id,  int x, int y, Resources resources): 

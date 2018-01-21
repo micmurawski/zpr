@@ -19,13 +19,23 @@ MainWindow::MainWindow(QWidget *parent) :
 
     wait_for_click_=false;
     ////***********TEST*****************
-    player_id_=1;
+    
     GameClient::getInstance();
     for(player_ptr ptr :GameClient::getInstance().gameState_ptr_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
     game_state_=GameClient::getInstance().gameState_ptr_;
     for(player_ptr ptr :game_state_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
-
-
+    //trzeba rozpoznać gracza
+    
+    std::vector<player_ptr>::iterator it = find_if(game_state_->players_.begin(), game_state_->players_.end(),
+     [] (const player_ptr& ptr) {
+          return ptr.get()->name_ == GameClient::getInstance()._name;  
+          });
+     if(it!=game_state_->players_.end()){
+       std::cout<<"Nazwa gracza to: "<<it->get()->name_<<" id "<<it->get()->id_<<std::endl;
+       player_id_=it->get()->id_+1;
+     }else{
+        std::cout<<"error"<<std::endl;
+     }
     map_view_ = new MapView();
     map_view_->readGameStatus(game_state_);
     left_bar_ = new LeftBar;

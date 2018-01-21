@@ -40,23 +40,23 @@ static GameClient & getInstance();
 /**
 * funkcja realizująca odczyt danych z protokołu tcp
 *
-* \param[in] client  klient tcp 
-* \param[in] wskaźnik na strukturę odpowiedzi w protokole tcp
+* \param client  klient tcp 
+* \param wskaźnik na strukturę odpowiedzi w protokole tcp
 * 
 */
 static void read(tcp::tcp_client& client, const tcp::tcp_client::read_result& res);
 /**
 * funkcja realizująca połączenie
 *
-* \param[in] host referencja na host gry zadany w stringu
-* \param[in] port port serwera
+* \param host referencja na host gry zadany w stringu
+* \param port port serwera
 * 
 */
 static void connect(const std::string& host, std::uint32_t port);
 /**
 * funkcja realizująca wysyłanie komend przez gracza
 *
-* \param[in] cmd string komendy
+* \param cmd string komendy
 * 
 */
 static void sendCmd(std::string cmd);

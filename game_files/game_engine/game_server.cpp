@@ -82,10 +82,10 @@ void GameServer::data_collector(const std::shared_ptr<tcp::tcp_client>& client,c
   if (res.success) {
     std::cout << "Otrzymano dane: " <<std::endl;
     std::string str = std::string(res.buffer.begin(), res.buffer.end());
-    std::cout<< "Klient:"<< client->get_host() << "Wysyła: " <<str<<std::endl;
+    //std::cout<< "Klient:"<< client->get_host() << "Wysyła: " <<str<<std::endl;
     //Wyrażenie regularne sprawdzające długosc kolejnego buffora <length=?/>
     if(strspn(str.c_str(), "0123456789") == str.size() ){
-      std::cout << "Otrzymano długość komendy"<<std::endl;
+      //std::cout << "Otrzymano długość komendy"<<std::endl;
       int i = stoi(str);
       GameServer::_buffer_length = strtoul (std::to_string(i).c_str(), NULL, 0);
     }else{
@@ -169,7 +169,7 @@ if(create!=""){
     std::cout<<"Gra nie istnieje"<<std::endl;
     pushToQueueResponse("<ip>"+host+"</ip><port>"+port+"</port><msg>Gra o podanej nazwie nie istnieje. Wybierz innną nazwę</msg>"); 
   }else{
-    std::cout<<"tworzenie nowje!"<<std::endl;
+    std::cout<<"tworzenie nowej gry!"<<std::endl;
     //Utworzenie nnowej gry
     std::shared_ptr<tcp::tcp_client> client_ptr = findTCPClient(host,port);
     std::shared_ptr<GameEngine> engine_ptr = findGameEngine(create);
@@ -197,7 +197,6 @@ void GameServer::process_queue_response(){
         std::cout<<"Wysyłanie odpowiedzi: "<<response<<std::endl;
         std::string host = getIp(response);
         std::string port = getPort(response);
-        std::cout<<":"<<host<<":"<<port;//<<atoi(port.c_str())<<":"<<std::endl;
         std::shared_ptr<tcp::tcp_client> client_ptr = findTCPClient(host,port);
         for(std::shared_ptr<tcp::tcp_client> client_ptr : _clients_ptr) std::cout<<client_ptr.get()->get_host()<<client_ptr.get()->get_port()<<std::endl;
         if(client_ptr !=nullptr){
@@ -214,8 +213,8 @@ void GameServer::process_queue_response(){
 
 
 std::string GameServer::getLobby(){
-  //std::string result="NAZWA GRY\n";
-  //if(_engines.size()>0)for(std::shared_ptr<GameEngine> engine_ptr : _engines) result+=engine_ptr.get()->_name+"\n";
+  std::string result="NAZWA GRY\n";
+  if(_engines.size()>0)for(std::shared_ptr<GameEngine> engine_ptr : _engines) result+=engine_ptr.get()->_name+"\n";
   return "";
 }
 

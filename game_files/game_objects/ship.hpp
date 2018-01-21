@@ -20,16 +20,16 @@ public:
 	/**
  	* Konstruktor klasy
  	*
- 	* \param[in] id identyfikator
- 	* \param[in] map_point_id pozycja na mapie.
-	* \param[in] hp_ poziom życia
+ 	* \param id identyfikator
+ 	* \param map_point_id pozycja na mapie.
+	* \param hp_ poziom życia
  	* 
  	*/
 	Ship(unsigned int id=0, unsigned int map_point_id=0): hp_(80), id_(id), map_point_id_(map_point_id) {}
 	/**
  	* Funkcja zmieniająca poziom punktów obrażeń
  	*
- 	* \param[in] hp ilość dodawanych/odejmowanych punktów obrażeń
+ 	* \param hp ilość dodawanych/odejmowanych punktów obrażeń
  	* 
  	*/
 	virtual void modifyHP(int hp);

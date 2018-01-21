@@ -56,22 +56,22 @@ public:
     void addPlayer( std::string name,const std::shared_ptr<tcp::tcp_client>& _client_ptr);
     std::vector<player_ptr> getPlayers();
     /**
- 		* funkcja zwracająca stan gry
- 		*
- 		* \return liczba reperezentująca stan gry
- 		*/
+ 	* funkcja zwracająca stan gry
+ 	*
+ 	* \return liczba reperezentująca stan gry
+ 	*/
     int state();
     /**
- 		* Konstruktor klasy
- 		*
- 		* \param[in] name Nazwa gry
- 		* \param[in] nazwa gracza który utworzył gre
-        * \param[in] referencja na wskaźnik klienta tcp który utworzył gre
- 		* 
+ 	* Konstruktor klasy
+ 	*
+ 	* \param name Nazwa gry
+ 	* \param nazwa gracza który utworzył gre
+    * \param referencja na wskaźnik klienta tcp który utworzył gre
+ 	* 
  	*/
     GameEngine(std::string _name,std::string _mastername,const std::shared_ptr<tcp::tcp_client>& master);
-     /**
- 		* Destruktor klasy
+    /**
+ 	* Destruktor klasy
  	*/
     ~GameEngine();
 protected:
@@ -87,7 +87,6 @@ protected:
     std::string gameInit();
     /**
  	* Funkcja obliczająca nowy stan gry
- 	* \return ??
  	*/
     void execute();
     std::string playing(std::string _str);
