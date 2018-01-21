@@ -2,6 +2,10 @@
 \label{classBuilding}\index{Building@{Building}}
 
 
+{\ttfamily \#include $<$building.\+hpp$>$}
+
+
+
 Inheritance diagram for Building\+:
 % FIG 0
 
@@ -11,21 +15,34 @@ Collaboration diagram for Building\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classBuilding_ac50c1e01f6741d3bac62af33e5aba122}{Building} (int point\+\_\+id\+\_\+=0)
+\hyperlink{classBuilding_a9c20f938b7d39c4b1020e0654dc8739f}{Building} (int point\+\_\+id=0)
 \item 
 unsigned int \hyperlink{classBuilding_ad103cb8318a9994183bfa5468cf39f11}{get\+Map\+Point\+Id} ()
+\item 
+virtual std\+::string \hyperlink{classBuilding_a00cdb72dff7401ef0e91d989202b6153}{to\+String} ()
+\item 
+virtual void \hyperlink{classBuilding_a6d0f64a5fda38ab9b0011b3291b852b7}{load\+From\+String} (std\+::string data)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Definicja klasy \hyperlink{classBuilding}{Building}, która realizuje budynki. Dziedziczy wirtualnie po klasie \hyperlink{classGameObject}{Game\+Object} \begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Author}
+Marcin Brzykcy, Michał Murawski 
+\end{DoxyParagraph}
 
 
 \subsection{Constructor \& Destructor Documentation}
 \index{Building@{Building}!Building@{Building}}
 \index{Building@{Building}!Building@{Building}}
-\subsubsection[{\texorpdfstring{Building(int point\+\_\+id\+\_\+=0)}{Building(int point_id_=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Building\+::\+Building (
+\subsubsection[{\texorpdfstring{Building(int point\+\_\+id=0)}{Building(int point_id=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Building\+::\+Building (
 \begin{DoxyParamCaption}
-\item[{int}]{point\+\_\+id\+\_\+ = {\ttfamily 0}}
+\item[{int}]{point\+\_\+id = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classBuilding_ac50c1e01f6741d3bac62af33e5aba122}{}\label{classBuilding_ac50c1e01f6741d3bac62af33e5aba122}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classBuilding_a9c20f938b7d39c4b1020e0654dc8739f}{}\label{classBuilding_a9c20f938b7d39c4b1020e0654dc8739f}
 Konstruktor klasy
 
 
@@ -46,8 +63,35 @@ Konstruktor klasy
 Funkcja zwracająca położenie w węźle mapy \begin{DoxyReturn}{Returns}
 węzeł mapy 
 \end{DoxyReturn}
+\index{Building@{Building}!load\+From\+String@{load\+From\+String}}
+\index{load\+From\+String@{load\+From\+String}!Building@{Building}}
+\subsubsection[{\texorpdfstring{load\+From\+String(std\+::string data)}{loadFromString(std::string data)}}]{\setlength{\rightskip}{0pt plus 5cm}void Building\+::load\+From\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classBuilding_a6d0f64a5fda38ab9b0011b3291b852b7}{}\label{classBuilding_a6d0f64a5fda38ab9b0011b3291b852b7}
+Funkcja odczytująca obiekt z std\+::string 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & przesłany obiekt \\
+\hline
+\end{DoxyParams}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Reimplemented from \hyperlink{classGameObject_a85a98216580e583e15477cd9178fa6e7}{Game\+Object}.
+
+\index{Building@{Building}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Building@{Building}}
+\subsubsection[{\texorpdfstring{to\+String()}{toString()}}]{\setlength{\rightskip}{0pt plus 5cm}string Building\+::to\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classBuilding_a00cdb72dff7401ef0e91d989202b6153}{}\label{classBuilding_a00cdb72dff7401ef0e91d989202b6153}
+Funkcja dokonująca serializacji obiektu do ciągu znaków, aby móc go potem przesłać \begin{DoxyReturn}{Returns}
+obiekt przekonwertowany do std\+::string 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-game\+\_\+files/game\+\_\+objects/building.\+hpp\end{DoxyCompactItemize}
+game\+\_\+files/game\+\_\+objects/building.\+hpp\item 
+game\+\_\+files/game\+\_\+objects/building.\+cpp\end{DoxyCompactItemize}

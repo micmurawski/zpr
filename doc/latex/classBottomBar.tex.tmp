@@ -2,6 +2,10 @@
 \label{classBottomBar}\index{Bottom\+Bar@{Bottom\+Bar}}
 
 
+{\ttfamily \#include $<$bottombar.\+hpp$>$}
+
+
+
 Inheritance diagram for Bottom\+Bar\+:
 % FIG 0
 
@@ -34,8 +38,10 @@ void {\bfseries set\+Button\+Enabled} (unsigned int index, bool enabled)\hyperta
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Dolny panel z przyciskami umożliwiającymi podejmowanie akcji w grze 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 client\+\_\+window/bottombar.\+hpp\item 
-client\+\_\+window/bottombar.\+cpp\item 
-client\+\_\+window/moc\+\_\+bottombar.\+cpp\end{DoxyCompactItemize}
+client\+\_\+window/bottombar.\+cpp\end{DoxyCompactItemize}

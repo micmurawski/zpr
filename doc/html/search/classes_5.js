@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['image',['Image',['../classgraphics_1_1Image.html',1,'graphics']]]
+  ['resources',['Resources',['../classResources.html',1,'']]],
+  ['rightbar',['RightBar',['../classRightBar.html',1,'']]]
 ];

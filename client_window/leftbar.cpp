@@ -52,7 +52,6 @@ void LeftBar::loadShips(std::vector<std::shared_ptr<Ship>> ships, bool friendly)
 }
 
 std::vector<unsigned int> LeftBar::getSelectedShips(const std::shared_ptr<GameState> game_state){
-    //ship_vector_ptr vec_ptr = std::make_shared<ship_vector>();
     std::vector<unsigned int> vec;
     QModelIndexList list = planet_overwiev_->ship_list_->selectionModel()->selectedIndexes();
     //iterujemy po liscie zaznaczonych obiektow, pobieramy index i dopisujemy do talbicy odpowiedni wskaznik

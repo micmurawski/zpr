@@ -32,7 +32,7 @@ MapView::MapView (QWidget *parent) : QFrame(parent) {
     zoomSlider->setMaximum(500);
     zoomSlider->setValue(250);
     zoomSlider->setTickPosition(QSlider::NoTicks);
-    // Zoom slider layout
+    
     QHBoxLayout *zoomSliderLayout = new QHBoxLayout;
     zoomSliderLayout->addWidget(zoomOutIcon);
     zoomSliderLayout->addWidget(zoomSlider);
@@ -88,21 +88,21 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
     //drawing planets
     for( auto map_point : game_state->map_points_){
 
-        //adding planets into scene
-        //first, chosing color based on who is owner of planet
+        //dodwanianie planet do scene
+        //zależnie od przynależności nadawany jest kolor
         QColor color;
         int player_id = game_state->MapPointOwnerId(map_point->getId());
         if(player_id<0)
             color = Qt::gray;
         else
             color = colors_.getColor(static_cast<unsigned int>(player_id));
-        //creating planet
+        //tworzenie planety
         QGraphicsItem *item = new UI::mapPoint(color, 0, 0, map_point->getId(),player_id, this);
         item->setPos(QPointF(map_point->getX(),map_point->getY()));
         item->setZValue(3);
         scene->addItem(item);
 
-        //adding lines between planets to scene
+        //dodawanie połączeń
         for( auto connection : map_point->getConnections()){
             if(game_state->getPointById(connection)==nullptr)
                 continue;
@@ -120,7 +120,7 @@ void MapView::readGameStatus(std::shared_ptr<GameState> game_state){
             item->setZValue(2);
             scene->addItem(item);
         }
-       //drawing indicator above planet if some players has ships on it
+       //rysowanie oznaczenia, że na punkcie znajduje się flota gracza
        player_id = game_state->WhoHasFleet(map_point->getId());
        if(player_id>=0){
         color = colors_.getColor(player_id);

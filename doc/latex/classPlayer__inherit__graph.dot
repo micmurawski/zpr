@@ -5,7 +5,4 @@ digraph "Player"
   Node1 [label="Player",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node2 [label="GameObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGameObject.html"];
-  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resources_" ];
-  Node3 [label="Resources",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classResources.html"];
-  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
 }

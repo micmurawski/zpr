@@ -6,8 +6,12 @@
 
 
 
-Collaboration diagram for Player\+:
+Inheritance diagram for Player\+:
 % FIG 0
+
+
+Collaboration diagram for Player\+:
+% FIG 1
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,9 +24,16 @@ std\+::string {\bfseries get\+\_\+name} ()\hypertarget{classPlayer_a788340fc5f21
 void {\bfseries set\+\_\+name} (std\+::string name)\hypertarget{classPlayer_a318d379b56621caf571b97b54965b2e9}{}\label{classPlayer_a318d379b56621caf571b97b54965b2e9}
 
 \item 
+std\+::string {\bfseries to\+String} ()\hypertarget{classPlayer_a717f15939def0ddbbe3ca6c1aa82a810}{}\label{classPlayer_a717f15939def0ddbbe3ca6c1aa82a810}
+
+\item 
+void \hyperlink{classPlayer_acbcf66d4a9b70d3dcca3ed26c38a8490}{load\+From\+String} (std\+::string data)
+\item 
 \hyperlink{classPlayer_a11226c6f07703e035c6a774ac96fce09}{Player} (std\+::string name, const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client\+\_\+ptr=nullptr)
 \item 
-\hyperlink{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\+Player} ()
+int \hyperlink{classPlayer_af68c963cdf0b35d8d7b9c606e1e77e35}{get\+Damage\+At\+Node} (int i)
+\item 
+void \hyperlink{classPlayer_a3a5f609e38da1966741fd5c79d14ca20}{modify\+Hp\+At\+Node\+Of\+All\+Ships} (int i, int dmg)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -54,7 +65,7 @@ bool {\bfseries \+\_\+finished} = false\hypertarget{classPlayer_a8c8bf83771c911c
 
 
 \subsection{Detailed Description}
-Definicja klasy \hyperlink{classPlayer}{Player}, która przechowuje zasoby gracza w grze \begin{DoxyAuthor}{Author}
+Definicja klasy \hyperlink{classPlayer}{Player}, która przechowuje informacje o stanie gracza w grze \begin{DoxyAuthor}{Author}
 
 \end{DoxyAuthor}
 \begin{DoxyParagraph}{Author}
@@ -80,15 +91,57 @@ Konstruktor klasy
 \mbox{\tt in}  & {\em client\+\_\+ptr} & wskaźnik na klienta protokołu tcp. \\
 \hline
 \end{DoxyParams}
-\index{Player@{Player}!````~Player@{$\sim$\+Player}}
-\index{````~Player@{$\sim$\+Player}!Player@{Player}}
-\subsubsection[{\texorpdfstring{$\sim$\+Player()}{~Player()}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::$\sim$\+Player (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}{}\label{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}
-Destruktor klasy 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+\subsection{Member Function Documentation}
+\index{Player@{Player}!get\+Damage\+At\+Node@{get\+Damage\+At\+Node}}
+\index{get\+Damage\+At\+Node@{get\+Damage\+At\+Node}!Player@{Player}}
+\subsubsection[{\texorpdfstring{get\+Damage\+At\+Node(int i)}{getDamageAtNode(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}int Player\+::get\+Damage\+At\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPlayer_af68c963cdf0b35d8d7b9c606e1e77e35}{}\label{classPlayer_af68c963cdf0b35d8d7b9c606e1e77e35}
+Funkcja obliczająca sumę obrażeń w punkcie mapy podczas bitwy
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & id punktu mapy \\
+\hline
+\end{DoxyParams}
+\index{Player@{Player}!load\+From\+String@{load\+From\+String}}
+\index{load\+From\+String@{load\+From\+String}!Player@{Player}}
+\subsubsection[{\texorpdfstring{load\+From\+String(std\+::string data)}{loadFromString(std::string data)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::load\+From\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classPlayer_acbcf66d4a9b70d3dcca3ed26c38a8490}{}\label{classPlayer_acbcf66d4a9b70d3dcca3ed26c38a8490}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów Game\+Object\+Factory \begin{DoxyReturn}{Returns}
+typ 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classGameObject_a85a98216580e583e15477cd9178fa6e7}{Game\+Object}.
+
+\index{Player@{Player}!modify\+Hp\+At\+Node\+Of\+All\+Ships@{modify\+Hp\+At\+Node\+Of\+All\+Ships}}
+\index{modify\+Hp\+At\+Node\+Of\+All\+Ships@{modify\+Hp\+At\+Node\+Of\+All\+Ships}!Player@{Player}}
+\subsubsection[{\texorpdfstring{modify\+Hp\+At\+Node\+Of\+All\+Ships(int i, int dmg)}{modifyHpAtNodeOfAllShips(int i, int dmg)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::modify\+Hp\+At\+Node\+Of\+All\+Ships (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{dmg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPlayer_a3a5f609e38da1966741fd5c79d14ca20}{}\label{classPlayer_a3a5f609e38da1966741fd5c79d14ca20}
+Funkcja zadająca obrażenia statkom w punkcie
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & id punktu mapy \\
+\hline
+\mbox{\tt in}  & {\em dmg} & obrażenia \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-game\+\_\+files/game\+\_\+objects/player.\+hpp\end{DoxyCompactItemize}
+game\+\_\+files/game\+\_\+objects/player.\+hpp\item 
+game\+\_\+files/game\+\_\+objects/player.\+cpp\end{DoxyCompactItemize}

@@ -2,7 +2,7 @@
 \label{classMapPoint}\index{Map\+Point@{Map\+Point}}
 
 
-{\ttfamily \#include $<$building.\+hpp$>$}
+{\ttfamily \#include $<$map\+\_\+point.\+hpp$>$}
 
 
 
@@ -19,6 +19,8 @@ Collaboration diagram for Map\+Point\+:
 \item 
 \hyperlink{classMapPoint_a2b7ec1372a03f899cbaa771d8acb9031}{Map\+Point} (int id, const std\+::vector$<$ unsigned int $>$ \&connections, int x, int y, \hyperlink{classResources}{Resources} resources)
 \item 
+\hyperlink{classMapPoint_a3d9f8e84d581d1f2a99e6868bd7b4fad}{Map\+Point} (int id, int x, int y, \hyperlink{classResources}{Resources} resources)
+\item 
 unsigned int {\bfseries get\+Id} () const \hypertarget{classMapPoint_a07b1029f4d2d640a323bc01c95f1963a}{}\label{classMapPoint_a07b1029f4d2d640a323bc01c95f1963a}
 
 \item 
@@ -34,16 +36,12 @@ int {\bfseries get\+Metal} () const \hypertarget{classMapPoint_ad17d07c7d1c6821a
 const std\+::vector$<$ unsigned int $>$ \& {\bfseries get\+Connections} ()\hypertarget{classMapPoint_ae22a25f9ab9c4c277ab036fd2c76d53d}{}\label{classMapPoint_ae22a25f9ab9c4c277ab036fd2c76d53d}
 
 \item 
+void {\bfseries add\+Connection} (unsigned int id)\hypertarget{classMapPoint_abe57aef2138a8ea9a184fb200246702a}{}\label{classMapPoint_abe57aef2138a8ea9a184fb200246702a}
+
+\item 
 virtual std\+::string \hyperlink{classMapPoint_a45aa1bd9ce0a2d172c135f324f823973}{to\+String} (unsigned int player\+\_\+id=0)
 \item 
 virtual void \hyperlink{classMapPoint_add482d105e9b5089fb274dd1f32dfa9d}{load\+From\+String} (std\+::string data)
-\item 
-virtual unsigned int \hyperlink{classMapPoint_a5f869aa003f10b7480907f0d0089e887}{get\+Type} ()
-\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static std\+::shared\+\_\+ptr$<$ \hyperlink{classGameObject}{Game\+Object} $>$ \hyperlink{classMapPoint_ab60047cd652024faeeebb5286acd5eb2}{create} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -63,19 +61,11 @@ unsigned int {\bfseries y\+\_\+}\hypertarget{classMapPoint_a37d68b5a84c43739ce77
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static unsigned int \hyperlink{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}{I\+D\+\_\+} = 0
+static unsigned int \hyperlink{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}{I\+D\+\_\+}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Definicja klasy \hyperlink{classBuilding}{Building}, która realizuje budynki. Dziedziczy wirtualnie po klasie \hyperlink{classGameObject}{Game\+Object} \begin{DoxyAuthor}{Author}
-
-\end{DoxyAuthor}
-\begin{DoxyParagraph}{Author}
-Marcin Brzykcy, Michał Murawski 
-\end{DoxyParagraph}
-
-
 Definicja klasy \hyperlink{classMapPoint}{Map\+Point}, która realizuje mape gry. Dziedziczy wirtualnie po klasie \hyperlink{classGameObject}{Game\+Object} \begin{DoxyAuthor}{Author}
 
 \end{DoxyAuthor}
@@ -107,44 +97,43 @@ Konstruktor klasy
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em id} & ilośc identyfikator węzła mapy \\
+\mbox{\tt in}  & {\em id} & identyfikator węzła mapy \\
 \hline
-\mbox{\tt in}  & {\em connections} & połączenia węzłyów mapy, grafu \\
+\mbox{\tt in}  & {\em connections} & -\/ wektor numerów id połączonych punktów \\
 \hline
 \mbox{\tt in}  & {\em x} & położenie na osi x \\
 \hline
 \mbox{\tt in}  & {\em y} & położenie na osi y \\
 \hline
-\mbox{\tt in}  & {\em resources} & zasoby przechowywane na mapie \\
+\mbox{\tt in}  & {\em resources} & zasoby przechowywane na punkcie \\
+\hline
+\end{DoxyParams}
+\index{Map\+Point@{Map\+Point}!Map\+Point@{Map\+Point}}
+\index{Map\+Point@{Map\+Point}!Map\+Point@{Map\+Point}}
+\subsubsection[{\texorpdfstring{Map\+Point(int id, int x, int y, Resources resources)}{MapPoint(int id, int x, int y, Resources resources)}}]{\setlength{\rightskip}{0pt plus 5cm}Map\+Point\+::\+Map\+Point (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf Resources}}]{resources}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMapPoint_a3d9f8e84d581d1f2a99e6868bd7b4fad}{}\label{classMapPoint_a3d9f8e84d581d1f2a99e6868bd7b4fad}
+Konstruktor klasy
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em id} & identyfikator węzła mapy \\
+\hline
+\mbox{\tt in}  & {\em x} & położenie na osi x \\
+\hline
+\mbox{\tt in}  & {\em y} & położenie na osi y \\
+\hline
+\mbox{\tt in}  & {\em resources} & zasoby przechowywane na punkcie \\
 \hline
 \end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\index{Map\+Point@{Map\+Point}!create@{create}}
-\index{create@{create}!Map\+Point@{Map\+Point}}
-\subsubsection[{\texorpdfstring{create()}{create()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<$ {\bf Game\+Object} $>$ Map\+Point\+::create (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classMapPoint_ab60047cd652024faeeebb5286acd5eb2}{}\label{classMapPoint_ab60047cd652024faeeebb5286acd5eb2}
-Funkcja zwracająca wskaźnik na \hyperlink{classGameObject}{Game\+Object} wykorzystywane do utworzenia instacji obiektu w \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
-wkaźnik na \hyperlink{classGameObject}{Game\+Object} 
-\end{DoxyReturn}
-\index{Map\+Point@{Map\+Point}!get\+Type@{get\+Type}}
-\index{get\+Type@{get\+Type}!Map\+Point@{Map\+Point}}
-\subsubsection[{\texorpdfstring{get\+Type()}{getType()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Map\+Point\+::get\+Type (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classMapPoint_a5f869aa003f10b7480907f0d0089e887}{}\label{classMapPoint_a5f869aa003f10b7480907f0d0089e887}
-Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
-typ 
-\end{DoxyReturn}
-
-
-Reimplemented from \hyperlink{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}{Game\+Object}.
-
 \index{Map\+Point@{Map\+Point}!load\+From\+String@{load\+From\+String}}
 \index{load\+From\+String@{load\+From\+String}!Map\+Point@{Map\+Point}}
 \subsubsection[{\texorpdfstring{load\+From\+String(std\+::string data)}{loadFromString(std::string data)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+Point\+::load\+From\+String (
@@ -152,7 +141,7 @@ Reimplemented from \hyperlink{classGameObject_a96c0dc16e310d0a26a1c8b05ab3d139f}
 \item[{std\+::string}]{data}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classMapPoint_add482d105e9b5089fb274dd1f32dfa9d}{}\label{classMapPoint_add482d105e9b5089fb274dd1f32dfa9d}
-Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów \hyperlink{classGameObjectFactory}{Game\+Object\+Factory} \begin{DoxyReturn}{Returns}
+Funkcja zwracająca liczbę reprezentowaną jako typ w fabryce obiektów Game\+Object\+Factory \begin{DoxyReturn}{Returns}
 typ 
 \end{DoxyReturn}
 
@@ -178,7 +167,7 @@ Reimplemented from \hyperlink{classGameObject_aabe25448b728506ce27e975d07217858}
 \subsection{Member Data Documentation}
 \index{Map\+Point@{Map\+Point}!I\+D\+\_\+@{I\+D\+\_\+}}
 \index{I\+D\+\_\+@{I\+D\+\_\+}!Map\+Point@{Map\+Point}}
-\subsubsection[{\texorpdfstring{I\+D\+\_\+}{ID_}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Map\+Point\+::\+I\+D\+\_\+ = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}{}\label{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}
+\subsubsection[{\texorpdfstring{I\+D\+\_\+}{ID_}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Map\+Point\+::\+I\+D\+\_\+\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}{}\label{classMapPoint_a0ec6add3c90e5cd5421de9f488d5e681}
 Funkcja zwracająca położenie na mapie \begin{DoxyReturn}{Returns}
 zwraca położenie na mapie 
 \end{DoxyReturn}

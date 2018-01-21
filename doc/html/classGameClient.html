@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classGameClient-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -96,11 +97,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abca673a8fcdb7d2ae8c0da02f91e4e64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameClient.html#abca673a8fcdb7d2ae8c0da02f91e4e64">~GameClient</a> ()</td></tr>
-<tr class="separator:abca673a8fcdb7d2ae8c0da02f91e4e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af772004c86159c3ed0fee47b2527dcac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af772004c86159c3ed0fee47b2527dcac"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> ()</td></tr>
+<tr class="separator:af772004c86159c3ed0fee47b2527dcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:adfcb979db6333b335dee4e6d785aabcf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classGameClient.html">GameClient</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameClient.html#adfcb979db6333b335dee4e6d785aabcf">getInstance</a> ()</td></tr>
+<tr class="separator:adfcb979db6333b335dee4e6d785aabcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73c9685b821c1480f48e23e63823ad1d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameClient.html#a73c9685b821c1480f48e23e63823ad1d">read</a> (tcp::tcp_client &amp;client, const tcp::tcp_client::read_result &amp;res)</td></tr>
 <tr class="separator:a73c9685b821c1480f48e23e63823ad1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8c1f7f62a01fd9a6624236285b02d6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameClient.html#a2f8c1f7f62a01fd9a6624236285b02d6">connect</a> (const std::string &amp;host, std::uint32_t port)</td></tr>
@@ -110,6 +114,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3eda37920dab8f5fcded42f3e08ce25"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameClient.html#ad3eda37920dab8f5fcded42f3e08ce25">join</a> ()</td></tr>
 <tr class="separator:ad3eda37920dab8f5fcded42f3e08ce25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aff43d375d51a0b462aa740dd10cfd084"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff43d375d51a0b462aa740dd10cfd084"></a>
+GameState&#160;</td><td class="memItemRight" valign="bottom"><b>gameState_</b></td></tr>
+<tr class="separator:aff43d375d51a0b462aa740dd10cfd084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af435d6a15915f7ec8947f611dd9c3509"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af435d6a15915f7ec8947f611dd9c3509"></a>
+std::shared_ptr&lt; GameState &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gameState_ptr_</b></td></tr>
+<tr class="separator:af435d6a15915f7ec8947f611dd9c3509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a0ae16fa49b4937e75ec20eb85130d35d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ae16fa49b4937e75ec20eb85130d35d"></a>
@@ -118,28 +131,20 @@ static tcp::tcp_client&#160;</td><td class="memItemRight" valign="bottom"><b>_cl
 <tr class="memitem:a4fc5adb552542ebc455a25a26926025d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fc5adb552542ebc455a25a26926025d"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_name</b> =&quot;noname&quot;</td></tr>
 <tr class="separator:a4fc5adb552542ebc455a25a26926025d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32d0bcdbc1b903c4562ee8dc20b56b99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32d0bcdbc1b903c4562ee8dc20b56b99"></a>
+static std::queue&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_queue</b></td></tr>
+<tr class="separator:a32d0bcdbc1b903c4562ee8dc20b56b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad079b6042d6db9bd9e19a5adcfeb313c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad079b6042d6db9bd9e19a5adcfeb313c"></a>
+static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>_m</b></td></tr>
+<tr class="separator:ad079b6042d6db9bd9e19a5adcfeb313c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa014b8adac35373040b858fe55bc8c93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa014b8adac35373040b858fe55bc8c93"></a>
+static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>_buffer_length</b> =5</td></tr>
+<tr class="separator:aa014b8adac35373040b858fe55bc8c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definicja klasy <a class="el" href="classGameClient.html">GameClient</a>, która realizuje klienta gry </p><dl class="section author"><dt>Author</dt><dd></dd></dl>
 <dl class="section rcs"><dt>Author</dt><dd>Michał Murawski, Marcin Brzykcy </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="abca673a8fcdb7d2ae8c0da02f91e4e64"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GameClient::~GameClient </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Destruktor klasy </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a2f8c1f7f62a01fd9a6624236285b02d6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -179,6 +184,30 @@ static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_name</
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="adfcb979db6333b335dee4e6d785aabcf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGameClient.html">GameClient</a> &amp; GameClient::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Singleton </p>
 
 </div>
 </div>

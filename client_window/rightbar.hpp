@@ -7,6 +7,14 @@
 #include <memory>
 #include "../game_files/game_state/game_state.hpp"
 
+/**
+ * \class RightBar
+ *
+ * Klasa interfejsu, Dziedziczy po QFrame, wyświetla atrybuty gracza
+ *
+ */
+
+
 class RightBar: public QFrame{
 public:
     RightBar();

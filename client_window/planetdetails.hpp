@@ -8,6 +8,14 @@
 #include <QListWidget>
 #include "../game_files/game_state/game_state.hpp"
 
+/**
+ * \class PlanetDetails
+ *
+ * Klasa interfejsu, dziedzicząca po QFrame, odpowiedzialna za wyświetlanie atrybutów planety
+ *
+ */
+
+
 class PlanetDetails : public QFrame {
 public:
     PlanetDetails();

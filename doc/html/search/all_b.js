@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oval',['Oval',['../classgraphics_1_1Oval.html',1,'graphics']]]
+  ['queue_5fresult',['queue_result',['../classGameServer.html#a1059a53ce3bd5fe9fad31a16c6310104',1,'GameServer']]]
 ];

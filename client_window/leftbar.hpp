@@ -9,7 +9,13 @@
 #include <string>
 #include "../game_files/game_state/game_state.hpp"
 
-
+/**
+ * \class LeftBar
+ *
+ * Panel boczny, mający zakładki turn i planet, umożliwiający wyświetlenie atrybutów punktu mapy i przebiegu tury
+ *
+ */
+ 
 class LeftBar : public QTabWidget {
     Q_OBJECT
 signals:

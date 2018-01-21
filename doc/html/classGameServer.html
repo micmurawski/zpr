@@ -103,11 +103,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8c6534df2bb4196b7bdcd8c4f15ce8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b8a605a18de2c5a1e183e505cd7684"><td class="memItemLeft" align="right" valign="top">std::vector&lt; player_ptr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameServer.html#a24b8a605a18de2c5a1e183e505cd7684">getPlayers</a> ()</td></tr>
 <tr class="separator:a24b8a605a18de2c5a1e183e505cd7684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8dfcb08211ddfbf28c846c04892d0c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8dfcb08211ddfbf28c846c04892d0c4"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLobby</b> ()</td></tr>
+<tr class="separator:ac8dfcb08211ddfbf28c846c04892d0c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae0ac206438c3c9af8eb0f52575faa597"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classGameServer.html">GameServer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameServer.html#ae0ac206438c3c9af8eb0f52575faa597">get</a> ()</td></tr>
-<tr class="separator:ae0ac206438c3c9af8eb0f52575faa597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588419f7d78b27f71b4bb2446c67b7b8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classGameServer.html">GameServer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameServer.html#a588419f7d78b27f71b4bb2446c67b7b8">getInstance</a> ()</td></tr>
+<tr class="separator:a588419f7d78b27f71b4bb2446c67b7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19c80082a7c4c27db9615bbb9d7ecd0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac19c80082a7c4c27db9615bbb9d7ecd0"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>pushToQueueResponse</b> (std::string str)</td></tr>
+<tr class="separator:ac19c80082a7c4c27db9615bbb9d7ecd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac54878b70dc19acf32ff914708b409f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameServer.html#ac54878b70dc19acf32ff914708b409f1">data_collector</a> (const std::shared_ptr&lt; tcp::tcp_client &gt; &amp;client, const tcp::tcp_client::read_result &amp;res)</td></tr>
 <tr class="separator:ac54878b70dc19acf32ff914708b409f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -169,7 +175,7 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae0ac206438c3c9af8eb0f52575faa597"></a>
+<a class="anchor" id="a588419f7d78b27f71b4bb2446c67b7b8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -177,7 +183,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classGameServer.html">GameServer</a> &amp; GameServer::get </td>
+          <td class="memname"><a class="el" href="classGameServer.html">GameServer</a> &amp; GameServer::getInstance </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

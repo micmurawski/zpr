@@ -4,6 +4,13 @@
 #include <QFrame>
 #include <QPushButton>
 
+/**
+ * \class BottomBar
+ *
+ * Dolny panel z przyciskami umożliwiającymi podejmowanie akcji w grze
+ *
+ */
+
 class BottomBar : public QFrame{
     Q_OBJECT
 public:

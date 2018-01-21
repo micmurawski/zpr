@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fbottombar_5ft',['qt_meta_stringdata_BottomBar_t',['../structqt__meta__stringdata__BottomBar__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fgraphicsview_5ft',['qt_meta_stringdata_GraphicsView_t',['../structqt__meta__stringdata__GraphicsView__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fleftbar_5ft',['qt_meta_stringdata_LeftBar_t',['../structqt__meta__stringdata__LeftBar__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmainwindow_5ft',['qt_meta_stringdata_MainWindow_t',['../structqt__meta__stringdata__MainWindow__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmapview_5ft',['qt_meta_stringdata_MapView_t',['../structqt__meta__stringdata__MapView__t.html',1,'']]],
-  ['queue_5fresult',['queue_result',['../classGameServer.html#a1059a53ce3bd5fe9fad31a16c6310104',1,'GameServer']]]
+  ['sendcmd',['sendCmd',['../classGameClient.html#a52e2b91ca95b287a30e3c47b82a97547',1,'GameClient']]],
+  ['ship',['Ship',['../classShip.html',1,'Ship'],['../classShip.html#a53a29a2b25670010054f1213418fa0c3',1,'Ship::Ship()']]],
+  ['start',['start',['../classGameServer.html#a8c6534df2bb4196b7bdcd8c4f15ce8fc',1,'GameServer']]],
+  ['state',['state',['../classGameEngine.html#a2efeb330b4e8c23aaeaf9928ae068301',1,'GameEngine']]]
 ];

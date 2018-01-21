@@ -11,6 +11,14 @@
 #include "../game_files/game_order/game_order.hpp"
 #include <memory>
 
+/**
+ * \class MainWindow
+ *
+ * Klasa interfejsu, główne okno gry, agregujące panele boczne i dolny oraz wyświetlające mapę gry
+ *
+ */
+
+
 typedef std::vector<std::shared_ptr<Ship>> ship_vector;
 typedef std::shared_ptr<ship_vector> ship_vector_ptr;
 
@@ -42,7 +50,7 @@ private slots:
     void createBuilding();
     void moveShip();
 
-//signals:
+
 
 };
 

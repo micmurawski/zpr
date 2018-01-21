@@ -12,11 +12,17 @@ void \hyperlink{classGameServer_a1059a53ce3bd5fe9fad31a16c6310104}{queue\+\_\+re
 void \hyperlink{classGameServer_a8c6534df2bb4196b7bdcd8c4f15ce8fc}{start} (const std\+::string \&host, std\+::uint32\+\_\+t port)
 \item 
 std\+::vector$<$ player\+\_\+ptr $>$ \hyperlink{classGameServer_a24b8a605a18de2c5a1e183e505cd7684}{get\+Players} ()
+\item 
+std\+::string {\bfseries get\+Lobby} ()\hypertarget{classGameServer_ac8dfcb08211ddfbf28c846c04892d0c4}{}\label{classGameServer_ac8dfcb08211ddfbf28c846c04892d0c4}
+
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classGameServer}{Game\+Server} \& \hyperlink{classGameServer_ae0ac206438c3c9af8eb0f52575faa597}{get} ()
+static \hyperlink{classGameServer}{Game\+Server} \& \hyperlink{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}{get\+Instance} ()
+\item 
+static void {\bfseries push\+To\+Queue\+Response} (std\+::string str)\hypertarget{classGameServer_ac19c80082a7c4c27db9615bbb9d7ecd0}{}\label{classGameServer_ac19c80082a7c4c27db9615bbb9d7ecd0}
+
 \item 
 static void \hyperlink{classGameServer_ac54878b70dc19acf32ff914708b409f1}{data\+\_\+collector} (const std\+::shared\+\_\+ptr$<$ tcp\+::tcp\+\_\+client $>$ \&client, const tcp\+::tcp\+\_\+client\+::read\+\_\+result \&res)
 \end{DoxyCompactItemize}
@@ -60,13 +66,13 @@ Funkcja agregująca dane w serwerze
 \mbox{\tt in}  & {\em client} & referencja na wskaźnik struktury read\+\_\+result \\
 \hline
 \end{DoxyParams}
-\index{Game\+Server@{Game\+Server}!get@{get}}
-\index{get@{get}!Game\+Server@{Game\+Server}}
-\subsubsection[{\texorpdfstring{get()}{get()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Server} \& Game\+Server\+::get (
+\index{Game\+Server@{Game\+Server}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Game\+Server@{Game\+Server}}
+\subsubsection[{\texorpdfstring{get\+Instance()}{getInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Server} \& Game\+Server\+::get\+Instance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_ae0ac206438c3c9af8eb0f52575faa597}{}\label{classGameServer_ae0ac206438c3c9af8eb0f52575faa597}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}{}\label{classGameServer_a588419f7d78b27f71b4bb2446c67b7b8}
 Funkcja zwracająca statyczny obiekt klasy \index{Game\+Server@{Game\+Server}!get\+Players@{get\+Players}}
 \index{get\+Players@{get\+Players}!Game\+Server@{Game\+Server}}
 \subsubsection[{\texorpdfstring{get\+Players()}{getPlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ player\+\_\+ptr $>$ Game\+Server\+::get\+Players (

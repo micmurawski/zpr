@@ -5,6 +5,14 @@
 #include <QGraphicsItem>
 #include <mapview.hpp>
 
+/**
+ * \class UI:mapPoint
+ *
+ *  Klasa interfejsu dziedzicząca po QGraphicsItem, będąca graficzną reprezentacją punktu na mapie
+ *
+ */
+
+
 namespace UI{
 class mapPoint : public QGraphicsItem
 {

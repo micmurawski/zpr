@@ -32,7 +32,6 @@ QPainterPath mapPoint::shape() const
 
 void mapPoint::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
     Q_UNUSED(widget);
-   // QColor fillColor = color_;
     QColor fillColor = (option->state & QStyle::State_Selected) ? color_.dark(150) : color_;
     selected_=(option->state & QStyle::State_Selected) ? true : false;
     if(option->state & QStyle::State_Selected){

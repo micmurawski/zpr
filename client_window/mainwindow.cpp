@@ -12,6 +12,7 @@
 #include <QDebug>
 #include "../game_files/game_engine/game_client.hpp"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -20,52 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ////***********TEST*****************
     player_id_=1;
     GameClient::getInstance();
-    std::cout<<"XD";
     for(player_ptr ptr :GameClient::getInstance().gameState_ptr_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
     game_state_=GameClient::getInstance().gameState_ptr_;
     for(player_ptr ptr :game_state_.get()->players_) std::cout<<ptr.get()->name_<<std::endl;
-    //std::cout<<"skopiowano"<<std::endl;
-    //std::vector<player_ptr> players;
-    //players.push_back(std::make_shared<Player>(std::string("name")));
-    //players.push_back(std::make_shared<Player>(std::string("name2")));
-    //players.at(0).get()->id_=1;
-    //players.at(1).get()->id_=2;
-    //game_state_= std::make_shared<GameState>();
-    //game_state_.get()->players_=players;
-    //game_state_.get()->init();
-    //Resources r(500);
-    //std::vector<unsigned int> vec;
-//
-//
-    //srand(time(NULL));
-    //for(int i = 0; i<=20; i++){
-    //int b = rand()%20;
-    //vec.push_back(b);
-//
-//
-    //b = rand()%20;
-    //vec.push_back(b);
-//
-    //std::shared_ptr<MapPoint> p = std::make_shared<MapPoint>(i, vec, rand()%500+1, rand()%500+1, r);
-    //vec.clear();
-    //game_state_->map_points_.push_back(p);
-    //}
-//
-    //game_state_->players_[0]->id_=0;
-    //game_state_->players_[1]->resources_.metal_ = 40000;
-    //game_state_->players_[1]->id_=1;
-    //game_state_->players_[2]->id_=2;
-    //game_state_->players_[3]->id_=3;
-    //std::shared_ptr<Ship> ship = std::make_shared<Ship>(1,1);
-    //game_state_->players_[1]->ships_.push_back(ship);
-    //ship = std::make_shared<Ship>(2,2);
-    //game_state_->players_[1]->ships_.push_back(ship);
-    //ship = std::make_shared<Ship>(3,3);
-    //game_state_->players_[2]->ships_.push_back(ship);
-    //ship = std::make_shared<Ship>(4,10);
-    //game_state_->players_[3]->ships_.push_back(ship);
-    //ship = std::make_shared<Ship>(5, 2);
-    //game_state_->players_[1]->ships_.push_back(ship);
+
 
     map_view_ = new MapView();
     map_view_->readGameStatus(game_state_);

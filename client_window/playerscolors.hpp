@@ -4,6 +4,14 @@
 #include <QColor>
 #include <vector>
 
+/**
+ * \class PlayersColors
+ *
+ * Klasa odpowiedzialna za przydzielanie koloru graczom
+ *
+ */
+
+
 class PlayersColors
 {
 public:

@@ -13,6 +13,14 @@
 #include <iostream>
 #include <playerscolors.hpp>
 
+/**
+ * \class MapView
+ *
+ * Klasa interfejsu: obszar okna gry wyświetlający mapę, dziedziczy po QGraphicsView
+ *
+ */
+
+
 class MapView;
 
 class GraphicsView : public QGraphicsView
@@ -32,7 +40,6 @@ public:
     explicit MapView(QWidget *parent = 0);
     QGraphicsView* graphicsView() const;
     void readGameStatus(std::shared_ptr<GameState> game_state);
-    //int getSelectedPointId();
     bool pointSelected(){return point_selected_;}
     void pointIsSelected();
     int selected_point_id_;
