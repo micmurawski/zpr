@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Projekt ZPR - Gra Sieciowa 4: Main Page</title>
+<title>Projekt ZPR - Gra Sieciowa 4: Kompilacja</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,12 +75,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Projekt ZPR - Gra Sieciowa 4 Documentation</div>  </div>
+<div class="title">Kompilacja </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><ul>
-<li>Opis Gry</li>
+<div class="textblock"><p>Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować</p><ul>
+<li>Kompilacja klienta w folderze client_window należy uruchamić kolejno komendy qmake -makefile i make -j4 (przy kompilacji na 4 rdzeniach)</li>
+<li>Kompilacja serwera uruchamiamy komendę scons <h3>Przykład</h3>
+</li>
 </ul>
+<ul>
+<li>scons</li>
+<li>cd client_window</li>
+<li>qmake -makefile</li>
+<li>make -j4\ Wszystkie pliki zostaną skompilowane do katologu głównego</li>
+</ul>
+<h1>Uruchomienie Gry</h1>
+<p>W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył</p><ul>
+<li>Uruchomienie serwera - ./server -s #host #port np. ./server -s 127.0.0.1 3002</li>
+<li>Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi ./server -s 127.0.0.1 3002</li>
+<li>Uruchomienie klienta gry z utworzeniem gry - ./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie</li>
+<li>Uruchomienie klienta gry z dołączeniem do - ./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie</li>
+<li>Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -h <h3>Przykład</h3>
+</li>
+</ul>
+<ul>
+<li>./server</li>
+<li>./client -c 127.0.0.1 3002 gracz1 gra1</li>
+<li>./client -j 127.0.0.1 3002 gracz2 gra1</li>
+</ul>
+<h1>Opis Gry</h1>
 <p>Bedzię to turowa gra strategiczna odbywająca się na mapie w postaci grafu. Gracz będzie budował swoje statki wzamian za swoje zasoby i wysyłał je do węzłów grafu. W momencie kiedy dojdzie do spotkania staków przeciwnych graczy będzie następować wymiana ognia.</p>
 <ul>
 <li>Folder game_engine zawiera Klasy <a class="el" href="classGameServer.html">GameServer</a>,<a class="el" href="classGameClient.html">GameClient</a>, <a class="el" href="classGameEngine.html">GameEngine</a>.</li>

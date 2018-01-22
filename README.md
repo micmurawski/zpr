@@ -1,14 +1,13 @@
 # Kompilacja
 
-
-Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować
-* Kompilacja klienta w folderze client_window należy uruchamić kolejno komendy qmake -makefile i make -j4 (przy kompilacji na 4 rdzeniach)
+Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować <br/>
+* Kompilacja klienta w folderze client_window należy uruchamić kolejno komendy qmake -makefile i make -j4 (przy kompilacji na 4 rdzeniach)<br/>
 * Kompilacja serwera uruchamiamy komendę scons
 ### Przykład
 * scons
 * cd client_window
 * qmake -makefile
-* make -j4\
+* make -j4<br/>
 Wszystkie pliki zostaną skompilowane do katologu głównego
 
 # Uruchomienie Gry
