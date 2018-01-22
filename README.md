@@ -16,11 +16,23 @@ Wszystkie pliki zostaną skompilowane do katologu głównego
 
 # Uruchomienie Gry
 W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył
-* Uruchomienie serwera - ./server -s #host #port np. ./server -s 127.0.0.1 3002
-* Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi ./server -s 127.0.0.1 3002
-* Uruchomienie klienta gry z utworzeniem gry - ./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie
-* Uruchomienie klienta gry z dołączeniem do - ./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie
+
+* Uruchomienie serwera
+>./server -s #host #port np. ./server -s 127.0.0.1 3002
+
+* Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi 
+>./server -s 127.0.0.1 3002
+
+* Uruchomienie klienta gry z utworzeniem gry
+>./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry
+>Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie
+
+* Uruchomienie klienta gry z dołączeniem do 
+>./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry  
+>Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie
+
 * Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -h
+
 ### Przykład
 * ./server
 * ./client -c 127.0.0.1 3002 gracz1 gra1 
@@ -42,7 +54,9 @@ GameClient  odpowiada za wastwę klienta gry
 * Folder game_object zawiera klasy realizujące obiekty gry
 
 Klasa GameObjectFactory działa jak fabryka skalowalna i generuje odpowiednie obiekty gry na podstawie otrzymanych stringów
-* Folder game_order przechowuje klasę GameOrder która realizuje komendy wysyłane przez klientów gry
+* Folder game_order przechowuje klasę GameOrder która 
+realizuje komendy wysyłane przez klientów gry
+
 * Folder game_state przechowuje klasę GameState, która realizuje chwilowy stan gry, w póżniejszym czasie stan ten będzie renderowany na interfejsie gracza
 
 * Biblioteka to osbługi TCP została pobrana, zmodyfikowana o potrzebną funkcjonalność i lokalnie skompilowana jako biblioteka statyczna z repozytorium github
