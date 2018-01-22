@@ -18,18 +18,17 @@ Wszystkie pliki zostaną skompilowane do katologu głównego
 W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył
 
 * Uruchomienie serwera
->./server -s #host #port np. ./server -s 127.0.0.1 3002
+>./server -s #host #port
 
 * Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi 
 >./server -s 127.0.0.1 3002
 
-* Uruchomienie klienta gry z utworzeniem gry
+* Uruchomienie klienta gry z utworzeniem gry o zadanej nazwie na serwerze o zadanym ip i porcie
 >./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry
->Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie
 
-* Uruchomienie klienta gry z dołączeniem do 
+* Uruchomienie klienta gry z dołączeniem do gry o zadanej nazwie na serwerze o zadanym ip i porcie
 >./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry  
->Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie
+
 
 * Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -h
 
