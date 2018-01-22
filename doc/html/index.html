@@ -78,26 +78,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Kompilacja </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować</p><ul>
+<div class="textblock"><p>Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować</p>
+<ul>
 <li>Kompilacja klienta w folderze client_window należy uruchamić kolejno komendy qmake -makefile i make -j4 (przy kompilacji na 4 rdzeniach)</li>
-<li>Kompilacja serwera uruchamiamy komendę scons <h3>Przykład</h3>
-</li>
+<li>Kompilacja serwera uruchamiamy komendę scons</li>
 </ul>
+<h3>Przykład</h3>
 <ul>
 <li>scons</li>
 <li>cd client_window</li>
 <li>qmake -makefile</li>
-<li>make -j4\ Wszystkie pliki zostaną skompilowane do katologu głównego</li>
+<li>make -j4<br />
+ Wszystkie pliki zostaną skompilowane do katologu głównego</li>
 </ul>
 <h1>Uruchomienie Gry</h1>
-<p>W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył</p><ul>
-<li>Uruchomienie serwera - ./server -s #host #port np. ./server -s 127.0.0.1 3002</li>
-<li>Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi ./server -s 127.0.0.1 3002</li>
-<li>Uruchomienie klienta gry z utworzeniem gry - ./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie</li>
-<li>Uruchomienie klienta gry z dołączeniem do - ./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry - Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie</li>
-<li>Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -h <h3>Przykład</h3>
-</li>
+<p>W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył</p>
+<ul>
+<li>Uruchomienie serwera &gt;./server -s #host #port</li>
+<li>Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi &gt;./server -s 127.0.0.1 3002</li>
+<li>Uruchomienie klienta gry z utworzeniem gry o zadanej nazwie na serwerze o zadanym ip i porcie &gt;./client -c 127.0.0.1 3002 #nazwa_gracza #nazwa_gry</li>
+<li>Uruchomienie klienta gry z dołączeniem do gry o zadanej nazwie na serwerze o zadanym ip i porcie &gt;./client -j 127.0.0.1 3002 #nazwa_gracza #nazwa_gry</li>
+<li>Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -h</li>
 </ul>
+<h3>Przykład</h3>
 <ul>
 <li>./server</li>
 <li>./client -c 127.0.0.1 3002 gracz1 gra1</li>

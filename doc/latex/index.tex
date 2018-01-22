@@ -1,27 +1,36 @@
 Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie skompilować
+
+
 \begin{DoxyItemize}
 \item Kompilacja klienta w folderze client\+\_\+window należy uruchamić kolejno komendy qmake -\/makefile i make -\/j4 (przy kompilacji na 4 rdzeniach)
-\item Kompilacja serwera uruchamiamy komendę scons \subsubsection*{Przykład}
+\item Kompilacja serwera uruchamiamy komendę scons
 \end{DoxyItemize}
+
+\subsubsection*{Przykład}
 
 
 \begin{DoxyItemize}
 \item scons
 \item cd client\+\_\+window
 \item qmake -\/makefile
-\item make -\/j4\textbackslash{} Wszystkie pliki zostaną skompilowane do katologu głównego
+\item make -\/j4~\newline
+ Wszystkie pliki zostaną skompilowane do katologu głównego
 \end{DoxyItemize}
 
 \section*{Uruchomienie Gry}
 
 W celu uruchomienia gry należy urchomić serwer na następnie uruchomić klientów tak żeby jeden utworzył grę, a drugi do niej dołączył
+
+
 \begin{DoxyItemize}
-\item Uruchomienie serwera -\/ ./server -\/s \#host \#port np. ./server -\/s 127.\+0.\+0.\+1 3002
-\item Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi ./server -\/s 127.\+0.\+0.\+1 3002
-\item Uruchomienie klienta gry z utworzeniem gry -\/ ./client -\/c 127.\+0.\+0.\+1 3002 \#nazwa\+\_\+gracza \#nazwa\+\_\+gry -\/ Utworzenie gry o zadanej nazwie na serwerze o zadanym ip i porcie
-\item Uruchomienie klienta gry z dołączeniem do -\/ ./client -\/j 127.\+0.\+0.\+1 3002 \#nazwa\+\_\+gracza \#nazwa\+\_\+gry -\/ Dołączenie do gry o zadanej nazwie na serwerze o zadanym ip i porcie
-\item Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -\/h \subsubsection*{Przykład}
+\item Uruchomienie serwera $>$./server -\/s \#host \#port
+\item Urucomienie pliku ./server bez żadnych parametrów domyślnie uruchomi $>$./server -\/s 127.\+0.\+0.\+1 3002
+\item Uruchomienie klienta gry z utworzeniem gry o zadanej nazwie na serwerze o zadanym ip i porcie $>$./client -\/c 127.\+0.\+0.\+1 3002 \#nazwa\+\_\+gracza \#nazwa\+\_\+gry
+\item Uruchomienie klienta gry z dołączeniem do gry o zadanej nazwie na serwerze o zadanym ip i porcie $>$./client -\/j 127.\+0.\+0.\+1 3002 \#nazwa\+\_\+gracza \#nazwa\+\_\+gry
+\item Wszystkie możlwości są opisane po uruchomieniu programu z parametrem -\/h
 \end{DoxyItemize}
+
+\subsubsection*{Przykład}
 
 
 \begin{DoxyItemize}
