@@ -39,6 +39,3 @@ env.Program(target = ['server'],
         LIBS=LIBS,
         LIBPATH=LIBPATH,
         CXXFLAGS = cxxflags);
-print("KOMPILACJA Klienta")
-os.system('client_window/qmake -makefile')
-os.system('make -j4')

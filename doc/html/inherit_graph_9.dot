@@ -3,11 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-<<<<<<< Updated upstream
   Node1 [label="qt_meta_stringdata\l_BottomBar_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structqt__meta__stringdata__BottomBar__t.html"];
-=======
-  Node1 [label="QGraphicsView",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="GraphicsView",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGraphicsView.html"];
->>>>>>> Stashed changes
 }

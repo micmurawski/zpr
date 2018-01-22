@@ -1,14 +1,8 @@
 var indexSectionsWithContent =
 {
-<<<<<<< Updated upstream
   0: "_bcdegijlmpqrstu~",
   1: "bglmpqrsu",
   2: "bcdegjlmpqrst~",
-=======
-  0: "_bcdefgijlmopqrstu~",
-  1: "_bcegilmopqrstu",
-  2: "bcdefgjlmpqrstu~",
->>>>>>> Stashed changes
   3: "_i"
 };
 
