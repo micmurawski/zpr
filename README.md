@@ -11,7 +11,8 @@ Gra składa się z 2 komponentów z serwera i klienta które należy odzielnie s
 * scons
 * cd client_window
 * qmake -makefile
-* make -j4<br/>
+* make -j4
+
 Wszystkie pliki zostaną skompilowane do katologu głównego
 
 # Uruchomienie Gry
